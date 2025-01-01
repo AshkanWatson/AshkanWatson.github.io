@@ -9,7 +9,7 @@
     --tooltip-border: #3e3e3e;
     --key-bg: #dddddd;
     --key-shadow: rgba(0, 0, 0, 0.2);
-    
+
     /* Animation Durations */
     --transition-fast: 200ms;
     --transition-normal: 300ms;
@@ -52,6 +52,7 @@ body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
 }
+
 #main {
     margin: 0;
     padding: 0;
@@ -84,13 +85,17 @@ body {
     top: 0;
     flex: none;
 }
+
 .nav-border {
+    position: sticky;
+    height: 100vh;
+    width: 65px;
+    top: 0;
+    left: 0;
     overflow: visible;
-    position: relative;
-    height: 100%;
-    width: 100%;
     opacity: 1;
 }
+
 .nav-inline {
     background-color: #343434;
     opacity: 1;
@@ -99,7 +104,7 @@ body {
     overflow: hidden;
     position: absolute;
     right: 0;
-    top: calc(50.00000000000002% - 100% / 2);
+    top: 0;
     width: 1px;
 }
 
@@ -240,8 +245,10 @@ body {
     position: relative;
     width: 72px;
     opacity: 1;
-    transform: perspective(1200px) translateX(0px) translateY(0px) scale(1) rotate(0deg) rotateX(0deg) rotateY(0deg) skewX(0deg) skewY(0deg) translateZ(0px);;
+    transform: perspective(1200px) translateX(0px) translateY(0px) scale(1) rotate(0deg) rotateX(0deg) rotateY(0deg) skewX(0deg) skewY(0deg) translateZ(0px);
+    ;
 }
+
 .profile-description {
     align-content: center;
     align-items: center;
@@ -257,6 +264,7 @@ body {
     position: relative;
     width: 100%;
 }
+
 .description {
     align-content: center;
     align-items: center;
@@ -270,7 +278,8 @@ body {
     overflow: hidden;
     padding: 0;
     position: relative;
-    width: 100%;}
+    width: 100%;
+}
 
 .name {
     flex: none;
@@ -381,10 +390,12 @@ body {
         transform: scale(0);
         opacity: 1;
     }
+
     40% {
         transform: scale(1);
         opacity: 1;
     }
+
     100% {
         transform: scale(1);
         opacity: 0;
@@ -408,6 +419,28 @@ body {
     z-index: 2;
     opacity: 1;
     transform: perspective(1200px) translateX(0px) translateY(0px) scale(1) rotate(0deg) rotateX(0deg) rotateY(0deg) skewX(0deg) skewY(0deg) translateZ(0px);
+}
+
+.social_icons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.social-link {
+    color: rgb(160, 160, 160);
+    transition: color 0.2s ease;
+}
+
+.social-link:hover {
+    color: #A0A0A0;
+}
+
+.social-link svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
 }
 
 .shortcut {
@@ -489,6 +522,7 @@ body {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);

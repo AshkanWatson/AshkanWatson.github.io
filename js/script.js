@@ -2,27 +2,6 @@
 const $ = selector => document.querySelector(selector);
 const $$ = selector => document.querySelectorAll(selector);
 
-// Time Display
-class TimeDisplay {
-    constructor() {
-        this.timeElement = $('.time');
-        this.updateTime();
-        setInterval(() => this.updateTime(), 1000);
-    }
-
-    updateTime() {
-        const now = new Date();
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
-            .split('/')
-            .pop()
-            .slice(0, 2);
-        
-        this.timeElement.textContent = `${hours}:${minutes} ${timezone}`;
-    }
-}
-
 // Navigation System
 class Navigation {
     constructor() {
@@ -134,7 +113,7 @@ class SearchSystem {
                 resolve([
                     { title: 'Example Result 1', url: '#' },
                     { title: 'Example Result 2', url: '#' }
-                ].filter(item => 
+                ].filter(item =>
                     item.title.toLowerCase().includes(query.toLowerCase())
                 ));
             }, 100);
@@ -142,7 +121,7 @@ class SearchSystem {
     }
 
     displayResults(results) {
-        this.results.innerHTML = results.length ? 
+        this.results.innerHTML = results.length ?
             results.map(result => `
                 <a href="${result.url}" class="search-result">
                     ${result.title}
@@ -185,7 +164,6 @@ class AnimationSystem {
 
 // Initialize Everything
 document.addEventListener('DOMContentLoaded', () => {
-    new TimeDisplay();
     new Navigation();
     new SearchSystem();
     new AnimationSystem();
@@ -196,7 +174,7 @@ class ScrollAnimation {
     constructor() {
         this.projectNav = $('.project-nav');
         if (!this.projectNav) return;
-        
+
         this.lastScrollTop = 0;
         this.setupScrollListener();
     }
@@ -205,7 +183,7 @@ class ScrollAnimation {
         window.addEventListener('scroll', () => {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             const scrollDiff = scrollTop - this.lastScrollTop;
-            
+
             // Calculate new offset (with limits)
             const currentOffset = parseFloat(getComputedStyle(this.projectNav)
                 .getPropertyValue('--scroll-offset').replace('px', '') || 0);
@@ -213,7 +191,7 @@ class ScrollAnimation {
                 Math.min(currentOffset - scrollDiff, 0),
                 -Math.max(0, document.documentElement.scrollHeight - window.innerHeight - 100)
             );
-            
+
             this.projectNav.style.setProperty('--scroll-offset', `${newOffset}px`);
             this.lastScrollTop = scrollTop;
         });
@@ -222,7 +200,6 @@ class ScrollAnimation {
 
 // Update initialization
 document.addEventListener('DOMContentLoaded', () => {
-    new TimeDisplay();
     new Navigation();
     new SearchSystem();
     new AnimationSystem();
