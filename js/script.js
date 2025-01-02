@@ -199,7 +199,7 @@ class ScrollAnimation {
 }
 
 // Update initialization
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {  
     new Navigation();
     new SearchSystem();
     new AnimationSystem();
