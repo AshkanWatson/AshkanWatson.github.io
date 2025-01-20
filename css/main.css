@@ -1,0 +1,100 @@
+/* Import all CSS chunks */
+@import 'base.css';
+@import 'typography.css';
+@import 'layout.css';
+@import 'components.css';
+@import 'utilities.css';
+@import 'animations.css';
+@import 'interactions.css';
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-text-secondary);
+}
+
+/* Selection Style */
+::selection {
+    background: var(--color-accent);
+    color: var(--color-text);
+}
+
+/* Focus States */
+:focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Better Text Rendering */
+body {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    cursor: default;
+}
+
+/* Print Styles */
+@media print {
+    .nav,
+    .footer,
+    .contact-buttons {
+        display: none !important;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    a {
+        text-decoration: underline !important;
+    }
+}
+
+/* Any additional specific styles */
+@media (max-width: 768px) {
+    /* Mobile styles */
+    a, button {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    /* Dark mode styles */
+}
+
+/* Additional Global Styles */
+body {
+    cursor: default;
+}
+
+/* Custom Cursor for Links and Buttons */
+a, button {
+    cursor: pointer;
+}
+
+/* Disable animations if user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+} 
