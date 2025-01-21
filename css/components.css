@@ -1,3 +1,48 @@
+/* Reset default margins and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: #000; /* or your desired background color */
+}
+
+.container {
+    padding-top: 60px; /* Adjust this value based on your needs */
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Profile section adjustments */
+.profile-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 40px; /* Adjust this value to control space above profile */
+}
+
+.profile-image {
+    margin-bottom: 24px;
+}
+
+h1, h2 {
+    margin: 0; /* Remove default heading margins */
+}
+
+:root {
+    --text-primary: rgba(255, 255, 255, 0.9);
+    --text-secondary: rgba(255, 255, 255, 0.5);
+    --nav-bg: #000000;
+    --nav-border: #343434;
+    --transition: 0.2s ease;
+}
 /* Reusable components */
 .btn {
     display: inline-block;
@@ -13,7 +58,7 @@
     background: white;
     border-radius: 8px;
     padding: var(--spacing-md);
-    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
 }
 
 .form-group {
@@ -101,62 +146,161 @@
     color: var(--color-text);
 }
 
-/* Navigation Components */
-.nav-time {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.5);
-    padding: 4px 12px;
-    letter-spacing: -0.3px;
+/* Desktop Navigation */
+.sidebar {
+    position: fixed;
+    width: 65px;
+    height: 100vh;
+    z-index: 100;
+    top: 0;
+    left: 0;
 }
 
-.nav-links {
+.nav-border {
+    position: fixed;
+    height: 100vh;
+    width: 65px;
+    top: 0;
+    left: 0;
+    overflow: visible;
+}
+
+.nav-inline {
+    background-color: #343434;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 1px;
+}
+
+.nav-items {
+    position: fixed;
+    left: 32px;
+    top: 50%;
+    transform: translateY(-50%);
     display: flex;
     flex-direction: column;
-    gap: 1px;
-    list-style: none;
-    padding: 0 4px;
+    gap: 32px;
+    width: 24px;
 }
 
-.nav-link {
+.nav-item {
+    position: relative;
+    width: 24px;
+    height: 24px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 8px 12px;
-    color: rgba(255, 255, 255, 0.9);
+    justify-content: center;
+    color: var(--text-secondary);
+    cursor: pointer;
     text-decoration: none;
-    border-radius: 8px;
-    transition: background-color 0.2s ease;
+}
+
+/* Icon Styles */
+.icon {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon svg {
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.social-icon {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-icon svg {
+    width: 100%;
+    height: 100%;
+    fill: none;
+}
+
+/* Tooltip Styles */
+.tooltip {
+    position: absolute;
+    left: calc(100% + 16px);
+    top: 50%;
+    transform: translateY(-50%) translateX(-8px);
+    background: var(--nav-bg);
+    border: 1px solid var(--nav-border);
+    border-radius: 6px;
+    padding: 6px 8px;
     font-size: 13px;
-    line-height: 1.2;
-    letter-spacing: -0.1px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 101;
+    color: var(--text-primary);
+    transition: all 0.1s ease-out;
 }
 
-.nav-link:hover {
-    background: rgba(255, 255, 255, 0.06);
+.shortcut {
+    background: #2a2a2a;
+    border-radius: 3px;
+    padding: 2px 6px;
+    font-size: 10px;
+    line-height: 1;
+    color: var(--text-secondary);
+    box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.3);
 }
 
-.nav-text {
-    font-weight: 400;
+/* Hover States */
+.nav-item:hover {
+    color: var(--text-primary);
 }
 
-.nav-number {
-    font-size: 11px;
-    opacity: 0.35;
-    font-weight: 400;
-    margin-left: 8px;
+.nav-item.active {
+    color: var(--text-primary);
 }
 
-/* Search link */
-.nav-link[href="#search"] {
-    margin-top: 8px;
-    padding-top: 12px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+.nav-item:hover .tooltip {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
 }
 
-/* Active state */
-.nav-link.active {
-    background: rgba(255, 255, 255, 0.08);
+/* Prevent text selection */
+.nav-item {
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Fix for Safari mobile bottom bar */
+@supports (-webkit-touch-callout: none) {
+    .mobile-nav {
+        padding-bottom: calc(12px + env(safe-area-inset-bottom));
+    }
+}
+
+/* Fix for very small screens */
+@media (max-height: 600px) {
+    .nav-items {
+        gap: 24px;
+    }
+}
+
+/* Fix for ultra-wide screens */
+@media (min-width: 2000px) {
+    .sidebar {
+        left: calc((100vw - 1920px) / 2);
+    }
 }
 
 /* Social Links */
@@ -254,14 +398,16 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
-    max-width: 540px; /* Exact width */
+    max-width: 540px;
+    /* Exact width */
 }
 
 .work-card {
     position: relative;
     display: block;
     width: 100%;
-    height: 316px; /* Exact height */
+    height: 316px;
+    /* Exact height */
     border-radius: 24px;
     overflow: hidden;
     text-decoration: none;
@@ -308,11 +454,9 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        180deg,
-        rgba(0, 0, 0, 0.3) 0%,
-        rgba(0, 0, 0, 0) 30%
-    );
+    background: linear-gradient(180deg,
+            rgba(0, 0, 0, 0.3) 0%,
+            rgba(0, 0, 0, 0) 30%);
     z-index: 1;
 }
 
@@ -455,7 +599,8 @@
 
 .store-image {
     position: relative;
-    padding-bottom: 66.67%; /* 3:2 aspect ratio */
+    padding-bottom: 66.67%;
+    /* 3:2 aspect ratio */
     overflow: hidden;
 }
 
@@ -524,7 +669,8 @@
 
 /* Hover animation for price */
 .store-card:hover .store-price {
-    color: #0066FF; /* Accent color on hover */
+    color: #0066FF;
+    /* Accent color on hover */
 }
 
 /* Store List Styles */
@@ -713,7 +859,8 @@
 .hero-content {
     margin-bottom: 24px;
     width: 100%;
-    max-width: 540px; /* Constrain text width */
+    max-width: 540px;
+    /* Constrain text width */
 }
 
 .hero-content h1 {
@@ -864,7 +1011,7 @@
     .about-content {
         gap: 20px;
     }
-    
+
     .about-content p {
         font-size: 15px;
     }
@@ -875,17 +1022,6 @@
     position: relative;
 }
 
-.nav-item::after {
-    content: attr(data-shortcut);
-    position: absolute;
-    right: -20px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 12px;
-    opacity: 0;
-    color: var(--color-text-secondary);
-    transition: opacity 0.2s ease;
-}
 
 .nav-item:hover::after {
     opacity: 0.5;
@@ -896,107 +1032,75 @@ body.show-shortcuts .nav-item::after {
     opacity: 0.5;
 }
 
-/* Navigation */
-.nav {
-    position: fixed;
-    top: 50%;
-    left: 24px;
-    transform: translateY(-50%);
-    width: 24px;
-    height: 332px;
-    z-index: 100;
+/* Sidebar Navigation */
+.sidebar {
+    position: sticky;
+    width: 65px;
+    height: 100vh;
+    z-index: 1;
+    will-change: transform;
+    top: 0;
+    flex: none;
 }
 
 .nav-border {
-    position: absolute;
-    left: 11px;
+    position: sticky;
+    height: 100vh;
+    width: 65px;
     top: 0;
-    width: 1px;
-    height: 100%;
-    background-color: rgb(237, 237, 237);
+    left: 0;
+    overflow: visible;
+    opacity: 1;
 }
 
-.nav-icons {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+.nav-inline {
+    background-color: #343434;
+    opacity: 1;
+    flex: none;
     height: 100%;
-    padding: 8px 0;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 1px;
+}
+
+.nav-items {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex: none;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 20px;
+    height: min-content;
+    justify-content: flex-start;
+    left: 51%;
+    overflow: visible;
+    padding: 0;
+    position: absolute;
+    top: 50%;
+    width: 24px;
 }
 
 .nav-item {
     position: relative;
-    width: 24px;
-    height: 24px;
+    width: 100%;
+    height: 45px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgb(128, 128, 128);
-    transition: color 0.2s ease;
+    color: var(--text-secondary);
     cursor: pointer;
-    border: none;
-    background: none;
-    padding: 0;
+    transition: color var(--transition-fast);
+    text-decoration: none;
 }
 
-.nav-item:hover {
-    color: rgb(51, 51, 51);
-}
-
-/* Active state for current page */
-.nav-item[aria-current="page"] {
-    color: rgb(51, 51, 51);
-}
-
-/* Tooltip styles */
-.nav-item::after {
-    content: attr(data-label);
-    position: absolute;
-    left: 36px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgb(241, 241, 241);
-    border: 1px solid rgb(62, 62, 62);
-    border-radius: 6px;
-    padding: 6px 8px;
-    font-size: 12px;
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.2s ease;
-}
-
-.nav-item:hover::after {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* Shortcut key styles */
-.nav-item::before {
-    content: attr(data-shortcut);
-    position: absolute;
-    right: -24px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgb(221, 221, 221);
-    border-radius: 3px;
-    padding: 2px 6px;
-    font-size: 10px;
-    box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.2);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.2s ease;
-}
-
-.nav-item:hover::before {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* Active state */
+.nav-item:hover,
 .nav-item.active {
-    color: rgb(51, 51, 51);
+    color: var(--text-primary);
 }
 
 @media (max-width: 768px) {
@@ -1005,125 +1109,146 @@ body.show-shortcuts .nav-item::after {
     }
 }
 
-:root {
-  --tooltip-border: rgb(62, 62, 62);
-  --tooltip-bg: rgb(241, 241, 241);
-  --shortcut-bg: rgb(221, 221, 221);
-  --nav-border: rgb(237, 237, 237);
-  --nav-bg: rgb(255, 255, 255);
-  --icon-color: rgb(128, 128, 128); /* Added grey color for icons */
+/* Updated Tooltip styles to match Ultra Framer */
+.tooltip {
+    position: absolute;
+    left: calc(100% + 16px);
+    top: 50%;
+    transform: translateY(-50%);
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 6px 8px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 101;
+    color: var(--text-primary);
+    transform: translateX(-8px) translateY(-50%);
+    transition: all 0.1s ease-out;
 }
 
-.framer-nav-container {
-  position: fixed;
-  left: 24px;
-  top: 0;
-  height: 100vh;
-  z-index: 100;
+.shortcut {
+    background: #2a2a2a;
+    border-radius: 3px;
+    padding: 2px 6px;
+    font-size: 10px;
+    line-height: 1;
+    color: var(--text-secondary);
+    box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.3);
 }
 
-.framer-nav {
-  position: relative;
-  height: 100%;
-  display: flex;
-  align-items: center;
+.nav-item:hover .tooltip {
+    opacity: 1;
+    transform: translateX(0) translateY(-50%);
 }
 
-.nav-line {
-  height: 100%;
-  overflow: hidden;
-  position: absolute;
-  right: 0;
-  top: calc(50.00000000000002% - 100% / 2);
-  width: 1px;
-  background-color: rgb(52, 52, 52);
-  opacity: 1;
+/* Remove default tooltips */
+.nav-item[data-shortcut] {
+    pointer-events: auto;
 }
 
-.nav-items {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.nav-item {
-  position: relative;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgb(128, 128, 128); /* Lighter grey for better visibility */
-  transition: color 0.2s ease;
-  cursor: pointer;
-  border: none;
-  background: none;
-  padding: 0;
-}
-
-.nav-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 15px;
-  height: 15px;
-}
-
-.nav-item:hover {
-  color: rgb(51, 51, 51); /* Darker on hover */
-}
-
-/* Tooltip styles matching the reference exactly */
-.nav-item::after {
-  content: attr(data-tooltip);
-  position: absolute;
-  left: 36px; /* Exact position from reference */
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgb(241, 241, 241);
-  border: 1px solid rgb(62, 62, 62);
-  border-radius: 6px;
-  padding: 4px 8px;
-  font-size: 13px;
-  font-weight: 400;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s ease;
-}
-
-.nav-item:hover::after {
-  opacity: 1;
-}
-
-/* Shortcut key styles matching the reference */
 .nav-item[data-shortcut]::before {
-  content: attr(data-shortcut);
-  position: absolute;
-  left: calc(100% + 44px);
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgb(221, 221, 221);
-  border-radius: 3px;
-  padding: 2px 6px;
-  font-size: 10px;
-  line-height: 1;
-  box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.2);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s ease;
+    display: none;
 }
 
-.nav-item:hover[data-shortcut]::before {
-  opacity: 1;
+/* Remove any title attributes from HTML elements */
+[title] {
+    position: relative;
+}
+
+[title]:hover:after {
+    display: none;
 }
 
 @media (max-width: 768px) {
-  .framer-nav-container {
-    display: none;
-  }
+    .sidebar {
+        display: none;
+    }
+}
+
+/* Add this to your existing nav styles */
+.nav {
+    position: fixed;
+    top: 50%;
+    left: 48px;
+    transform: translateY(-50%);
+    width: 200px;
+    background: var(--nav-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--nav-border);
+    border-radius: 16px;
+    z-index: 9999;
+}
+
+/* Mobile styles - just adjust position */
+@media (max-width: 768px) {
+    .nav {
+        left: 16px; /* Smaller margin on mobile */
+        transform: translateY(-50%); /* Keep vertical centering */
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 360px) {
+    .nav {
+        left: 8px; /* Even smaller margin for very small screens */
+    }
+}
+
+/* Desktop styles */
+@media (min-width: 769px) {
+    .nav {
+        top: 50%;
+        left: 48px;
+        transform: translateY(-50%);
+        width: 200px;
+        border-radius: 16px;
+    }
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: auto;
+        padding: 16px 24px;
+        border-radius: 16px 16px 0 0;
+        border-bottom: none;
+        background: rgba(0, 0, 0, 0.95);
+        display: block !important; /* Force display */
+    }
+
+    .nav-links {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        gap: 8px;
+    }
+
+    .nav-item {
+        flex: 1;
+        text-align: center;
+        padding: 8px;
+        font-size: 14px;
+        color: #fff;
+        text-decoration: none;
+        display: block;
+    }
+
+    /* Hide tooltips on mobile */
+    .tooltip,
+    .shortcut {
+        display: none;
+    }
 }
