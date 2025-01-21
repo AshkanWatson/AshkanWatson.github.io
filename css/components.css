@@ -12,14 +12,17 @@ body {
     background: #000;
     overflow-x: hidden;
 }
+
 main {
     width: 100%;
     max-width: 540px;
     margin: 0 auto;
     padding: 0 20px;
 }
+
 .container {
-    padding-top: 60px; /* Adjust this value based on your needs */
+    padding-top: 60px;
+    /* Adjust this value based on your needs */
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
@@ -31,15 +34,18 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-top: 40px; /* Adjust this value to control space above profile */
+    padding-top: 40px;
+    /* Adjust this value to control space above profile */
 }
 
 .profile-image {
     margin-bottom: 24px;
 }
 
-h1, h2 {
-    margin: 0; /* Remove default heading margins */
+h1,
+h2 {
+    margin: 0;
+    /* Remove default heading margins */
 }
 
 :root {
@@ -49,6 +55,7 @@ h1, h2 {
     --nav-border: #343434;
     --transition: 0.2s ease;
 }
+
 /* Reusable components */
 .btn {
     display: inline-block;
@@ -142,15 +149,17 @@ h1, h2 {
     text-decoration: none;
     font-size: 14px;
     padding: 8px 16px;
-    border: 1px solid var(--color-border);
-    border-radius: 24px;
     transition: all 0.2s ease;
 }
 
 .social-link:hover {
-    background: var(--color-hover);
-    color: var(--color-text);
+    color: var(--text-primary);
 }
+
+.social-link::after {
+    color: var(--text-primary);
+}
+
 
 /* Desktop Navigation */
 .sidebar {
@@ -303,7 +312,7 @@ h1, h2 {
 }
 
 /* Fix for ultra-wide screens */
-@media (min-width: 2000px) {
+@media (min-width: 3840px) {
     .sidebar {
         left: calc((100vw - 1920px) / 2);
     }
@@ -1192,18 +1201,40 @@ body.show-shortcuts .nav-item::after {
     z-index: 9999;
 }
 
+@media screen and (max-width: 3840px) {
+    .navbar {
+        width: 70px;
+        /* Adjust width for smaller resolutions */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        position: fixed;
+        width: 100%;
+        /* Full width for smaller devices */
+        height: auto;
+        /* Adjust height for smaller devices */
+        top: 0;
+        left: 0;
+    }
+}
+
 /* Mobile styles - just adjust position */
 @media (max-width: 768px) {
     .nav {
-        left: 16px; /* Smaller margin on mobile */
-        transform: translateY(-50%); /* Keep vertical centering */
+        left: 16px;
+        /* Smaller margin on mobile */
+        transform: translateY(-50%);
+        /* Keep vertical centering */
     }
 }
 
 /* Extra small screens */
 @media (max-width: 360px) {
     .nav {
-        left: 8px; /* Even smaller margin for very small screens */
+        left: 8px;
+        /* Even smaller margin for very small screens */
     }
 }
 
@@ -1231,7 +1262,8 @@ body.show-shortcuts .nav-item::after {
         border-radius: 16px 16px 0 0;
         border-bottom: none;
         background: rgba(0, 0, 0, 0.95);
-        display: block !important; /* Force display */
+        display: block !important;
+        /* Force display */
     }
 
     .nav-links {
@@ -1270,9 +1302,11 @@ body.show-shortcuts .nav-item::after {
     max-width: 500px;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-radius: 100px; /* Increased border radius for pill shape */
+    border-radius: 100px;
+    /* Increased border radius for pill shape */
     z-index: 1000;
-    padding: 4px; /* Reduced padding */
+    padding: 0px;
+    /* Reduced padding */
 }
 
 .mobile-nav .nav-items {
@@ -1284,8 +1318,10 @@ body.show-shortcuts .nav-item::after {
     width: 100%;
     padding: 8px 4px;
     gap: 4px;
-    background: rgba(255, 255, 255, 0.06); /* Light background */
-    border-radius: 100px; /* Matching border radius */
+    background: rgba(255, 255, 255, 0.06);
+    /* Light background */
+    border-radius: 100px;
+    /* Matching border radius */
     border: 1px solid rgba(255, 255, 255, 0.1);
     transform: translate(-50%, 0%);
 }
@@ -1338,7 +1374,7 @@ body.show-shortcuts .nav-item::after {
     .mobile-nav {
         display: block;
     }
-    
+
     main {
         padding-bottom: 90px;
     }
