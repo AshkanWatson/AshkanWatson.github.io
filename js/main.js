@@ -311,4 +311,48 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let [id, section] of Object.entries(sections)) {
         if (section) section.id = id;
     }
-}); 
+});
+
+// Add this after App initialization
+const mobileNav = {
+    init() {
+        this.hamburger = document.querySelector('.mobile-nav-toggle');
+        this.sidebar = document.querySelector('.sidebar');
+        this.setupEventListeners();
+        this.checkScreenSize();
+    },
+
+    setupEventListeners() {
+        // Toggle menu on hamburger click
+        this.hamburger?.addEventListener('click', () => this.toggleMenu());
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.sidebar') && !e.target.closest('.mobile-nav-toggle')) {
+                this.closeMenu();
+            }
+        });
+
+        // Handle screen resize
+        window.addEventListener('resize', () => this.checkScreenSize());
+    },
+
+    toggleMenu() {
+        this.sidebar.classList.toggle('active');
+        this.hamburger.classList.toggle('active');
+    },
+
+    closeMenu() {
+        this.sidebar.classList.remove('active');
+        this.hamburger.classList.remove('active');
+    },
+
+    checkScreenSize() {
+        if (window.innerWidth > 768) {
+            this.closeMenu();
+        }
+    }
+};
+
+// Initialize mobile navigation
+mobileNav.init(); 

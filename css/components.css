@@ -9,9 +9,15 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    background: #000; /* or your desired background color */
+    background: #000;
+    overflow-x: hidden;
 }
-
+main {
+    width: 100%;
+    max-width: 540px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
 .container {
     padding-top: 60px; /* Adjust this value based on your needs */
     width: 100%;
@@ -1077,7 +1083,7 @@ body.show-shortcuts .nav-item::after {
     gap: 20px;
     height: min-content;
     justify-content: flex-start;
-    left: 51%;
+    left: 50%;
     overflow: visible;
     padding: 0;
     position: absolute;
@@ -1250,5 +1256,118 @@ body.show-shortcuts .nav-item::after {
     .tooltip,
     .shortcut {
         display: none;
+    }
+}
+
+/* Mobile Navigation Styles */
+.mobile-nav {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 40px);
+    max-width: 500px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 100px; /* Increased border radius for pill shape */
+    z-index: 1000;
+    padding: 4px; /* Reduced padding */
+}
+
+.mobile-nav .nav-items {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    padding: 8px 4px;
+    gap: 4px;
+    background: rgba(255, 255, 255, 0.06); /* Light background */
+    border-radius: 100px; /* Matching border radius */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transform: translate(-50%, 0%);
+}
+
+/* Remove the previous ::before element */
+.mobile-nav .nav-item {
+    flex: 0 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    padding: 8px;
+    min-width: 44px;
+    position: relative;
+    z-index: 1;
+}
+
+.mobile-nav .nav-item .icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-nav .nav-item svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    fill: none;
+}
+
+.mobile-nav .nav-item.active {
+    color: #fff;
+}
+
+.mobile-nav .nav-item:hover {
+    color: #fff;
+}
+
+/* Show mobile nav on small screens */
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+
+    .mobile-nav {
+        display: block;
+    }
+    
+    main {
+        padding-bottom: 90px;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 360px) {
+    .mobile-nav {
+        bottom: 16px;
+        width: calc(100% - 32px);
+    }
+
+    .mobile-nav .nav-items {
+        padding: 6px 4px;
+        gap: 4px;
+    }
+
+    .mobile-nav .nav-item {
+        padding: 6px;
+        min-width: 40px;
+    }
+
+    .mobile-nav .nav-item .icon {
+        width: 22px;
+        height: 22px;
+    }
+
+    .mobile-nav .nav-item svg {
+        width: 18px;
+        height: 18px;
     }
 }
