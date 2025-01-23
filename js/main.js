@@ -46,7 +46,7 @@ const App = {
         // Event delegation for better performance
         document.addEventListener('click', (e) => {
             const { target } = e;
-            
+
             // Handle search button
             if (target.matches('.search-btn')) {
                 this.handleSearch();
@@ -114,7 +114,7 @@ const App = {
     // Initialize animations
     initializeAnimations() {
         const animatedElements = document.querySelectorAll('[data-animate]');
-        
+
         animatedElements.forEach(element => {
             const animationType = element.dataset.animate;
             if (animations[animationType]) {
@@ -130,7 +130,7 @@ const App = {
     },
 
     // Event Handlers
-    handleSearch: utils.debounce(function() {
+    handleSearch: utils.debounce(function () {
         console.log('Search triggered');
         // Implement search functionality
     }, 300),
@@ -146,7 +146,7 @@ const App = {
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
-        
+
         // Validate form data
         const email = formData.get('email');
         if (email && !utils.validateEmail(email)) {
@@ -163,9 +163,9 @@ const App = {
 App.init();
 
 // Form Handling
-document.getElementById('contact-form').addEventListener('submit', function(e) {
+document.getElementById('contact-form').addEventListener('submit', function (e) {
     e.preventDefault();
-    
+
     const formData = {
         name: this.name.value,
         email: this.email.value,
@@ -180,7 +180,7 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
 
 // Smooth Scrolling
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         target.scrollIntoView({
@@ -191,9 +191,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Lazy Loading Images
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const images = document.querySelectorAll('img[loading="lazy"]');
-    
+
     if ('loading' in HTMLImageElement.prototype) {
         // Browser supports lazy loading
         console.log('Native lazy loading supported');
@@ -216,11 +216,11 @@ document.addEventListener('DOMContentLoaded', function() {
 // Simple Animation on Scroll
 const animateOnScroll = () => {
     const elements = document.querySelectorAll('.project-card');
-    
+
     elements.forEach(element => {
         const elementTop = element.getBoundingClientRect().top;
         const elementVisible = 150;
-        
+
         if (elementTop < window.innerHeight - elementVisible) {
             element.classList.add('active');
         }
@@ -235,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize all modules
     initForm();
     initLazyLoading();
-    
+
     // Add scroll animations
     const projectCards = document.querySelectorAll('.project-card');
     projectCards.forEach(card => {
@@ -244,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Copy email functionality
-document.querySelector('.copy-email').addEventListener('click', function() {
+document.querySelector('.copy-email').addEventListener('click', function () {
     const email = this.dataset.email;
     navigator.clipboard.writeText(email).then(() => {
         this.classList.add('copied');
@@ -325,7 +325,7 @@ const mobileNav = {
     setupEventListeners() {
         // Toggle menu on hamburger click
         this.hamburger?.addEventListener('click', () => this.toggleMenu());
-        
+
         // Close menu when clicking outside
         document.addEventListener('click', (e) => {
             if (!e.target.closest('.sidebar') && !e.target.closest('.mobile-nav-toggle')) {
@@ -355,4 +355,55 @@ const mobileNav = {
 };
 
 // Initialize mobile navigation
-mobileNav.init(); 
+mobileNav.init();
+
+// Search functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const searchOverlay = document.getElementById('searchOverlay');
+    const searchInput = document.querySelector('.search-input');
+    const searchTrigger = document.querySelector('[data-search]');
+
+    console.log('Search elements:', { searchOverlay, searchInput, searchTrigger }); // Debug log
+
+    // Show search overlay
+    function showSearch() {
+        console.log('Showing search overlay'); // Debug log
+        searchOverlay.classList.add('active');
+        searchInput.focus();
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Hide search overlay
+    function hideSearch() {
+        console.log('Hiding search overlay'); // Debug log
+        searchOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Event listeners
+    if (searchTrigger) {
+        searchTrigger.addEventListener('click', (e) => {
+            console.log('Search trigger clicked'); // Debug log
+            e.preventDefault();
+            showSearch();
+        });
+    } else {
+        console.log('Search trigger not found!'); // Debug log
+    }
+
+    // Close on overlay click
+    if (searchOverlay) {
+        searchOverlay.addEventListener('click', (e) => {
+            if (e.target === searchOverlay) {
+                hideSearch();
+            }
+        });
+    }
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
+            hideSearch();
+        }
+    });
+}); 
