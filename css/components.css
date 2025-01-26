@@ -163,7 +163,6 @@ h2 {
 
 /* Desktop Navigation */
 .sidebar {
-    position: fixed;
     width: 65px;
     height: 100vh;
     z-index: 100;
@@ -312,7 +311,7 @@ h2 {
 }
 
 /* Fix for ultra-wide screens */
-@media (min-width: 3840px) {
+@media (min-width: 100%) {
     .sidebar {
         left: calc((100vw - 1920px) / 2);
     }
@@ -865,7 +864,7 @@ h2 {
 
 .profile-image img {
     width: 100%;
-    height: 100%;
+    height: 130%;
     object-fit: cover;
 }
 
@@ -898,6 +897,7 @@ h2 {
     align-items: center;
     text-align: center;
     margin-bottom: 35px;
+    padding-top: 20px;
 }
 
 .profile-image {
@@ -1048,7 +1048,7 @@ body.show-shortcuts .nav-item::after {
 
 /* Sidebar Navigation */
 .sidebar {
-    position: sticky;
+    position: fixed;
     width: 65px;
     height: 100vh;
     z-index: 1;
@@ -1200,7 +1200,7 @@ body.show-shortcuts .nav-item::after {
     z-index: 9999;
 }
 
-@media screen and (max-width: 3840px) {
+@media screen and (max-width: 100%) {
     .navbar {
         width: 70px;
         /* Adjust width for smaller resolutions */
