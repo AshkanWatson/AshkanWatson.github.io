@@ -321,54 +321,69 @@ h2 {
 .social-links {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 100%;
-    max-width: 540px;
-    height: 48px;
-    padding: 0 24px;
+    gap: 24px;
+    margin-top: 24px;
 }
 
 .social-link {
     position: relative;
+    text-decoration: none;
+}
+
+.social-link .social-icon {
+    width: 24px;
+    height: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--color-text-secondary);
+    color: var(--text-secondary);
+    /* Default color */
+    transition: color 0.2s ease;
 }
 
-.social-link .icon {
-    width: 22px;
-    height: 22px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.social-link .social-icon svg {
+    width: 100%;
+    height: 100%;
 }
 
-.social-link .icon svg {
-    width: 22px;
-    height: 22px;
+.social-link .social-icon svg path {
+    fill: currentColor;
+    /* This will use the parent's color */
+    transition: fill 0.2s ease;
 }
 
-/* Hover label */
+/* Hover effects */
+.social-link:hover .social-icon {
+    color: var(--text-primary);
+    /* Lighter color on hover */
+}
+
+.social-link:hover .social-icon svg path {
+    fill: var(--text-primary);
+    /* Lighter color for SVG on hover */
+}
+
+/* Label on hover */
 .social-link::after {
     content: attr(data-label);
     position: absolute;
     top: calc(100% + 8px);
     left: 50%;
     transform: translateX(-50%);
-    width: 58.7px;
-    height: 24px;
     background: rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
+    padding: 5px 5px;
+    border-radius: 8px;
     font-size: 12px;
-    font-weight: 500;
-    color: var(--color-text);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    color: var(--text-primary);
+    white-space: nowrap;
     opacity: 0;
     visibility: hidden;
     transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-width: max-content;
 }
 
 .social-link:hover::after {
@@ -886,6 +901,12 @@ h2 {
 
 .hero-content h2 {
     font-size: 20px;
+    font-weight: 400;
+    color: var(--color-text-secondary);
+}
+
+.hero-content p {
+    font-size: 15px;
     font-weight: 400;
     color: var(--color-text-secondary);
 }
@@ -1480,4 +1501,92 @@ body.show-shortcuts .nav-item::after {
 /* Add this to your existing mobile nav styles */
 .mobile-nav .nav-item[data-search] {
     cursor: pointer;
+}
+
+.opportunities {
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex: none;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 8px;
+    height: min-content;
+    justify-content: center;
+    overflow: visible;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    opacity: 1;
+    transform: perspective(1200px) translateX(0px) translateY(0px) scale(1) rotate(0deg) rotateX(0deg) rotateY(0deg) skewX(0deg) skewY(0deg) translateZ(0px);
+    margin-top: 5%;
+}
+
+.opportunity-title {
+    outline: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    transform: none;
+    flex: none;
+    height: auto;
+    position: relative;
+    white-space: pre;
+    width: auto;
+}
+
+
+.green-dot {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: none;
+    height: 16px;
+    position: relative;
+    width: 16px;
+}
+
+.signal-dot {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(52, 211, 153, 1);
+    border-radius: 50%;
+    position: absolute;
+}
+
+.signal-wave-container {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signal-wave {
+    width: 20px;
+    height: 20px;
+    border: 10px solid rgba(52, 211, 153, 1);
+    border-radius: 50%;
+    opacity: 0;
+    animation: waveEffect 1.5s infinite;
+}
+
+@keyframes waveEffect {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+
+    40% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
 }
