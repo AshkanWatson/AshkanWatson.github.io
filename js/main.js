@@ -244,14 +244,34 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Copy email functionality
-document.querySelector('.copy-email').addEventListener('click', function () {
-    const email = this.dataset.email;
-    navigator.clipboard.writeText(email).then(() => {
-        this.classList.add('copied');
-        setTimeout(() => {
-            this.classList.remove('copied');
-        }, 2000);
-    });
+document.addEventListener('DOMContentLoaded', () => {
+    const copyEmailBtn = document.querySelector('.copy-email');
+
+    if (copyEmailBtn) {
+        copyEmailBtn.addEventListener('click', async function () {
+            // Get email from data attribute
+            const email = this.getAttribute('data-email');
+
+            try {
+                // Copy email to clipboard
+                await navigator.clipboard.writeText(email);
+
+                // Visual feedback - change button text temporarily
+                const originalText = this.querySelector('span').textContent;
+                this.querySelector('span').textContent = 'Email copied!';
+                this.classList.add('copied');
+
+                // Reset button after 2 seconds
+                setTimeout(() => {
+                    this.querySelector('span').textContent = originalText;
+                    this.classList.remove('copied');
+                }, 2000);
+
+            } catch (err) {
+                console.error('Failed to copy email:', err);
+            }
+        });
+    }
 });
 
 // Show keyboard shortcuts on Cmd/Ctrl press
