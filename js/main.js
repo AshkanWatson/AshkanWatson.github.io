@@ -273,17 +273,22 @@ document.addEventListener('keyup', (e) => {
 
 // Navigation keyboard shortcuts
 document.addEventListener('keydown', (e) => {
+    // Don't trigger shortcuts when typing in input fields
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
 
     const shortcuts = {
-        '1': '/',
-        '2': '#work',
-        '3': '#writing',
-        '4': '#store',
-        '5': '#stack',
-        '6': '#about',
-        '7': '#contact',
-        '/': () => document.querySelector('.search-button').click()
+        '1': './',  // Home
+        '2': './work',
+        '3': './blog',
+        '4': './store',
+        '5': './about',
+        '6': './contact',
+        '/': () => {
+            const searchTrigger = document.querySelector('.search-trigger');
+            if (searchTrigger) {
+                searchTrigger.click();
+            }
+        }
     };
 
     const action = shortcuts[e.key];
@@ -405,5 +410,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
             hideSearch();
         }
+    });
+
+    // Search input handling
+    searchInput?.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        // Add your search logic here
+        // You can populate .search-results based on the query
     });
 }); 

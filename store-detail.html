@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Store Item - Ashkan Watson">
+    <meta name="author" content="Ashkan Watson">
+
+    <title>Store Item - Ashkan Watson</title>
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/store-detail.css">
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="sidebar">
+        <div class="nav-border">
+            <div class="nav-inline"></div>
+            <div class="nav-items">
+                <!-- Home -->
+                <a href="./" class="nav-item active" data-shortcut="1" data-label="Home">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                    </div>
+                    <div class="tooltip">
+                        <span>Home</span>
+                        <div class="shortcut">1</div>
+                    </div>
+                </a>
+                <!-- Work -->
+                <a href="./work" class="nav-item" data-shortcut="2" data-label="Work">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                            </path>
+                        </svg>
+                    </div>
+                    <div class="tooltip">
+                        <span>Work</span>
+                        <div class="shortcut">2</div>
+                    </div>
+                </a>
+                <!-- Blog -->
+                <a href="./blog" class="nav-item" data-shortcut="3" data-label="Blog">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                        </svg>
+                    </div>
+                    <div class="tooltip">
+                        <span>Blog</span>
+                        <div class="shortcut">3</div>
+                    </div>
+                </a>
+                <!-- Store -->
+                <a href="./store" class="nav-item" data-shortcut="4" data-label="Store">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                    </div>
+                    <div class="tooltip">
+                        <span>Store</span>
+                        <div class="shortcut">4</div>
+                    </div>
+                </a>
+                <!-- About -->
+                <a href="./about" class="nav-item" data-shortcut="5" data-label="About">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg>
+                    </div>
+                    <div class="tooltip">
+                        <span>About</span>
+                        <div class="shortcut">5</div>
+                    </div>
+                </a>
+                <!-- Contact -->
+                <a href="./contact" class="nav-item" data-shortcut="6" data-label="Contact">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </div>
+                    <div class="tooltip">
+                        <span>Contact</span>
+                        <div class="shortcut">6</div>
+                    </div>
+                </a>
+                <!-- Search -->
+                <div class="nav-item search-trigger" data-shortcut="/">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </div>
+                    <div class="tooltip">
+                        <span>Search</span>
+                        <div class="shortcut">/</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="store-section-nav">
+        <div class="section-header">
+            <h2>Store</h2>
+        </div>
+
+        <div class="section-content">
+            <div class="now-viewing">
+                <span class="label">Now viewing</span>
+                <div class="current-item">
+                    <div class="item-icon">
+                        <img src="./images/favicon.ico" alt="UI Kit Icon">
+                    </div>
+                    <div class="item-content">
+                        <h3>Premium UI Kit</h3>
+                        <p>Complete design system for modern web apps</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="store-categories">
+                <span class="label">Categories</span>
+                <div class="category-items">
+                    <a href="#" class="store-item">
+                        <div class="item-icon">
+                            <img src="./images/icons/templates-icon.png" alt="Templates Icon">
+                        </div>
+                        <div class="item-content">
+                            <h3>Templates</h3>
+                            <p>Ready-to-use website templates</p>
+                        </div>
+                    </a>
+                    <a href="#" class="store-item">
+                        <div class="item-icon">
+                            <img src="./images/icons/resources-icon.png" alt="Resources Icon">
+                        </div>
+                        <div class="item-content">
+                            <h3>Resources</h3>
+                            <p>Icons, illustrations, and assets</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="store-detail">
+        <div class="store-header">
+            <div class="header-content">
+                <div class="header-tags">
+                    <span class="tag">TEMPLATE</span>
+                    <span class="tag">FRAMER FILE</span>
+                </div>
+                <h1 class="store-title">Ultra Framer Template</h1>
+
+                <div class="store-info-grid">
+                    <div class="detail-row">
+                        <div class="detail-label">Cost</div>
+                        <div class="detail-value">$49</div>
+                    </div>
+
+                    <div class="detail-row">
+                        <div class="detail-label">Type</div>
+                        <div class="detail-value">Template</div>
+                    </div>
+
+                    <div class="detail-row">
+                        <div class="detail-label">Deliverable</div>
+                        <div class="detail-value">Framer File</div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn-primary">Buy for $49</button>
+                    <button class="btn-secondary">See preview</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="store-preview">
+            <img src="./images/store-preview.jpg" alt="Store Item Preview" class="preview-image">
+        </div>
+
+        <div class="store-content">
+            <p>Introducing Ultra, a meticulously crafted portfolio template designed for Framer, featuring a minimalist
+                sleek visual language.</p>
+
+            <p>It features keyboard shortcuts for fluid page navigation and offers a dynamic web-app inspired way to
+                view CMS content. Ultra is designed to be customizable enough to be tailored to any content, and adjusts
+                effortlessly to different screen sizes, so it looks good on any device, reaching a wider audience.</p>
+
+            <h2>Features</h2>
+            <ul class="feature-list">
+                <li>Keyboard shortcuts for fluid wayfinding</li>
+                <li>Dynamic web-app inspired way of viewing CMS content</li>
+                <li>Built-in text and color styles</li>
+                <li>3 CMS collections for work, blog & store</li>
+                <li>Responsive for all devices</li>
+                <li>Site-wide search</li>
+                <li>Available in light and dark mode</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <!-- Copy the footer from blog-detail.html -->
+    </footer>
+
+    <script type="module" src="js/main.js"></script>
+    <script src="js/store-detail.js"></script>
+</body>
+
+</html>

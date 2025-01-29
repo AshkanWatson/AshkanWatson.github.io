@@ -1,0 +1,384 @@
+/* Store Detail Page Styles */
+.store-detail {
+    padding-top: 60px;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding-left: 365px;
+    padding-right: 20px;
+    min-height: 100vh;
+    padding-bottom: 60px;
+}
+
+/* Hero Section */
+.store-hero {
+    width: 100%;
+    margin-bottom: 40px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.hero-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+}
+
+/* Store Header */
+.store-header {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.header-content {
+    max-width: 600px;
+}
+
+.header-tags {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.tag {
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+/* Store Title */
+.store-title {
+    font-size: 48px;
+    font-weight: 500;
+    margin-bottom: 48px;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.2;
+}
+
+/* Store Info Grid */
+.store-info-grid {
+    margin-bottom: 32px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 32px;
+}
+
+.detail-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 24px;
+    padding: 12px 0;
+}
+
+.detail-label {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.detail-value {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Navigation Layout */
+.store-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    z-index: 100;
+}
+
+.store-section-nav {
+    position: fixed;
+    left: 65px;
+    top: 0;
+    width: 300px;
+    bottom: 0;
+    border-right: 1px solid #343434;
+    padding: 32px 24px;
+    overflow-y: auto;
+}
+
+/* Section Header */
+.section-header h2 {
+    color: var(--text-primary);
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 32px;
+}
+
+/* Now Viewing Section */
+.now-viewing {
+    margin-bottom: 48px;
+}
+
+.label {
+    display: block;
+    color: #666;
+    font-size: 13px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.current-item,
+.store-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.current-item {
+    background: rgba(255, 255, 255, 0.06);
+    will-change: transform;
+}
+
+.store-item {
+    transition: background-color 0.2s ease;
+}
+
+.store-item:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.item-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* or 'contain' depending on your images */
+}
+
+.item-content {
+    flex: 1;
+}
+
+.item-content h3 {
+    color: var(--text-primary);
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.item-content p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* Progress indicator for current item */
+.current-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right,
+            rgba(255, 255, 255, 0.1),
+            rgba(255, 255, 255, 0.05));
+    transform-origin: left;
+    transform: scaleX(var(--scroll-progress, 0));
+    will-change: transform;
+    transition: transform 0.1s ease-out;
+}
+
+.current-item .item-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Store Item Sections */
+.store-section {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.section-icon {
+    width: 24px;
+    height: 24px;
+    color: #666;
+}
+
+.section-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.section-content {
+    flex: 1;
+}
+
+/* More Items Section */
+.more-items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Categories Section */
+.store-categories {
+    margin-top: 48px;
+}
+
+.category-items {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 16px;
+    margin-top: 32px;
+}
+
+.btn-primary,
+.btn-secondary {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background: #fff;
+    color: #000;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Store Preview */
+.store-preview {
+    width: 100%;
+    margin: 60px 0;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #1a1a1a;
+}
+
+.preview-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Store Content */
+.store-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.store-content p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.store-content h2 {
+    font-size: 24px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 48px 0 24px;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.feature-list li {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 8px 0;
+    padding-left: 24px;
+    position: relative;
+}
+
+.feature-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+    .store-section-nav {
+        width: 260px;
+    }
+
+    .store-detail {
+        padding-left: 325px;
+        max-width: 700px;
+    }
+}
+
+@media (max-width: 768px) {
+    .store-section-nav {
+        display: none;
+    }
+
+    .store-detail {
+        padding-left: 20px;
+    }
+
+    .detail-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .store-title {
+        font-size: 36px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+    }
+}

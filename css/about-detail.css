@@ -1,0 +1,94 @@
+/* About Page Styles */
+.about-detail {
+    padding-top: 60px;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding-left: 120px;
+    /* Adjusted for sidebar only */
+    padding-right: 20px;
+    min-height: 100vh;
+    padding-bottom: 60px;
+}
+
+/* About Header */
+.about-header {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.section-title {
+    font-size: 48px;
+    font-weight: 500;
+    margin-bottom: 48px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.section-subtitle {
+    font-size: 32px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 32px;
+}
+
+/* About Content */
+.about-content {
+    max-width: 600px;
+}
+
+.about-content p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+/* Experience Section */
+.experience-section {
+    margin-top: 80px;
+    width: 100%;
+}
+
+.timeline-item {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 32px;
+    margin-bottom: 32px;
+}
+
+.timeline-date {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+}
+
+.timeline-content h3 {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+/* Education Section */
+.education-section {
+    margin-top: 80px;
+    width: 100%;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .about-detail {
+        padding-left: 20px;
+    }
+
+    .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .section-title {
+        font-size: 36px;
+    }
+}

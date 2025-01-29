@@ -1,0 +1,362 @@
+/* Work Detail Page Styles */
+.work-detail {
+    padding-top: 60px;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding-left: 365px;
+    padding-right: 20px;
+    min-height: 100vh;
+    padding-bottom: 60px;
+}
+
+/* Hero Section */
+.project-hero {
+    width: 100%;
+    margin-bottom: 40px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.phone-container {
+    width: 600px;
+    /* Increased width for larger image */
+    border-radius: 16px;
+    /* Adjusted border radius */
+    overflow: hidden;
+    background: #1a1a1a;
+}
+
+.hero-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+}
+
+/* Project Title */
+.project-header {
+    margin-bottom: 60px;
+}
+
+.project-title {
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 40px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Project Info Grid */
+.project-info-grid {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.detail-row {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 24px;
+    width: 100%;
+    text-align: left;
+}
+
+.detail-label {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.detail-value {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Project Description */
+.project-description {
+    width: 100%;
+    margin-top: 40px;
+}
+
+.project-description p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+    .work-detail {
+        padding-left: 325px;
+        max-width: 700px;
+    }
+}
+
+@media (max-width: 768px) {
+    .work-detail {
+        padding: 40px 20px;
+        max-width: 100%;
+    }
+
+    .detail-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+}
+
+.project-meta {
+    margin-bottom: 24px;
+}
+
+.project-meta h1 {
+    font-size: 48px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+}
+
+.project-info {
+    display: flex;
+    gap: 16px;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 60px;
+}
+
+.gallery-item {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.gallery-item.full-width {
+    grid-column: 1 / -1;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.detail-column h3 {
+    color: var(--text-primary);
+    font-size: 16px;
+    margin-bottom: 16px;
+}
+
+.detail-column p {
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.project-content {
+    max-width: 700px;
+    margin-bottom: 80px;
+}
+
+.project-content h2 {
+    color: var(--text-primary);
+    font-size: 24px;
+    margin-bottom: 24px;
+    margin-top: 40px;
+}
+
+.project-content p {
+    color: var(--text-secondary);
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.next-project {
+    border-top: 1px solid var(--nav-border);
+    padding-top: 40px;
+    margin-bottom: 80px;
+}
+
+.next-project-link {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.next-project-link:hover {
+    opacity: 0.8;
+}
+
+.next-label {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.next-title {
+    color: var(--text-primary);
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.next-arrow {
+    color: var(--text-primary);
+    font-size: 24px;
+}
+
+/* Navigation Layout */
+.work-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    z-index: 100;
+}
+
+.work-section-nav {
+    position: fixed;
+    left: 65px;
+    top: 0;
+    width: 300px;
+    bottom: 0;
+    border-right: 1px solid #343434;
+    padding: 32px 24px;
+    overflow-y: auto;
+}
+
+/* Section Header */
+.section-header h2 {
+    color: var(--text-primary);
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 32px;
+}
+
+/* Now Viewing Section */
+.now-viewing {
+    margin-bottom: 48px;
+}
+
+.label {
+    display: block;
+    color: #666;
+    font-size: 13px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.current-item {
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    will-change: transform;
+}
+
+.current-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    transform-origin: left;
+    transform: scaleX(var(--scroll-progress, 0));
+    will-change: transform;
+}
+
+.current-item h3,
+.current-item p {
+    position: relative;
+    z-index: 1;
+}
+
+.current-item h3 {
+    color: var(--text-primary);
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.current-item p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* Ensure smooth animation */
+@media (prefers-reduced-motion: no-preference) {
+    .current-item::before {
+        transition: transform 0.1s ease-out;
+    }
+}
+
+/* Up Next Section */
+.next-items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.next-item {
+    display: block;
+    text-decoration: none;
+    padding: 16px;
+    border-radius: 12px;
+    transition: background-color 0.2s ease;
+}
+
+.next-item:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.next-item h3 {
+    color: var(--text-primary);
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.next-item p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .work-section-nav {
+        width: 260px;
+    }
+
+    .work-detail {
+        padding-left: 325px;
+    }
+}
+
+@media (max-width: 768px) {
+    .work-section-nav {
+        display: none;
+    }
+
+    .work-detail {
+        padding-left: 20px;
+    }
+}
