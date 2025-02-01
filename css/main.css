@@ -6,6 +6,7 @@
 @import 'utilities.css';
 @import 'animations.css';
 @import 'interactions.css';
+@import 'search.css';
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {

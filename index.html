@@ -130,7 +130,7 @@
                     </div>
                 </a>
                 <!-- Search -->
-                <div class="nav-item search-trigger" data-shortcut="/">
+                <div id="search-trigger" class="nav-item search-trigger" data-shortcut="/" data-search="true">
                     <div class="icon">
                         <svg viewBox="0 0 24 24">
                             <circle cx="11" cy="11" r="8"></circle>
@@ -149,7 +149,7 @@
     <nav class="mobile-nav">
         <div class="nav-items">
             <!-- Home -->
-            <a href="./" class="nav-item active" data-shortcut="1">
+            <a href="./index.html" class="nav-item active" data-shortcut="1">
                 <div class="icon">
                     <svg viewBox="0 0 24 24">
                         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
@@ -159,7 +159,7 @@
             </a>
 
             <!-- Work -->
-            <a href="./work" class="nav-item" data-shortcut="2">
+            <a href="./work-detail.html" class="nav-item" data-shortcut="2">
                 <div class="icon">
                     <svg viewBox="0 0 24 24">
                         <path
@@ -170,7 +170,7 @@
             </a>
 
             <!-- Blog -->
-            <a href="./blog" class="nav-item" data-shortcut="3">
+            <a href="./blog-detail.html" class="nav-item" data-shortcut="3">
                 <div class="icon">
                     <svg viewBox="0 0 24 24">
                         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
@@ -180,7 +180,7 @@
             </a>
 
             <!-- Store -->
-            <a href="./store" class="nav-item" data-shortcut="4">
+            <a href="./store-detail.html" class="nav-item" data-shortcut="4">
                 <div class="icon">
                     <svg viewBox="0 0 24 24">
                         <circle cx="9" cy="21" r="1"></circle>
@@ -192,7 +192,7 @@
 
 
             <!-- About -->
-            <a href="./about" class="nav-item" data-shortcut="6">
+            <a href="./about-detail.html    " class="nav-item" data-shortcut="6">
                 <div class="icon">
                     <svg viewBox="0 0 24 24">
                         <path
@@ -205,7 +205,7 @@
             </a>
 
             <!-- Contact -->
-            <a href="./contact" class="nav-item" data-shortcut="7">
+            <a href="./contact-detail.html  " class="nav-item" data-shortcut="7">
                 <div class="icon">
                     <svg viewBox="0 0 24 24">
                         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
@@ -342,11 +342,11 @@
         <section class="section work">
             <div class="section-header">
                 <h3 class="section-title">Work</h3>
-                <a href="#" class="view-all">View all</a>
+                <a href="./work-detail.html" class="view-all">View all</a>
             </div>
             <div class="work-list">
                 <!-- Work Item 1 -->
-                <a href="#" class="work-card">
+                <a href="./work-detail.html" class="work-card">
                     <h4 class="work-title">Chandome!</h4>
                     <div class="work-image">
                         <img src="./images/3QeTdwx0BxlioY8BxgHHdH2wZRw.avif" alt="Redesigning Ganna" />
@@ -354,7 +354,7 @@
                 </a>
 
                 <!-- Work Item 2 -->
-                <a href="#" class="work-card">
+                <a href="./work-detail.html" class="work-card">
                     <h4 class="work-title">Clippy</h4>
                     <div class="work-image">
                         <img src="./images/HLGrjT1top66LUBBjnIMuhH3o.avif" alt="Building Ultra" />
@@ -362,7 +362,7 @@
                 </a>
 
                 <!-- Work Item 3 -->
-                <a href="#" class="work-card">
+                <a href="./work-detail.html" class="work-card">
                     <h4 class="work-title">Residam!</h4>
                     <div class="work-image">
                         <img src="./images/sGmLoTEDFrr6GfXOUkeTmNSOQfM.avif" alt="Framer Website" />
@@ -375,11 +375,11 @@
         <section class="section store">
             <div class="section-header">
                 <h3 class="section-title">Store</h3>
-                <a href="#" class="view-all">View all</a>
+                <a href="./store-detail.html" class="view-all">View all</a>
             </div>
             <div class="store-list">
                 <!-- Store Item 1 -->
-                <a href="#" class="store-item">
+                <a href="./store-detail.html" class="store-item">
                     <div class="store-item-left">
                         <div class="store-icon">
                             <img src="./images/bmc-logo.svg" alt="Buy Me Coffee" />
@@ -396,7 +396,7 @@
                 </a>
 
                 <!-- Store Item 2 -->
-                <a href="#" class="store-item">
+                <a href="./store-detail.html" class="store-item">
                     <div class="store-item-left">
                         <div class="store-icon">
                             <img src="./images/notion.svg" alt="Icon Pack" />
@@ -413,7 +413,7 @@
                 </a>
 
                 <!-- Store Item 3 -->
-                <a href="#" class="store-item">
+                <a href="./store-detail.html" class="store-item">
                     <div class="store-item-left">
                         <div class="store-icon">
                             <img src="./images/store.svg" alt="Components" />
@@ -435,11 +435,11 @@
         <section class="section writing">
             <div class="section-header">
                 <h3 class="section-title">Writing</h3>
-                <a href="#" class="view-all">View all</a>
+                <a href="./blog-detail.html" class="view-all">View all</a>
             </div>
             <div class="writing-list">
                 <!-- Writing Item 1 -->
-                <a href="#" class="writing-item">
+                <a href="./blog-detail.html" class="writing-item">
                     <div class="writing-item-left">
                         <div class="writing-icon">
                             <img src="path/to/article-icon.svg" alt="Article" />
@@ -456,7 +456,7 @@
                 </a>
 
                 <!-- Writing Item 2 -->
-                <a href="#" class="writing-item">
+                <a href="./blog-detail.html" class="writing-item">
                     <div class="writing-item-left">
                         <div class="writing-icon">
                             <img src="path/to/article-icon.svg" alt="Article" />
@@ -473,7 +473,7 @@
                 </a>
 
                 <!-- Writing Item 3 -->
-                <a href="#" class="writing-item">
+                <a href="./blog-detail.html" class="writing-item">
                     <div class="writing-item-left">
                         <div class="writing-icon">
                             <img src="path/to/article-icon.svg" alt="Article" />
@@ -531,6 +531,13 @@
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
                 <input type="text" placeholder="Search..." class="search-input">
+                <button type="button" class="search-button">
+                    <span>Search</span>
+                    <svg viewBox="0 0 24 24" width="16" height="16">
+                        <path d="M13 5l7 7-7 7M5 5l7 7-7 7" stroke="currentColor" fill="none" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
             </div>
             <div class="search-results">
                 <!-- Search results will appear here -->
@@ -539,6 +546,161 @@
     </div>
 
     <script type="module" src="js/main.js"></script>
+    <script>
+        // Immediately invoke setup code
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM loaded'); // Debug log
+
+            // Navigation setup
+            const navItems = document.querySelectorAll('a.nav-item[data-shortcut], div.nav-item[data-shortcut]');
+            console.log('Found nav items:', navItems.length); // Debug log
+
+            // Load search index
+            let searchIndex = null;
+
+            async function loadSearchIndex() {
+                try {
+                    const response = await fetch('./data/searchData.json');
+                    const data = await response.json();
+                    searchIndex = data.items;
+                    console.log('Search index loaded:', searchIndex.length, 'items');
+                } catch (error) {
+                    console.error('Error loading search index:', error);
+                }
+            }
+
+            // Load search index when page loads
+            loadSearchIndex();
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                console.log('Key pressed:', e.key); // Debug log
+
+                // Ignore if typing in input
+                if (e.target.matches('input, textarea')) return;
+
+                // Handle number keys 1-7
+                if (/^[1-7]$/.test(e.key)) {
+                    const navItem = document.querySelector(`.nav-item[data-shortcut="${e.key}"]`);
+                    if (navItem) {
+                        e.preventDefault();
+                        console.log('Clicking nav item:', navItem); // Debug log
+                        if (navItem.href) {
+                            window.location.href = navItem.href;
+                        } else {
+                            navItem.click();
+                        }
+                    }
+                }
+
+                // Handle search shortcut
+                if (e.key === '/') {
+                    e.preventDefault();
+                    const searchTrigger = document.querySelector('[data-search="true"]');
+                    if (searchTrigger) {
+                        searchTrigger.click();
+                    }
+                }
+            });
+
+            // Search functionality
+            const searchTrigger = document.querySelector('[data-search="true"]');
+            const searchOverlay = document.getElementById('searchOverlay');
+            const searchInput = document.querySelector('.search-input');
+            const searchButton = document.querySelector('.search-button');
+            const searchResults = document.querySelector('.search-results');
+
+            function performSearch(query) {
+                if (!searchIndex || !query.trim()) {
+                    return [];
+                }
+
+                query = query.toLowerCase();
+                return searchIndex.filter(item => {
+                    const titleMatch = item.title.toLowerCase().includes(query);
+                    const descriptionMatch = item.description.toLowerCase().includes(query);
+                    const tagMatch = item.tags.some(tag =>
+                        tag.toLowerCase().includes(query)
+                    );
+                    return titleMatch || descriptionMatch || tagMatch;
+                });
+            }
+
+            function displayResults(results) {
+                if (!results.length) {
+                    searchResults.innerHTML = '<div class="no-results">No results found</div>';
+                    return;
+                }
+
+                searchResults.innerHTML = results.map(result => `
+            <a href="${result.url}" class="search-result">
+                <span class="search-result-title">${result.title}</span>
+                <span class="search-result-content">${result.description}</span>
+                <span class="search-result-url">${result.url}</span>
+            </a>
+        `).join('');
+            }
+
+            function handleSearch() {
+                const query = searchInput.value;
+                console.log('Searching for:', query); // Debug log
+                console.log('Search index:', searchIndex); // Debug log
+
+                if (!query.trim()) {
+                    searchResults.innerHTML = '<div class="no-results">Please enter a search term</div>';
+                    return;
+                }
+
+                const results = performSearch(query);
+                console.log('Search results:', results); // Debug log
+                displayResults(results);
+            }
+
+            if (searchTrigger && searchOverlay && searchInput) {
+                console.log('Search elements found'); // Debug log
+
+                // Show search
+                searchTrigger.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    searchOverlay.classList.add('active');
+                    searchInput.focus();
+                    document.body.style.overflow = 'hidden';
+                });
+
+                // Hide search
+                searchOverlay.addEventListener('click', (e) => {
+                    if (e.target === searchOverlay) {
+                        searchOverlay.classList.remove('active');
+                        searchInput.value = ''; // Clear input when closing
+                        searchResults.innerHTML = ''; // Clear results
+                        document.body.style.overflow = '';
+                    }
+                });
+
+                // Handle search button click
+                searchButton?.addEventListener('click', () => {
+                    handleSearch();
+                });
+
+                // Handle enter key in search input
+                searchInput?.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        handleSearch();
+                    }
+                });
+
+                // Handle escape key to close search
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
+                        searchOverlay.classList.remove('active');
+                        searchInput.value = ''; // Clear input when closing
+                        searchResults.innerHTML = ''; // Clear results
+                        document.body.style.overflow = '';
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>

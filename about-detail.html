@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/about-detail.css">
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
@@ -99,7 +100,7 @@
                     </div>
                 </a>
                 <!-- Search -->
-                <div class="nav-item search-trigger" data-shortcut="/">
+                <div id="search-trigger" class="nav-item search-trigger" data-shortcut="/" data-search="true">
                     <div class="icon">
                         <svg viewBox="0 0 24 24">
                             <circle cx="11" cy="11" r="8"></circle>
@@ -113,8 +114,88 @@
                 </div>
             </div>
         </div>
-    </nav>
 
+    </nav>
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav">
+        <div class="nav-items">
+            <!-- Home -->
+            <a href="./index.html" class="nav-item" data-shortcut="1">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Work -->
+            <a href="./work-detail.html" class="nav-item" data-shortcut="2">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                        </path>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Blog -->
+            <a href="./blog-detail.html" class="nav-item" data-shortcut="3">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Store -->
+            <a href="./store-detail.html" class="nav-item" data-shortcut="4">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                </div>
+            </a>
+
+
+            <!-- About -->
+            <a href="./about-detail.html" class="nav-item active" data-shortcut="6">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0Zm-3.549 7a7 7 0 0 0-6.368 4.09c-.69 1.507.711 2.91 2.368 2.91h8c1.657 0 3.058-1.403 2.369-2.91A7 7 0 0 0 12.451 14Z"
+                            fill="transparent" stroke-width="1.5"
+                            stroke="var(--token-2535aa72-16d6-4e0a-ba94-ce402615779e, rgb(160, 160, 160)) /* {&quot;name&quot;:&quot;Icon/Default&quot;} */"
+                            stroke-miterlimit="10" />
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Contact -->
+            <a href="./contact-detail.html  " class="nav-item" data-shortcut="7">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Search -->
+            <a href="#" class="nav-item" data-search="true">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </div>
+            </a>
+        </div>
+    </nav>
     <main class="about-detail">
         <div class="about-header">
             <h1 class="section-title">About</h1>
@@ -194,7 +275,89 @@
         </div>
     </main>
 
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-container">
+            <div class="search-box">
+                <svg class="search-icon" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" placeholder="Search..." class="search-input">
+            </div>
+            <div class="search-results">
+                <!-- Search results will appear here -->
+            </div>
+        </div>
+    </div>
+
     <script type="module" src="js/main.js"></script>
+    <script>
+        // Immediately invoke setup code
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM loaded'); // Debug log
+
+            // Navigation setup
+            const navItems = document.querySelectorAll('a.nav-item[data-shortcut], div.nav-item[data-shortcut]');
+            console.log('Found nav items:', navItems.length); // Debug log
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                console.log('Key pressed:', e.key); // Debug log
+
+                // Ignore if typing in input
+                if (e.target.matches('input, textarea')) return;
+
+                // Handle number keys 1-7
+                if (/^[1-7]$/.test(e.key)) {
+                    const navItem = document.querySelector(`.nav-item[data-shortcut="${e.key}"]`);
+                    if (navItem) {
+                        e.preventDefault();
+                        console.log('Clicking nav item:', navItem); // Debug log
+                        if (navItem.href) {
+                            window.location.href = navItem.href;
+                        } else {
+                            navItem.click();
+                        }
+                    }
+                }
+
+                // Handle search shortcut
+                if (e.key === '/') {
+                    e.preventDefault();
+                    const searchTrigger = document.querySelector('[data-search="true"]');
+                    if (searchTrigger) {
+                        searchTrigger.click();
+                    }
+                }
+            });
+
+            // Search functionality
+            const searchTrigger = document.querySelector('[data-search="true"]');
+            const searchOverlay = document.getElementById('searchOverlay');
+            const searchInput = document.querySelector('.search-input');
+
+            if (searchTrigger && searchOverlay && searchInput) {
+                console.log('Search elements found'); // Debug log
+
+                // Show search
+                searchTrigger.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    searchOverlay.classList.add('active');
+                    searchInput.focus();
+                    document.body.style.overflow = 'hidden';
+                });
+
+                // Hide search
+                searchOverlay.addEventListener('click', (e) => {
+                    if (e.target === searchOverlay) {
+                        searchOverlay.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>

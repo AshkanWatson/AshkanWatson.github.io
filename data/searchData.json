@@ -1,0 +1,173 @@
+{
+    "/home": {
+        "version": 1,
+        "title": "Home",
+        "description": "Welcome to my portfolio homepage",
+        "keywords": "",
+        "h1": [
+            "Home"
+        ],
+        "h2": [],
+        "h3": [],
+        "h4": [],
+        "h5": [],
+        "h6": [],
+        "p": [
+            "Home",
+            "1",
+            "Work",
+            "2",
+            "Writing",
+            "3",
+            "Stack",
+            "5"
+        ],
+        "codeblock": [],
+        "url": "./index.html"
+    },
+    "items": [
+        {
+            "title": "Home",
+            "url": "./index.html",
+            "description": "Welcome to my portfolio homepage",
+            "tags": [
+                "home",
+                "main",
+                "welcome",
+                "portfolio"
+            ],
+            "type": "page"
+        },
+        {
+            "title": "Work",
+            "url": "./work-detail.html",
+            "description": "Explore my projects and work experience",
+            "tags": [
+                "work",
+                "projects",
+                "portfolio",
+                "experience"
+            ],
+            "type": "page"
+        },
+        {
+            "title": "Blog",
+            "url": "./blog-detail.html",
+            "description": "Read my latest articles and thoughts",
+            "tags": [
+                "blog",
+                "articles",
+                "writing",
+                "thoughts"
+            ],
+            "type": "page"
+        },
+        {
+            "title": "Store",
+            "url": "./store-detail.html",
+            "description": "Browse my digital products and templates",
+            "tags": [
+                "store",
+                "products",
+                "templates",
+                "digital"
+            ],
+            "type": "page"
+        },
+        {
+            "title": "About",
+            "url": "./about-detail.html",
+            "description": "Learn more about me and my background",
+            "tags": [
+                "about",
+                "bio",
+                "background",
+                "profile"
+            ],
+            "type": "page"
+        },
+        {
+            "title": "Contact",
+            "url": "./contact-detail.html",
+            "description": "Get in touch with me",
+            "tags": [
+                "contact",
+                "email",
+                "message",
+                "connect"
+            ],
+            "type": "page"
+        },
+        {
+            "title": "Building Ultra",
+            "url": "./work-detail.html#ultra",
+            "description": "A case study of the Ultra project",
+            "tags": [
+                "project",
+                "case study",
+                "development",
+                "ultra"
+            ],
+            "type": "project"
+        },
+        {
+            "title": "Clippy",
+            "url": "./work-detail.html#clippy",
+            "description": "AI-powered clipboard manager",
+            "tags": [
+                "project",
+                "AI",
+                "tool",
+                "productivity"
+            ],
+            "type": "project"
+        },
+        {
+            "title": "Residam!",
+            "url": "./work-detail.html#residam",
+            "description": "Real estate platform development",
+            "tags": [
+                "project",
+                "real estate",
+                "platform",
+                "web"
+            ],
+            "type": "project"
+        },
+        {
+            "title": "Buy Me Coffee",
+            "url": "#",
+            "description": "Support my work by buying me a coffee",
+            "tags": [
+                "support",
+                "donation",
+                "coffee"
+            ],
+            "type": "store"
+        },
+        {
+            "title": "Notion Template",
+            "url": "#",
+            "description": "Professional Notion templates for productivity",
+            "tags": [
+                "notion",
+                "template",
+                "productivity",
+                "organization"
+            ],
+            "type": "store"
+        },
+        {
+            "title": "Watson Store",
+            "url": "#",
+            "description": "Browse all my digital products",
+            "tags": [
+                "store",
+                "products",
+                "digital",
+                "templates"
+            ],
+            "type": "store"
+        }
+    ]
+}

@@ -6,6 +6,9 @@ import { initForm } from './form.js';
 import { initLazyLoading } from './lazyLoad.js';
 import { fadeIn, slideIn } from './animations.js';
 import { debounce } from './utils.js';
+import { Navigation } from './navigation.js';
+import { SearchSystem } from './search.js';
+import { AnimationSystem } from './animations.js';
 
 // Main application functionality
 const App = {
@@ -291,37 +294,272 @@ document.addEventListener('keyup', (e) => {
     }
 });
 
-// Navigation keyboard shortcuts
-document.addEventListener('keydown', (e) => {
-    // Don't trigger shortcuts when typing in input fields
-    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+// Utility Functions
+const $ = selector => document.querySelector(selector);
+const $$ = selector => document.querySelectorAll(selector);
 
-    const shortcuts = {
-        '1': './',  // Home
-        '2': './work',
-        '3': './blog',
-        '4': './store',
-        '5': './about',
-        '6': './contact',
-        '/': () => {
-            const searchTrigger = document.querySelector('.search-trigger');
-            if (searchTrigger) {
-                searchTrigger.click();
+// Navigation System
+class Navigation {
+    constructor() {
+        // More specific selector to match both desktop and mobile nav items
+        this.navItems = document.querySelectorAll('a.nav-item[data-shortcut], div.nav-item[data-shortcut]');
+        this.setupKeyboardShortcuts();
+
+        // Debug log to verify items are found
+        console.log('Navigation items found:', this.navItems.length);
+    }
+
+    setupKeyboardShortcuts() {
+        document.addEventListener('keydown', (e) => {
+            // Debug log
+            console.log('Key pressed:', e.key);
+
+            // Ignore if user is typing in an input
+            if (e.target.matches('input, textarea')) {
+                return;
             }
-        }
-    };
 
-    const action = shortcuts[e.key];
-    if (action) {
-        e.preventDefault();
-        if (typeof action === 'function') {
-            action();
-        } else {
-            window.location.href = action;
+            // Handle number keys 1-7
+            if (/^[1-7]$/.test(e.key)) {
+                const navItem = Array.from(this.navItems).find(item => item.dataset.shortcut === e.key);
+                if (navItem) {
+                    e.preventDefault();
+                    console.log('Navigating to:', navItem.href || 'trigger item');
+                    if (navItem.href) {
+                        window.location.href = navItem.href;
+                    } else {
+                        navItem.click();
+                    }
+                }
+            }
+
+            // Handle forward slash for search
+            if (e.key === '/') {
+                e.preventDefault();
+                const searchTrigger = document.querySelector('[data-search="true"]');
+                if (searchTrigger) {
+                    searchTrigger.click();
+                }
+            }
+        });
+    }
+}
+
+// Search System
+class SearchSystem {
+    constructor() {
+        this.searchOverlay = document.getElementById('searchOverlay');
+        this.searchInput = document.querySelector('.search-input');
+        this.searchButton = document.querySelector('.search-button');
+        this.searchTrigger = document.querySelector('[data-search="true"]');
+        this.searchResults = document.querySelector('.search-results');
+        this.searchIndex = null;
+
+        this.init();
+        this.loadSearchIndex();
+    }
+
+    async loadSearchIndex() {
+        try {
+            const response = await fetch('./data/search-index.json');
+            const data = await response.json();
+            this.searchIndex = data.pages;
+            console.log('Search index loaded:', this.searchIndex.length, 'items');
+        } catch (error) {
+            console.error('Error loading search index:', error);
         }
     }
+
+    init() {
+        // Show search on trigger click
+        this.searchTrigger?.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.showSearch();
+        });
+
+        // Close on overlay click
+        this.searchOverlay?.addEventListener('click', (e) => {
+            if (e.target === this.searchOverlay) {
+                this.hideSearch();
+            }
+        });
+
+        // Handle keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // Open search with '/' key
+            if (e.key === '/' && !e.target.matches('input, textarea')) {
+                e.preventDefault();
+                this.showSearch();
+            }
+
+            // Close with Escape
+            if (e.key === 'Escape' && this.searchOverlay?.classList.contains('active')) {
+                this.hideSearch();
+            }
+        });
+
+        // Handle search input
+        this.searchInput?.addEventListener('input', (e) => {
+            this.handleSearch(e.target.value);
+        });
+
+        // Add search button click handler
+        this.searchButton?.addEventListener('click', () => {
+            this.handleSearch(this.searchInput.value);
+        });
+
+        // Add enter key handler
+        this.searchInput?.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                this.handleSearch(e.target.value);
+            }
+        });
+    }
+
+    showSearch() {
+        this.searchOverlay?.classList.add('active');
+        this.searchInput?.focus();
+        document.body.style.overflow = 'hidden';
+    }
+
+    hideSearch() {
+        this.searchOverlay?.classList.remove('active');
+        if (this.searchInput) this.searchInput.value = '';
+        document.body.style.overflow = '';
+    }
+
+    async handleSearch(query) {
+        if (!query.trim() || !this.searchIndex) {
+            this.searchResults.innerHTML = '<div class="no-results">Please enter a search term</div>';
+            return;
+        }
+
+        const results = this.performSearch(query.toLowerCase());
+        this.displayResults(results);
+    }
+
+    performSearch(query) {
+        return this.searchIndex.filter(item => {
+            const titleMatch = item.title.toLowerCase().includes(query);
+            const contentMatch = item.content.toLowerCase().includes(query);
+            const keywordMatch = item.keywords.some(keyword =>
+                keyword.toLowerCase().includes(query)
+            );
+            return titleMatch || contentMatch || keywordMatch;
+        });
+    }
+
+    displayResults(results) {
+        if (!results.length) {
+            this.searchResults.innerHTML = '<div class="no-results">No results found</div>';
+            return;
+        }
+
+        this.searchResults.innerHTML = results.map(result => `
+            <a href="${result.url}" class="search-result">
+                <span class="search-result-title">${result.title}</span>
+                <span class="search-result-content">${result.content}</span>
+                <span class="search-result-url">${result.url}</span>
+            </a>
+        `).join('');
+    }
+}
+
+// Animation System
+class AnimationSystem {
+    constructor() {
+        this.setupAppearAnimations();
+    }
+
+    setupAppearAnimations() {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            {
+                threshold: 0.1,
+                rootMargin: '50px'
+            }
+        );
+
+        $$('[data-appear]').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            observer.observe(element);
+        });
+    }
+}
+
+// Initialize Everything
+document.addEventListener('DOMContentLoaded', () => {
+    const nav = new Navigation();
+    const search = new SearchSystem();
+    const animation = new AnimationSystem();
+
+    // Debug log
+    console.log('All systems initialized');
 });
 
+// Add to existing script.js
+class ScrollAnimation {
+    constructor() {
+        this.projectNav = $('.project-nav');
+        if (!this.projectNav) return;
+
+        this.lastScrollTop = 0;
+        this.setupScrollListener();
+    }
+
+    setupScrollListener() {
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollDiff = scrollTop - this.lastScrollTop;
+
+            // Calculate new offset (with limits)
+            const currentOffset = parseFloat(getComputedStyle(this.projectNav)
+                .getPropertyValue('--scroll-offset').replace('px', '') || 0);
+            const newOffset = Math.max(
+                Math.min(currentOffset - scrollDiff, 0),
+                -Math.max(0, document.documentElement.scrollHeight - window.innerHeight - 100)
+            );
+
+            this.projectNav.style.setProperty('--scroll-offset', `${newOffset}px`);
+            this.lastScrollTop = scrollTop;
+        });
+    }
+}
+
+/* Menu Active Codes */
+
+let targets = document.querySelectorAll('[data-target]')
+targets.forEach(element => {
+    element.addEventListener('click', () => {
+        var target = document.querySelector(element.dataset.target)
+        targets.forEach(element2 => {
+            var target2 = document.querySelector(element2.dataset.target)
+            element2.style.color = 'var(--menu_text_color)'
+            target2.style.display = 'none'
+        });
+        element.style.color = 'var(--menu_active_text_color)'
+        target.style.display = 'flex'
+    })
+})
+
+/* * */
+
+// Update initialization
+document.addEventListener('DOMContentLoaded', () => {
+    new Navigation();
+    new SearchSystem();
+    new AnimationSystem();
+    new ScrollAnimation(); // Add this line
+});
 // Add IDs to sections for navigation
 document.addEventListener('DOMContentLoaded', () => {
     const sections = {
@@ -438,4 +676,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add your search logic here
         // You can populate .search-results based on the query
     });
-}); 
+});
+
+// Export for use in other modules if needed
+export { Navigation, SearchSystem }; 

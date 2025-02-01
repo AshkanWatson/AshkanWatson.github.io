@@ -1,0 +1,120 @@
+/* Search Overlay Styles */
+.search-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 80px;
+}
+
+.search-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 20px;
+}
+
+.search-box {
+    position: relative;
+    background: rgba(0, 0, 0, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.search-icon {
+    width: 20px;
+    height: 20px;
+    stroke: rgba(255, 255, 255, 0.5);
+    stroke-width: 1.5;
+    fill: none;
+}
+
+.search-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    padding: 0;
+}
+
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search-results {
+    margin-top: 16px;
+    background: rgba(0, 0, 0, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+/* Show/Hide Search Overlay */
+.search-overlay.active {
+    display: flex;
+}
+
+/* Search Results Styling */
+.search-group {
+    margin-bottom: 16px;
+}
+
+.search-group-header {
+    padding: 8px 16px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.search-result {
+    display: block;
+    padding: 12px 16px;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.search-result:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.search-result-title {
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.search-result-description {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.no-results {
+    padding: 16px;
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+}
+
+/* Search Trigger Styling */
+.nav-item[data-search="true"] {
+    cursor: pointer;
+}
+
+/* Ensure search overlay is properly layered */
+.search-overlay {
+    z-index: 9999;
+}
