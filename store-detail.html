@@ -221,7 +221,7 @@
             <div class="store-categories">
                 <span class="label">Categories</span>
                 <div class="category-items">
-                    <a href="#" class="store-item">
+                    <a href="store-detail.html?product=buy-me-coffee" class="store-item">
                         <div class="item-icon">
                             <img src="./images/icons/templates-icon.png" alt="Templates Icon">
                         </div>
@@ -388,6 +388,57 @@
                     }
                 });
             }
+
+            // Add query parameter handling
+            function getQueryParam(param) {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(param);
+            }
+
+            function updateStoreContent() {
+                const product = getQueryParam('product');
+                if (product) {
+                    // Example product data - in a real app, this would come from a database or API
+                    const productData = {
+                        'buy-me-coffee': {
+                            title: 'Buy Me Coffee Template',
+                            price: '$29',
+                            type: 'Template',
+                            deliverable: 'Framer File',
+                            tags: ['TEMPLATE', 'FRAMER FILE'],
+                            description: 'A beautiful template for your coffee shop or donation page.',
+                            previewImage: './images/coffee-preview.jpg'
+                        },
+                        // Add more products as needed
+                    };
+
+                    // Get the product data
+                    const currentProduct = productData[product];
+
+                    if (currentProduct) {
+                        // Update page content with product data
+                        document.querySelector('.store-title').textContent = currentProduct.title;
+                        document.querySelector('.detail-value').textContent = currentProduct.price;
+                        document.querySelector('.btn-primary').textContent = `Buy for ${currentProduct.price}`;
+
+                        // Update tags
+                        const tagsContainer = document.querySelector('.header-tags');
+                        tagsContainer.innerHTML = currentProduct.tags
+                            .map(tag => `<span class="tag">${tag}</span>`)
+                            .join('');
+
+                        // Update preview image if it exists
+                        const previewImage = document.querySelector('.preview-image');
+                        if (previewImage && currentProduct.previewImage) {
+                            previewImage.src = currentProduct.previewImage;
+                            previewImage.alt = `${currentProduct.title} Preview`;
+                        }
+                    }
+                }
+            }
+
+            // Call the function when page loads
+            updateStoreContent();
         });    
     </script>
 </body>
