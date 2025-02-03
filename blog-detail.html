@@ -209,20 +209,20 @@
                 <span class="label">Now reading</span>
                 <div class="current-item">
                     <h3>The Future of Web Development</h3>
-                    <p>Exploring upcoming trends and technologies</p>
+                    <p>Exploring upcoming trends</p>
                 </div>
             </div>
 
             <div class="more-posts">
                 <span class="label">More posts</span>
                 <div class="next-items">
+                    <a href="blog-detail.html?post=web-development-future" class="post-item">
+                        <h3>The Future of Web Development</h3>
+                        <p>Exploring upcoming trends</p>
+                    </a>
                     <a href="#" class="post-item">
                         <h3>Design Systems in 2024</h3>
                         <p>How design systems are evolving</p>
-                    </a>
-                    <a href="#" class="post-item">
-                        <h3>The Rise of AI in Design</h3>
-                        <p>Impact of AI on design processes</p>
                     </a>
                 </div>
             </div>
@@ -346,6 +346,96 @@
                     }
                 });
             }
+
+            // Add query parameter handling
+            function getQueryParam(param) {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(param);
+            }
+
+            function updateBlogContent() {
+                const post = getQueryParam('post');
+                if (post) {
+                    const blogData = {
+                        'web-development-future': {
+                            title: 'The Future of Web Development',
+                            publishDate: 'Jan 15, 2024',
+                            category: 'Web Development',
+                            readingTime: '5 min read',
+                            description: 'Exploring upcoming trends',
+                            content: 'Lorem ipsum odor amet, consectetuer adipiscing elit. Elit maecenas ad ac libero imperdiet volutpat. Ullamcorper faucibus aenean, ornare lectus justo purus tempor euismod. Luctus lectus turpis scelerisque parturient hac urna. Auctor molestie neque, feugiat volutpat elementum montes. Nunc tincidunt sapien eget eget penatibus tempor rhoncus. Morbi libero vitae hac vel elementum pellentesque. Aliquet aenean volutpat justo pulvinar penatibus vivamus sem urna. Rhoncus curabitur hendrerit adipiscing consectetur et.Inceptos at congue purus mauris magna proin blandit venenatis. Nisl consequat dignissim dui gravida ut magnis rutrum. Adipiscing etiam arcu volutpat amet hendrerit velit purus sem parturient. Faucibus sapien auctor euismod integer dictum eros semper aliquet. Interdum eget tincidunt enim tellus facilisi condimentum risus cursus torquent. Dis potenti sodales eros aliquam cras platea posuere. Semper nisi ridiculus dictum quam adipiscing vulputate. Libero praesent sodales tristique vehicula condimentum sodales!',
+                            previewImage: './images/sGmLoTEDFrr6GfXOUkeTmNSOQfM.avif',
+                            shortDescription: 'Exploring upcoming trends'
+                        },
+                        'design-systems-2024': {
+                            title: 'Design Systems in 2024',
+                            publishDate: 'Jan 20, 2024',
+                            category: 'Design',
+                            readingTime: '4 min read',
+                            description: 'How design systems are evolving',
+                            content: 'Design systems have become...',
+                            previewImage: './images/design-systems.jpg',
+                            shortDescription: 'How design systems are evolving'
+                        },
+                        'ai-in-design': {
+                            title: 'The Rise of AI in Design',
+                            publishDate: 'Jan 25, 2024',
+                            category: 'AI & Design',
+                            readingTime: '6 min read',
+                            description: 'Impact of AI on design processes',
+                            content: 'Artificial Intelligence is revolutionizing...',
+                            previewImage: './images/ai-design.jpg',
+                            shortDescription: 'Impact of AI on design processes'
+                        }
+                    };
+
+                    const currentPost = blogData[post];
+
+                    if (currentPost) {
+                        // Update Now Reading section
+                        const nowReadingContent = document.querySelector('.current-item');
+                        nowReadingContent.innerHTML = `
+                            <h3>${currentPost.title}</h3>
+                            <p>${currentPost.shortDescription}</p>
+                        `;
+
+                        // Update More Posts section to show other posts
+                        const nextItems = document.querySelector('.next-items');
+                        const otherPosts = Object.entries(blogData)
+                            .filter(([key]) => key !== post)
+                            .map(([key, data]) => `
+                                <a href="blog-detail.html?post=${key}" class="post-item">
+                                    <h3>${data.title}</h3>
+                                    <p>${data.shortDescription}</p>
+                                </a>
+                            `).join('');
+
+                        nextItems.innerHTML = otherPosts;
+
+                        // Update main content
+                        document.querySelector('.blog-title').textContent = currentPost.title;
+                        document.querySelector('.detail-row:nth-child(1) .detail-value').textContent = currentPost.publishDate;
+                        document.querySelector('.detail-row:nth-child(2) .detail-value').textContent = currentPost.category;
+                        document.querySelector('.detail-row:nth-child(3) .detail-value').textContent = currentPost.readingTime;
+
+                        // Update hero image
+                        const heroImage = document.querySelector('.hero-image');
+                        if (heroImage && currentPost.previewImage) {
+                            heroImage.src = currentPost.previewImage;
+                            heroImage.alt = `${currentPost.title} Hero Image`;
+                        }
+
+                        // Update blog content
+                        const contentElement = document.querySelector('.blog-content p');
+                        if (contentElement && currentPost.content) {
+                            contentElement.textContent = currentPost.content;
+                        }
+                    }
+                }
+            }
+
+            // Call the function when page loads
+            updateBlogContent();
         });
     </script>
 </body>

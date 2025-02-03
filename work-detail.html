@@ -221,9 +221,9 @@
             <div class="up-next">
                 <span class="label">Up next</span>
                 <div class="next-items">
-                    <a href="#" class="next-item">
-                        <h3>Clippy Mac App</h3>
-                        <p>Clipboard app for mac platform</p>
+                    <a href="work-detail.html?project=chandome-app" class="next-item">
+                        <h3>Chandome Mobile App</h3>
+                        <p>Callender app for ios platform</p>
                     </a>
                     <a href="#" class="next-item">
                         <h3>Residam Company App</h3>
@@ -381,6 +381,100 @@
                     }
                 });
             }
+
+            // Add query parameter handling
+            function getQueryParam(param) {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(param);
+            }
+
+            function updateWorkContent() {
+                const project = getQueryParam('project');
+                if (project) {
+                    const projectData = {
+                        'chandome-app': {
+                            title: 'Chandome Mobile App',
+                            client: 'App Store',
+                            timeline: 'Jan 22 – Jul 22',
+                            role: 'Product Designer & User Researcher',
+                            outcome: 'The redesigned Alpha App proved to be highly impactful, particularly on mobile devices, as users exhibited increased shopping activity. Mobile users experienced a remarkable 50% surge in shopping behavior, with a substantial 45% increase in mobile conversions.',
+                            description: 'Alpha.com approached me as a product designer to redesign their e-commerce website and translate it into a fully mobile experience.',
+                            previewImage: './images/3QeTdwx0BxlioY8BxgHHdH2wZRw.avif',
+                            icon: './images/chandome-icon.svg',
+                            shortDescription: 'Callender app for ios platform'
+                        },
+                        'clippy-app': {
+                            title: 'Clippy Mac App',
+                            client: 'Mac Store',
+                            timeline: 'Mar 22 – Sep 22',
+                            role: 'UX Designer',
+                            outcome: 'The Clippy Mac App streamlined clipboard management, resulting in a 40% increase in productivity for users.',
+                            description: 'A modern clipboard manager for MacOS with advanced features and intuitive design.',
+                            previewImage: './images/clippy-preview.jpg',
+                            icon: './images/clippy-icon.svg',
+                            shortDescription: 'Clipboard app for mac platform'
+                        },
+                        'residam-app': {
+                            title: 'Residam Company App',
+                            client: 'Residam Inc',
+                            timeline: 'Jun 22 – Dec 22',
+                            role: 'Lead Designer',
+                            outcome: 'The company app improved internal communication by 60% and streamlined workflows significantly.',
+                            description: 'A comprehensive company management application with modern features.',
+                            previewImage: './images/residam-preview.jpg',
+                            icon: './images/residam-icon.svg',
+                            shortDescription: 'company app mini detail'
+                        }
+                    };
+
+                    const currentProject = projectData[project];
+
+                    if (currentProject) {
+                        // Update Now Viewing section
+                        const nowViewingContent = document.querySelector('.current-item');
+                        nowViewingContent.innerHTML = `
+                            <h3>${currentProject.title}</h3>
+                            <p>${currentProject.shortDescription}</p>
+                        `;
+
+                        // Update Up Next section to show other projects
+                        const nextItems = document.querySelector('.next-items');
+                        const otherProjects = Object.entries(projectData)
+                            .filter(([key]) => key !== project)
+                            .map(([key, data]) => `
+                                <a href="work-detail.html?project=${key}" class="next-item">
+                                    <h3>${data.title}</h3>
+                                    <p>${data.shortDescription}</p>
+                                </a>
+                            `).join('');
+
+                        nextItems.innerHTML = otherProjects;
+
+                        // Update main content
+                        document.querySelector('.project-title').textContent = currentProject.title;
+                        document.querySelector('.detail-row:nth-child(1) .detail-value').textContent = currentProject.client;
+                        document.querySelector('.detail-row:nth-child(2) .detail-value').textContent = currentProject.timeline;
+                        document.querySelector('.detail-row:nth-child(3) .detail-value').textContent = currentProject.role;
+                        document.querySelector('.detail-row:nth-child(4) .detail-value').textContent = currentProject.outcome;
+
+                        // Update preview image
+                        const previewImage = document.querySelector('.hero-image');
+                        if (previewImage && currentProject.previewImage) {
+                            previewImage.src = currentProject.previewImage;
+                            previewImage.alt = `${currentProject.title} Interface`;
+                        }
+
+                        // Update description
+                        const descriptionElements = document.querySelectorAll('.project-description p');
+                        if (descriptionElements.length > 0) {
+                            descriptionElements[0].textContent = currentProject.description;
+                        }
+                    }
+                }
+            }
+
+            // Call the function when page loads
+            updateWorkContent();
         });
     </script>
 </body>

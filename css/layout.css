@@ -4,7 +4,7 @@
     top: 0;
     width: 100%;
     background: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     z-index: 1000;
 }
 
@@ -77,7 +77,6 @@
 
 .section {
     padding: var(--spacing-lg) 0;
-    margin-bottom: 160px;
 }
 
 .grid {
@@ -90,7 +89,6 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin-bottom: 160px;
     width: 100%;
 }
 
@@ -158,7 +156,7 @@
     border-radius: 16px;
     padding: 48px;
     text-align: center;
-    margin: 35px 0;
+    margin: 25px 0;
 }
 
 /* Section Headers */
@@ -166,7 +164,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 32px;
 }
 
 .section-title {
@@ -192,8 +189,10 @@
 /* Main Content Layout */
 main {
     width: 100%;
-    max-width: 540px; /* Exact width */
-    min-height: 2935px; /* Exact height */
+    max-width: 540px;
+    /* Exact width */
+    min-height: 2935px;
+    /* Exact height */
     margin: 0 auto;
     padding-top: 140px;
     padding-bottom: 140px;
@@ -211,7 +210,7 @@ main {
 }
 
 .section {
-    margin-bottom: 35px;
+    margin-bottom: 25px;
 }
 
 .section:last-child {
@@ -229,12 +228,12 @@ main {
     }
 
     .section {
-        margin-bottom: 120px;
+        margin-bottom: 25px;
     }
 }
 
 /* Remove previous main content padding */
-.nav + main {
+.nav+main {
     margin-left: auto;
     padding-left: 24px;
     padding-right: 24px;
@@ -279,25 +278,25 @@ main {
     .store-item {
         padding: 16px;
     }
-    
+
     .store-icon {
         width: 40px;
         height: 40px;
     }
-    
+
     .store-icon img {
         width: 20px;
         height: 20px;
     }
-    
+
     .section.store {
-        margin-bottom: 120px;
+        margin-bottom: 25px;
     }
 }
 
 /* Writing Section Layout */
 .section.writing {
-    margin-bottom: 35px;
+    margin-bottom: 25px;
 }
 
 /* Responsive adjustments */
@@ -305,21 +304,21 @@ main {
     .writing-item {
         padding: 16px;
     }
-    
+
     .writing-icon {
         width: 40px;
         height: 40px;
     }
-    
+
     .writing-icon img {
         width: 20px;
         height: 20px;
     }
-    
+
     .section.writing {
-        margin-bottom: 120px;
+        margin-bottom: 25px;
     }
-    
+
     .writing-date {
         font-size: 13px;
     }
@@ -327,7 +326,7 @@ main {
 
 /* Work Section Layout */
 .section.work {
-    margin-bottom: 35px;
+    margin-bottom: 25px;
 }
 
 /* Responsive adjustments */
@@ -335,15 +334,15 @@ main {
     .work-card {
         height: 260px;
     }
-    
+
     .work-title {
         top: 24px;
         left: 24px;
         font-size: 20px;
     }
-    
+
     .section.work {
-        margin-bottom: 120px;
+        margin-bottom: 25px;
     }
 }
 
@@ -374,4 +373,4 @@ main {
     }
 }
 
-/* Rest of the layout.css remains the same */ 
+/* Rest of the layout.css remains the same */
