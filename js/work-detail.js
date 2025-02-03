@@ -30,4 +30,25 @@ document.addEventListener('DOMContentLoaded', () => {
             ticking = true;
         }
     }, { passive: true });
+
+    // Categories menu functionality
+    const categoriesMenu = document.querySelector('.categories-menu');
+    const hamburgerBtn = document.querySelector('.hamburger-btn');
+
+    hamburgerBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        categoriesMenu.classList.toggle('active');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!categoriesMenu.contains(e.target)) {
+            categoriesMenu.classList.remove('active');
+        }
+    });
+
+    // Prevent menu from closing when clicking inside the dropdown
+    document.querySelector('.categories-dropdown').addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
 }); 
