@@ -252,14 +252,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (copyEmailBtn) {
         copyEmailBtn.addEventListener('click', async function () {
-            // Get email from data attribute
             const email = this.getAttribute('data-email');
 
             try {
-                // Copy email to clipboard
                 await navigator.clipboard.writeText(email);
 
-                // Visual feedback - change button text temporarily
+                // Visual feedback
                 const originalText = this.querySelector('span').textContent;
                 this.querySelector('span').textContent = 'Email copied!';
                 this.classList.add('copied');

@@ -1665,3 +1665,25 @@ body.show-shortcuts .nav-item::after {
 .search-overlay {
     z-index: 9999;
 }
+
+/* Copy email button styles */
+.copy-email {
+    color: rgba(255, 255, 255, 0.9);
+    /* Default white text color */
+    transition: all 0.2s ease;
+}
+
+.copy-email.copied {
+    color: rgba(255, 255, 255, 0.9);
+    /* Ensure text stays white when copied */
+}
+
+.copy-email span {
+    color: rgba(255, 255, 255, 0.9);
+    /* Ensure span text is also white */
+}
+
+.copy-email.copied span {
+    color: rgba(255, 255, 255, 0.9);
+    /* Ensure span text stays white when copied */
+}

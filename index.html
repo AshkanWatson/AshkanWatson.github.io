@@ -561,6 +561,34 @@
 
     <script type="module" src="js/main.js"></script>
     <script>
+        // Copy email functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const copyEmailBtn = document.querySelector('.copy-email');
+
+            if (copyEmailBtn) {
+                copyEmailBtn.addEventListener('click', async function () {
+                    const email = this.getAttribute('data-email');
+
+                    try {
+                        await navigator.clipboard.writeText(email);
+
+                        // Visual feedback
+                        const originalText = this.querySelector('span').textContent;
+                        this.querySelector('span').textContent = 'Email copied!';
+                        this.classList.add('copied');
+
+                        // Reset button after 2 seconds
+                        setTimeout(() => {
+                            this.querySelector('span').textContent = originalText;
+                            this.classList.remove('copied');
+                        }, 2000);
+
+                    } catch (err) {
+                        console.error('Failed to copy email:', err);
+                    }
+                });
+            }
+        });
         // Immediately invoke setup code
         document.addEventListener('DOMContentLoaded', () => {
             console.log('DOM loaded'); // Debug log
