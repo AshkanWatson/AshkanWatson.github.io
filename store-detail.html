@@ -27,9 +27,9 @@
             <div class="categories-content">
                 <h3>Store Categories</h3>
                 <ul>
-                    <li><a href="store-detail.html?product=watson-store">Watson Store</a></li>
-                    <li><a href="store-detail.html?product=notion-template">Notion Templates</a></li>
-                    <li><a href="store-detail.html?product=buy-me-coffee">Buy Me Coffee</a></li>
+                    <li><a href="?product=buy-me-coffee">Buy Me Coffee</a></li>
+                    <li><a href="?product=notion-template">Notion Templates</a></li>
+                    <li><a href="?product=watson-store">Watson Store</a></li>
                 </ul>
             </div>
         </div>
@@ -228,8 +228,11 @@
                 <span class="label">Now viewing</span>
                 <div class="current-item">
                     <div class="item-icon">
+                        <img src="" alt="Product Icon" id="currentProductIcon">
                     </div>
                     <div class="item-content">
+                        <h3 id="currentProductTitle"></h3>
+                        <p id="currentProductDesc"></p>
                     </div>
                 </div>
             </div>
@@ -237,23 +240,31 @@
             <div class="store-categories">
                 <span class="label">Categories</span>
                 <div class="category-items">
-                    <a href="store-detail.html?product=buy-me-coffee" class="store-item">
+                    <a href="?product=buy-me-coffee" class="store-item">
                         <div class="item-icon">
+                            <img src="./images/buy.svg" alt="Buy Me Coffee Icon">
                         </div>
                         <div class="item-content">
+                            <h3>Buy Me Coffee</h3>
+                            <p>Support my work</p>
                         </div>
                     </a>
-                    <a href="store-detail.html?product=notion-template" class="store-item">
+                    <a href="?product=notion-template" class="store-item">
                         <div class="item-icon">
+                            <img src="./images/notion.svg" alt="Notion Icon">
                         </div>
                         <div class="item-content">
-
+                            <h3>Notion Templates</h3>
+                            <p>Productivity tools</p>
                         </div>
                     </a>
-                    <a href="store-detail.html?product=watson-store" class="store-item">
+                    <a href="?product=watson-store" class="store-item">
                         <div class="item-icon">
+                            <img src="./images/store.svg" alt="Store Icon">
                         </div>
                         <div class="item-content">
+                            <h3>Watson Store</h3>
+                            <p>E-commerce template</p>
                         </div>
                     </a>
                 </div>
@@ -426,10 +437,6 @@
                             previewImage: './images/Chandome.avif',
                             icon: './images/buy.svg',
                             shortDescription: 'Ready-to-use coffee shop template',
-
-
-
-
                         },
                         'notion-template': {
                             title: 'Notion Template Pack',

@@ -98,6 +98,7 @@
     border-right: 1px solid #343434;
     padding: 32px 24px;
     overflow-y: auto;
+    background: var(--background);
 }
 
 /* Section Header */
@@ -128,7 +129,7 @@
     border-radius: 12px;
     position: relative;
     overflow: hidden;
-    will-change: transform;
+    margin-bottom: 32px;
 }
 
 .current-item::before {
@@ -138,13 +139,10 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to right,
-            rgba(255, 255, 255, 0.1),
-            rgba(255, 255, 255, 0.05));
+    background: rgba(255, 255, 255, 0.03);
     transform-origin: left;
     transform: scaleX(var(--scroll-progress, 0));
     will-change: transform;
-    transition: transform 0.1s ease-out;
 }
 
 .current-item:hover {
@@ -202,7 +200,6 @@
 
 /* Categories Menu Styles */
 .categories-menu {
-    /* Hide by default on desktop */
     display: none;
     position: fixed;
     top: 20px;
@@ -216,6 +213,15 @@
         display: block;
         top: 12px;
         right: 12px;
+    }
+
+    .blog-section-nav {
+        display: none;
+    }
+
+    .blog-detail {
+        padding-left: 20px;
+        padding-right: 20px;
     }
 }
 
@@ -244,7 +250,7 @@
     margin-top: 8px;
     background: #1a1a1a;
     border-radius: 12px;
-    min-width: 200px;
+    min-width: 220px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     opacity: 0;
     visibility: hidden;
@@ -320,6 +326,36 @@
 .blog-content {
     line-height: 1.8;
     color: rgba(255, 255, 255, 0.8);
+}
+
+/* Categories List */
+.categories-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.category-item {
+    display: block;
+    text-decoration: none;
+    padding: 16px;
+    border-radius: 12px;
+    transition: background-color 0.2s ease;
+}
+
+.category-item:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.category-item h3 {
+    color: var(--text-primary);
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.category-item p {
+    color: #666;
+    font-size: 14px;
 }
 
 /* Responsive Adjustments */

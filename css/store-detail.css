@@ -107,6 +107,7 @@
     border-right: 1px solid #343434;
     padding: 32px 24px;
     overflow-y: auto;
+    background: var(--background);
 }
 
 /* Section Header */
@@ -144,8 +145,12 @@
 }
 
 .current-item {
+    padding: 16px;
     background: rgba(255, 255, 255, 0.06);
-    will-change: transform;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 32px;
 }
 
 .store-item {
@@ -157,35 +162,31 @@
 }
 
 .item-icon {
-    flex-shrink: 0;
-    width: 24px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 12px;
 }
 
 .item-icon img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    /* or 'contain' depending on your images */
+    object-fit: contain;
 }
 
 .item-content {
-    flex: 1;
+    position: relative;
+    z-index: 1;
 }
 
 .item-content h3 {
     color: var(--text-primary);
     font-size: 15px;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
 }
 
 .item-content p {
     color: #666;
     font-size: 14px;
-    line-height: 1.4;
 }
 
 /* Progress indicator for current item */
@@ -196,18 +197,10 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to right,
-            rgba(255, 255, 255, 0.1),
-            rgba(255, 255, 255, 0.05));
+    background: rgba(255, 255, 255, 0.03);
     transform-origin: left;
     transform: scaleX(var(--scroll-progress, 0));
     will-change: transform;
-    transition: transform 0.1s ease-out;
-}
-
-.current-item .item-content {
-    position: relative;
-    z-index: 1;
 }
 
 /* Store Item Sections */
@@ -241,7 +234,7 @@
 
 /* Categories Section */
 .store-categories {
-    margin-top: 48px;
+    margin-top: 32px;
 }
 
 .category-items {
@@ -345,7 +338,6 @@
 
 /* Categories Menu Styles */
 .categories-menu {
-    /* Hide by default on desktop */
     display: none;
     position: fixed;
     top: 20px;
@@ -359,6 +351,15 @@
         display: block;
         top: 12px;
         right: 12px;
+    }
+
+    .store-section-nav {
+        display: none;
+    }
+
+    .store-detail {
+        padding-left: 20px;
+        padding-right: 20px;
     }
 }
 
@@ -387,7 +388,7 @@
     margin-top: 8px;
     background: #1a1a1a;
     border-radius: 12px;
-    min-width: 200px;
+    min-width: 220px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     opacity: 0;
     visibility: hidden;

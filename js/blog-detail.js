@@ -35,38 +35,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const categoriesMenu = document.querySelector('.categories-menu');
     const hamburgerBtn = document.querySelector('.hamburger-btn');
 
-    hamburgerBtn.addEventListener('click', (e) => {
+    hamburgerBtn?.addEventListener('click', (e) => {
         e.stopPropagation();
         categoriesMenu.classList.toggle('active');
     });
 
     // Close menu when clicking outside
     document.addEventListener('click', (e) => {
-        if (!categoriesMenu.contains(e.target)) {
+        if (categoriesMenu && !categoriesMenu.contains(e.target)) {
             categoriesMenu.classList.remove('active');
         }
     });
 
     // Prevent menu from closing when clicking inside the dropdown
-    document.querySelector('.categories-dropdown').addEventListener('click', (e) => {
+    document.querySelector('.categories-dropdown')?.addEventListener('click', (e) => {
         e.stopPropagation();
     });
 
-    // Handle category filtering
-    const categoryLinks = document.querySelectorAll('.categories-content a');
+    // Handle category selection
+    const categoryLinks = document.querySelectorAll('.categories-content a, .category-item');
     categoryLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const category = e.target.getAttribute('href').substring(1);
-            filterBlogPosts(category);
-            categoriesMenu.classList.remove('active');
+            // Remove active class from all links
+            categoryLinks.forEach(l => l.classList.remove('active'));
+            // Add active class to clicked link
+            link.classList.add('active');
+
+            if (categoriesMenu) {
+                categoriesMenu.classList.remove('active');
+            }
         });
     });
-
-    function filterBlogPosts(category) {
-        // Add your filtering logic here
-        console.log(`Filtering by category: ${category}`);
-        // Example: You could show/hide blog posts based on their category
-        // or fetch new posts from an API
-    }
 }); 

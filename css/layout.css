@@ -191,8 +191,6 @@ main {
     width: 100%;
     max-width: 540px;
     /* Exact width */
-    min-height: 2935px;
-    /* Exact height */
     margin: 0 auto;
     padding-top: 140px;
     padding-bottom: 140px;

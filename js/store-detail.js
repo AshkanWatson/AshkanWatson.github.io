@@ -35,48 +35,74 @@ document.addEventListener('DOMContentLoaded', () => {
     const categoriesMenu = document.querySelector('.categories-menu');
     const hamburgerBtn = document.querySelector('.hamburger-btn');
 
-    hamburgerBtn.addEventListener('click', (e) => {
+    hamburgerBtn?.addEventListener('click', (e) => {
         e.stopPropagation();
         categoriesMenu.classList.toggle('active');
     });
 
     // Close menu when clicking outside
     document.addEventListener('click', (e) => {
-        if (!categoriesMenu.contains(e.target)) {
+        if (categoriesMenu && !categoriesMenu.contains(e.target)) {
             categoriesMenu.classList.remove('active');
         }
     });
 
     // Prevent menu from closing when clicking inside the dropdown
-    document.querySelector('.categories-dropdown').addEventListener('click', (e) => {
+    document.querySelector('.categories-dropdown')?.addEventListener('click', (e) => {
         e.stopPropagation();
     });
 
-    // Handle category filtering
-    const categoryLinks = document.querySelectorAll('.categories-content a');
-    categoryLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const category = e.target.getAttribute('href').substring(1);
-            filterProducts(category);
-            categoriesMenu.classList.remove('active');
-        });
-    });
-
-    function filterProducts(category) {
-        // Add your filtering logic here
-        console.log(`Filtering products by category: ${category}`);
-        // Example: You could show/hide products based on their category
-        // or fetch new products from an API
-
-        const products = document.querySelectorAll('.product-card');
-        products.forEach(product => {
-            const productCategory = product.dataset.category;
-            if (category === 'all' || productCategory === category) {
-                product.style.display = '';
-            } else {
-                product.style.display = 'none';
-            }
-        });
+    // Handle product selection and content update
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
     }
+
+    function updateStoreContent() {
+        const product = getQueryParam('product');
+        if (product) {
+            const productData = {
+                'buy-me-coffee': {
+                    title: 'Buy Me Coffee',
+                    description: 'Support my work',
+                    icon: './images/buy.svg',
+                    price: '$29',
+                    type: 'Donation',
+                    deliverable: 'Donation Page'
+                },
+                'notion-template': {
+                    title: 'Notion Template Pack',
+                    description: 'Productivity tools',
+                    icon: './images/notion.svg',
+                    price: '$39',
+                    type: 'Template',
+                    deliverable: 'Notion Files'
+                },
+                'watson-store': {
+                    title: 'Watson Store Template',
+                    description: 'E-commerce template',
+                    icon: './images/store.svg',
+                    price: '$49',
+                    type: 'Template',
+                    deliverable: 'Framer File'
+                }
+            };
+
+            const currentProduct = productData[product];
+            if (currentProduct) {
+                // Update current product display
+                document.getElementById('currentProductIcon').src = currentProduct.icon;
+                document.getElementById('currentProductTitle').textContent = currentProduct.title;
+                document.getElementById('currentProductDesc').textContent = currentProduct.description;
+
+                // Update main content
+                document.querySelector('.store-title').textContent = currentProduct.title;
+                document.querySelector('.detail-value').textContent = currentProduct.price;
+                document.querySelector('.btn-primary').textContent = `Buy for ${currentProduct.price}`;
+            }
+        }
+    }
+
+    // Call the function when page loads
+    updateStoreContent();
 }); 
