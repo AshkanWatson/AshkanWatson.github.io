@@ -288,6 +288,13 @@
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
                 <input type="text" placeholder="Search..." class="search-input">
+                <button type="button" class="search-button">
+                    <span>Search</span>
+                    <svg viewBox="0 0 24 24" width="16" height="16">
+                        <path d="M13 5l7 7-7 7M5 5l7 7-7 7" stroke="currentColor" fill="none" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
             </div>
             <div class="search-results">
                 <!-- Search results will appear here -->
@@ -295,24 +302,48 @@
         </div>
     </div>
 
+    <!-- Footer -->
     <footer class="footer">
-        <!-- Copy the footer from work-detail.html -->
+        <div class="container">
+            <p>© 2025 Ashkan by @AshkanWatson</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <span class="separator">·</span>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
     </footer>
 
     <script type="module" src="js/main.js"></script>
     <script src="js/blog-detail.js"></script>
     <script>
-        // Immediately invoke setup code
         document.addEventListener('DOMContentLoaded', () => {
-            console.log('DOM loaded'); // Debug log
+            console.log('DOM loaded');
 
             // Navigation setup
             const navItems = document.querySelectorAll('a.nav-item[data-shortcut], div.nav-item[data-shortcut]');
-            console.log('Found nav items:', navItems.length); // Debug log
+            console.log('Found nav items:', navItems.length);
+
+            // Load search index
+            let searchIndex = null;
+
+            async function loadSearchIndex() {
+                try {
+                    const response = await fetch('./data/searchData.json');
+                    const data = await response.json();
+                    searchIndex = data.items;
+                    console.log('Search index loaded:', searchIndex.length, 'items');
+                } catch (error) {
+                    console.error('Error loading search index:', error);
+                }
+            }
+
+            // Load search index when page loads
+            loadSearchIndex();
 
             // Keyboard navigation
             document.addEventListener('keydown', (e) => {
-                console.log('Key pressed:', e.key); // Debug log
+                console.log('Key pressed:', e.key);
 
                 // Ignore if typing in input
                 if (e.target.matches('input, textarea')) return;
@@ -322,7 +353,7 @@
                     const navItem = document.querySelector(`.nav-item[data-shortcut="${e.key}"]`);
                     if (navItem) {
                         e.preventDefault();
-                        console.log('Clicking nav item:', navItem); // Debug log
+                        console.log('Clicking nav item:', navItem);
                         if (navItem.href) {
                             window.location.href = navItem.href;
                         } else {
@@ -342,119 +373,103 @@
             });
 
             // Search functionality
-            const searchTrigger = document.querySelector('[data-search="true"]');
+            const searchTriggers = document.querySelectorAll('[data-search="true"]');
             const searchOverlay = document.getElementById('searchOverlay');
             const searchInput = document.querySelector('.search-input');
+            const searchButton = document.querySelector('.search-button');
+            const searchResults = document.querySelector('.search-results');
 
-            if (searchTrigger && searchOverlay && searchInput) {
-                console.log('Search elements found'); // Debug log
+            function performSearch(query) {
+                if (!searchIndex || !query.trim()) {
+                    return [];
+                }
 
-                // Show search
-                searchTrigger.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    searchOverlay.classList.add('active');
-                    searchInput.focus();
-                    document.body.style.overflow = 'hidden';
+                query = query.toLowerCase();
+                return searchIndex.filter(item => {
+                    const titleMatch = item.title.toLowerCase().includes(query);
+                    const descriptionMatch = item.description.toLowerCase().includes(query);
+                    const tagMatch = item.tags.some(tag =>
+                        tag.toLowerCase().includes(query)
+                    );
+                    return titleMatch || descriptionMatch || tagMatch;
+                });
+            }
+
+            function displayResults(results) {
+                if (!results.length) {
+                    searchResults.innerHTML = '<div class="no-results">No results found</div>';
+                    return;
+                }
+
+                searchResults.innerHTML = results.map(result => `
+                    <a href="${result.url}" class="search-result">
+                        <span class="search-result-title">${result.title}</span>
+                        <span class="search-result-content">${result.description}</span>
+                        <span class="search-result-url">${result.url}</span>
+                    </a>
+                `).join('');
+            }
+
+            function handleSearch() {
+                const query = searchInput.value;
+                console.log('Searching for:', query);
+                console.log('Search index:', searchIndex);
+
+                if (!query.trim()) {
+                    searchResults.innerHTML = '<div class="no-results">Please enter a search term</div>';
+                    return;
+                }
+
+                const results = performSearch(query);
+                console.log('Search results:', results);
+                displayResults(results);
+            }
+
+            if (searchTriggers && searchOverlay && searchInput) {
+                console.log('Search elements found');
+
+                // Add click event listener to all search triggers
+                searchTriggers.forEach(trigger => {
+                    trigger.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        searchOverlay.classList.add('active');
+                        searchInput.focus();
+                        document.body.style.overflow = 'hidden';
+                    });
                 });
 
                 // Hide search
                 searchOverlay.addEventListener('click', (e) => {
                     if (e.target === searchOverlay) {
                         searchOverlay.classList.remove('active');
+                        searchInput.value = '';
+                        searchResults.innerHTML = '';
+                        document.body.style.overflow = '';
+                    }
+                });
+
+                // Handle search button click
+                searchButton?.addEventListener('click', () => {
+                    handleSearch();
+                });
+
+                // Handle enter key in search input
+                searchInput?.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        handleSearch();
+                    }
+                });
+
+                // Handle escape key to close search
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
+                        searchOverlay.classList.remove('active');
+                        searchInput.value = '';
+                        searchResults.innerHTML = '';
                         document.body.style.overflow = '';
                     }
                 });
             }
-
-            // Add query parameter handling
-            function getQueryParam(param) {
-                const urlParams = new URLSearchParams(window.location.search);
-                return urlParams.get(param);
-            }
-
-            function updateBlogContent() {
-                const post = getQueryParam('post');
-                if (post) {
-                    const blogData = {
-                        'web-development-future': {
-                            title: 'The Future of Web Development',
-                            publishDate: 'Jan 15, 2024',
-                            category: 'Web Development',
-                            readingTime: '5 min read',
-                            description: 'Exploring upcoming trends',
-                            content: 'Lorem ipsum odor amet, consectetuer adipiscing elit. Elit maecenas ad ac libero imperdiet volutpat. Ullamcorper faucibus aenean, ornare lectus justo purus tempor euismod. Luctus lectus turpis scelerisque parturient hac urna. Auctor molestie neque, feugiat volutpat elementum montes. Nunc tincidunt sapien eget eget penatibus tempor rhoncus. Morbi libero vitae hac vel elementum pellentesque. Aliquet aenean volutpat justo pulvinar penatibus vivamus sem urna. Rhoncus curabitur hendrerit adipiscing consectetur et.Inceptos at congue purus mauris magna proin blandit venenatis. Nisl consequat dignissim dui gravida ut magnis rutrum. Adipiscing etiam arcu volutpat amet hendrerit velit purus sem parturient. Faucibus sapien auctor euismod integer dictum eros semper aliquet. Interdum eget tincidunt enim tellus facilisi condimentum risus cursus torquent. Dis potenti sodales eros aliquam cras platea posuere. Semper nisi ridiculus dictum quam adipiscing vulputate. Libero praesent sodales tristique vehicula condimentum sodales!',
-                            previewImage: './images/sGmLoTEDFrr6GfXOUkeTmNSOQfM.avif',
-                            shortDescription: 'Exploring upcoming trends'
-                        },
-                        'design-systems-2024': {
-                            title: 'Design Systems in 2024',
-                            publishDate: 'Jan 20, 2024',
-                            category: 'Design',
-                            readingTime: '4 min read',
-                            description: 'How design systems are evolving',
-                            content: 'Design systems have become...',
-                            previewImage: './images/design-systems.jpg',
-                            shortDescription: 'How design systems are evolving'
-                        },
-                        'ai-in-design': {
-                            title: 'The Rise of AI in Design',
-                            publishDate: 'Jan 25, 2024',
-                            category: 'AI & Design',
-                            readingTime: '6 min read',
-                            description: 'Impact of AI on design processes',
-                            content: 'Artificial Intelligence is revolutionizing...',
-                            previewImage: './images/ai-design.jpg',
-                            shortDescription: 'Impact of AI on design processes'
-                        }
-                    };
-
-                    const currentPost = blogData[post];
-
-                    if (currentPost) {
-                        // Update Now Reading section
-                        const nowReadingContent = document.querySelector('.current-item');
-                        nowReadingContent.innerHTML = `
-                            <h3>${currentPost.title}</h3>
-                            <p>${currentPost.shortDescription}</p>
-                        `;
-
-                        // Update More Posts section to show other posts
-                        const nextItems = document.querySelector('.next-items');
-                        const otherPosts = Object.entries(blogData)
-                            .filter(([key]) => key !== post)
-                            .map(([key, data]) => `
-                                <a href="blog-detail.html?post=${key}" class="post-item">
-                                    <h3>${data.title}</h3>
-                                    <p>${data.shortDescription}</p>
-                                </a>
-                            `).join('');
-
-                        nextItems.innerHTML = otherPosts;
-
-                        // Update main content
-                        document.querySelector('.blog-title').textContent = currentPost.title;
-                        document.querySelector('.detail-row:nth-child(1) .detail-value').textContent = currentPost.publishDate;
-                        document.querySelector('.detail-row:nth-child(2) .detail-value').textContent = currentPost.category;
-                        document.querySelector('.detail-row:nth-child(3) .detail-value').textContent = currentPost.readingTime;
-
-                        // Update hero image
-                        const heroImage = document.querySelector('.hero-image');
-                        if (heroImage && currentPost.previewImage) {
-                            heroImage.src = currentPost.previewImage;
-                            heroImage.alt = `${currentPost.title} Hero Image`;
-                        }
-
-                        // Update blog content
-                        const contentElement = document.querySelector('.blog-content p');
-                        if (contentElement && currentPost.content) {
-                            contentElement.textContent = currentPost.content;
-                        }
-                    }
-                }
-            }
-
-            // Call the function when page loads
-            updateBlogContent();
         });
     </script>
 </body>

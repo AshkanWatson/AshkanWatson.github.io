@@ -215,7 +215,7 @@
             </a>
 
             <!-- Search -->
-            <a href="#" class="nav-item" data-search="true">
+            <a id="search-trigger" class="nav-item search-trigger" data-search="true">
                 <div class="icon">
                     <svg viewBox="0 0 24 24">
                         <circle cx="11" cy="11" r="8"></circle>
@@ -616,7 +616,7 @@
             });
 
             // Search functionality
-            const searchTrigger = document.querySelector('[data-search="true"]');
+            const searchTriggers = document.querySelectorAll('[data-search="true"]');
             const searchOverlay = document.getElementById('searchOverlay');
             const searchInput = document.querySelector('.search-input');
             const searchButton = document.querySelector('.search-button');
@@ -668,15 +668,17 @@
                 displayResults(results);
             }
 
-            if (searchTrigger && searchOverlay && searchInput) {
+            if (searchTriggers && searchOverlay && searchInput) {
                 console.log('Search elements found'); // Debug log
 
-                // Show search
-                searchTrigger.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    searchOverlay.classList.add('active');
-                    searchInput.focus();
-                    document.body.style.overflow = 'hidden';
+                // Add click event listener to all search triggers
+                searchTriggers.forEach(trigger => {
+                    trigger.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        searchOverlay.classList.add('active');
+                        searchInput.focus();
+                        document.body.style.overflow = 'hidden';
+                    });
                 });
 
                 // Hide search

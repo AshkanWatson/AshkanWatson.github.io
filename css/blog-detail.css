@@ -93,7 +93,7 @@
     position: fixed;
     left: 65px;
     top: 0;
-    width: 300px;
+    width: 340px;
     bottom: 0;
     border-right: 1px solid #343434;
     padding: 32px 24px;
@@ -382,5 +382,15 @@
     .detail-row {
         grid-template-columns: 1fr;
         gap: 8px;
+    }
+}
+
+.footer {
+    padding-left: 300px;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding-left: inherit;
     }
 }

@@ -13,6 +13,24 @@
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/store-detail.css">
     <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
+    <style>
+        .item-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .item-icon img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+    </style>
 </head>
 
 <body>
@@ -339,6 +357,13 @@
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
                 <input type="text" placeholder="Search..." class="search-input">
+                <button type="button" class="search-button">
+                    <span>Search</span>
+                    <svg viewBox="0 0 24 24" width="16" height="16">
+                        <path d="M13 5l7 7-7 7M5 5l7 7-7 7" stroke="currentColor" fill="none" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
             </div>
             <div class="search-results">
                 <!-- Search results will appear here -->
@@ -346,24 +371,48 @@
         </div>
     </div>
 
+    <!-- Footer -->
     <footer class="footer">
-        <!-- Copy the footer from blog-detail.html -->
+        <div class="container">
+            <p>© 2025 Ashkan by @AshkanWatson</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <span class="separator">·</span>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
     </footer>
 
     <script type="module" src="js/main.js"></script>
     <script src="js/store-detail.js"></script>
     <script>
-        // Immediately invoke setup code
         document.addEventListener('DOMContentLoaded', () => {
-            console.log('DOM loaded'); // Debug log
+            console.log('DOM loaded');
 
             // Navigation setup
             const navItems = document.querySelectorAll('a.nav-item[data-shortcut], div.nav-item[data-shortcut]');
-            console.log('Found nav items:', navItems.length); // Debug log
+            console.log('Found nav items:', navItems.length);
+
+            // Load search index
+            let searchIndex = null;
+
+            async function loadSearchIndex() {
+                try {
+                    const response = await fetch('./data/searchData.json');
+                    const data = await response.json();
+                    searchIndex = data.items;
+                    console.log('Search index loaded:', searchIndex.length, 'items');
+                } catch (error) {
+                    console.error('Error loading search index:', error);
+                }
+            }
+
+            // Load search index when page loads
+            loadSearchIndex();
 
             // Keyboard navigation
             document.addEventListener('keydown', (e) => {
-                console.log('Key pressed:', e.key); // Debug log
+                console.log('Key pressed:', e.key);
 
                 // Ignore if typing in input
                 if (e.target.matches('input, textarea')) return;
@@ -373,7 +422,7 @@
                     const navItem = document.querySelector(`.nav-item[data-shortcut="${e.key}"]`);
                     if (navItem) {
                         e.preventDefault();
-                        console.log('Clicking nav item:', navItem); // Debug log
+                        console.log('Clicking nav item:', navItem);
                         if (navItem.href) {
                             window.location.href = navItem.href;
                         } else {
@@ -393,137 +442,103 @@
             });
 
             // Search functionality
-            const searchTrigger = document.querySelector('[data-search="true"]');
+            const searchTriggers = document.querySelectorAll('[data-search="true"]');
             const searchOverlay = document.getElementById('searchOverlay');
             const searchInput = document.querySelector('.search-input');
+            const searchButton = document.querySelector('.search-button');
+            const searchResults = document.querySelector('.search-results');
 
-            if (searchTrigger && searchOverlay && searchInput) {
-                console.log('Search elements found'); // Debug log
+            function performSearch(query) {
+                if (!searchIndex || !query.trim()) {
+                    return [];
+                }
 
-                // Show search
-                searchTrigger.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    searchOverlay.classList.add('active');
-                    searchInput.focus();
-                    document.body.style.overflow = 'hidden';
+                query = query.toLowerCase();
+                return searchIndex.filter(item => {
+                    const titleMatch = item.title.toLowerCase().includes(query);
+                    const descriptionMatch = item.description.toLowerCase().includes(query);
+                    const tagMatch = item.tags.some(tag =>
+                        tag.toLowerCase().includes(query)
+                    );
+                    return titleMatch || descriptionMatch || tagMatch;
+                });
+            }
+
+            function displayResults(results) {
+                if (!results.length) {
+                    searchResults.innerHTML = '<div class="no-results">No results found</div>';
+                    return;
+                }
+
+                searchResults.innerHTML = results.map(result => `
+                    <a href="${result.url}" class="search-result">
+                        <span class="search-result-title">${result.title}</span>
+                        <span class="search-result-content">${result.description}</span>
+                        <span class="search-result-url">${result.url}</span>
+                    </a>
+                `).join('');
+            }
+
+            function handleSearch() {
+                const query = searchInput.value;
+                console.log('Searching for:', query);
+                console.log('Search index:', searchIndex);
+
+                if (!query.trim()) {
+                    searchResults.innerHTML = '<div class="no-results">Please enter a search term</div>';
+                    return;
+                }
+
+                const results = performSearch(query);
+                console.log('Search results:', results);
+                displayResults(results);
+            }
+
+            if (searchTriggers && searchOverlay && searchInput) {
+                console.log('Search elements found');
+
+                // Add click event listener to all search triggers
+                searchTriggers.forEach(trigger => {
+                    trigger.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        searchOverlay.classList.add('active');
+                        searchInput.focus();
+                        document.body.style.overflow = 'hidden';
+                    });
                 });
 
                 // Hide search
                 searchOverlay.addEventListener('click', (e) => {
                     if (e.target === searchOverlay) {
                         searchOverlay.classList.remove('active');
+                        searchInput.value = '';
+                        searchResults.innerHTML = '';
+                        document.body.style.overflow = '';
+                    }
+                });
+
+                // Handle search button click
+                searchButton?.addEventListener('click', () => {
+                    handleSearch();
+                });
+
+                // Handle enter key in search input
+                searchInput?.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        handleSearch();
+                    }
+                });
+
+                // Handle escape key to close search
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
+                        searchOverlay.classList.remove('active');
+                        searchInput.value = '';
+                        searchResults.innerHTML = '';
                         document.body.style.overflow = '';
                     }
                 });
             }
-
-            // Add query parameter handling
-            function getQueryParam(param) {
-                const urlParams = new URLSearchParams(window.location.search);
-                return urlParams.get(param);
-            }
-
-            function updateStoreContent() {
-                const product = getQueryParam('product');
-                if (product) {
-                    const productData = {
-                        'buy-me-coffee': {
-                            title: 'Buy Me Coffee',
-                            price: '$29',
-                            type: 'Donation',
-                            deliverable: 'Donation Page',
-                            tags: ['DONATION', 'COFFEE'],
-                            description: 'A donation page for supporting.',
-                            previewImage: './images/Chandome.avif',
-                            icon: './images/buy.svg',
-                            shortDescription: 'Ready-to-use coffee shop template',
-                        },
-                        'notion-template': {
-                            title: 'Notion Template Pack',
-                            price: '$39',
-                            type: 'Template',
-                            deliverable: 'Notion Files',
-                            tags: ['NOTION', 'PRODUCTIVITY'],
-                            description: 'Complete Notion workspace template for productivity.',
-                            previewImage: './images/notion-preview.jpg',
-                            icon: './images/notion.svg',
-                            shortDescription: 'Professional productivity templates'
-                        },
-                        'watson-store': {
-                            title: 'Watson Store Template',
-                            price: '$49',
-                            type: 'Template',
-                            deliverable: 'Framer File',
-                            tags: ['TEMPLATE', 'E-COMMERCE'],
-                            description: 'Professional e-commerce template with modern design.',
-                            previewImage: './images/store-preview.jpg',
-                            icon: './images/store.svg',
-                            shortDescription: 'Complete e-commerce solution'
-                        }
-                    };
-
-                    const currentProduct = productData[product];
-
-                    if (currentProduct) {
-                        // Update Now Viewing section
-                        const nowViewingContent = document.querySelector('.current-item');
-                        nowViewingContent.innerHTML = `
-                            <div class="item-icon">
-                                <img src="${currentProduct.icon}" alt="${currentProduct.title} Icon">
-                            </div>
-                            <div class="item-content">
-                                <h3>${currentProduct.title}</h3>
-                                <p>${currentProduct.shortDescription}</p>
-                            </div>
-                        `;
-
-                        // Update Categories section to show other products
-                        const categoryItems = document.querySelector('.category-items');
-                        const otherProducts = Object.entries(productData)
-                            .filter(([key]) => key !== product) // Exclude current product
-                            .map(([key, data]) => `
-                                <a href="store-detail.html?product=${key}" class="store-item">
-                                    <div class="item-icon">
-                                        <img src="${data.icon}" alt="${data.title} Icon">
-                                    </div>
-                                    <div class="item-content">
-                                        <h3>${data.title}</h3>
-                                        <p>${data.shortDescription}</p>
-                                    </div>
-                                </a>
-                            `).join('');
-
-                        categoryItems.innerHTML = otherProducts;
-
-                        // Update page content with product data
-                        document.querySelector('.store-title').textContent = currentProduct.title;
-                        document.querySelector('.detail-value').textContent = currentProduct.price;
-                        document.querySelector('.btn-primary').textContent = `Buy for ${currentProduct.price}`;
-
-                        // Update tags
-                        const tagsContainer = document.querySelector('.header-tags');
-                        tagsContainer.innerHTML = currentProduct.tags
-                            .map(tag => `<span class="tag">${tag}</span>`)
-                            .join('');
-
-                        // Update preview image if it exists
-                        const previewImage = document.querySelector('.preview-image');
-                        if (previewImage && currentProduct.previewImage) {
-                            previewImage.src = currentProduct.previewImage;
-                            previewImage.alt = `${currentProduct.title} Preview`;
-                        }
-
-                        // Update description if it exists
-                        const descriptionElement = document.querySelector('.store-content p');
-                        if (descriptionElement && currentProduct.description) {
-                            descriptionElement.textContent = currentProduct.description;
-                        }
-                    }
-                }
-            }
-
-            // Call the function when page loads
-            updateStoreContent();
         });
     </script>
 </body>

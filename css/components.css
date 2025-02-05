@@ -21,8 +21,7 @@ main {
 }
 
 .container {
-    padding-top: 60px;
-    /* Adjust this value based on your needs */
+    padding-top: 20px;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
@@ -129,7 +128,6 @@ h2 {
     background-color: var(--primary-color);
     color: white;
     padding: var(--spacing-lg) 0;
-    margin-top: 25px;
 }
 
 .footer-content {
@@ -1444,6 +1442,123 @@ body.show-shortcuts .nav-item::after {
     align-items: flex-start;
     justify-content: center;
     padding-top: 80px;
+}
+
+/* Mobile-friendly search styles */
+@media (max-width: 768px) {
+    .search-overlay {
+        padding-top: 20px;
+        /* Reduced padding for mobile */
+    }
+
+    .search-container {
+        width: 100%;
+        margin: 0 12px;
+        /* Smaller margins on mobile */
+        max-width: calc(100% - 24px);
+        /* Account for margins */
+    }
+
+    .search-box {
+        padding: 12px;
+        /* Slightly smaller padding */
+    }
+
+    .search-input {
+        font-size: 14px;
+        /* Smaller font size for mobile */
+    }
+
+    .search-button {
+        padding: 6px 12px;
+        /* Smaller padding */
+        font-size: 13px;
+        /* Smaller font size */
+    }
+
+    .search-results {
+        max-height: calc(100vh - 150px);
+        /* Adjust max height for mobile */
+        margin-bottom: 20px;
+        /* Add some bottom margin */
+    }
+
+    .search-result {
+        padding: 10px 12px;
+        /* Slightly smaller padding */
+    }
+
+    .search-result-title {
+        font-size: 14px;
+    }
+
+    .search-result-content {
+        font-size: 13px;
+    }
+
+    .search-result-url {
+        font-size: 11px;
+    }
+
+    /* Improve touch targets */
+    .search-result {
+        min-height: 44px;
+        /* Minimum height for touch targets */
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    /* Add bottom padding to account for mobile nav */
+    .search-results {
+        padding-bottom: 80px;
+    }
+
+    /* Improve scrolling experience */
+    .search-results {
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        /* Firefox */
+        -ms-overflow-style: none;
+        /* IE and Edge */
+    }
+
+    .search-results::-webkit-scrollbar {
+        display: none;
+        /* Chrome, Safari and Opera */
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 360px) {
+    .search-overlay {
+        padding-top: 16px;
+    }
+
+    .search-container {
+        margin: 0 8px;
+        max-width: calc(100% - 16px);
+    }
+
+    .search-box {
+        padding: 10px;
+    }
+
+    .search-button span {
+        display: none;
+        /* Hide button text on very small screens */
+    }
+}
+
+/* Keyboard visibility adjustments for mobile */
+@media (max-width: 768px) {
+    .search-overlay.keyboard-visible {
+        padding-top: 10px;
+    }
+
+    .search-overlay.keyboard-visible .search-results {
+        max-height: calc(100vh - 200px);
+    }
 }
 
 .search-container {
