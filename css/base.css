@@ -1,7 +1,7 @@
 /* Base styles and CSS Reset */
 :root {
     /* Colors */
-    --color-background: #000000;
+    --color-background: rgb(25, 25, 25);
     --color-text: rgba(255, 255, 255, 0.9);
     --color-text-secondary: rgba(255, 255, 255, 0.5);
     --color-border: rgba(255, 255, 255, 0.08);

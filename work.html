@@ -4,37 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Store Item - Ashkan Watson">
+    <meta name="description" content="Work - Ashkan Watson">
     <meta name="author" content="Ashkan Watson">
 
-    <title>Store Item - Ashkan Watson</title>
+    <title>Work - Ashkan Watson</title>
 
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/store-detail.css">
-    <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
-    <style>
-        .item-icon {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
+    <link rel="stylesheet" href="css/work.css">
 
-        .item-icon img {
-            width: 24px;
-            height: 24px;
-            object-fit: contain;
-        }
-    </style>
+    <!-- Favicon -->
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
-    <!-- Categories Menu -->
+    <!-- Add this right after the body tag -->
     <div class="categories-menu">
         <button class="hamburger-btn">
             <svg viewBox="0 0 24 24" width="24" height="24">
@@ -43,16 +27,15 @@
         </button>
         <div class="categories-dropdown">
             <div class="categories-content">
-                <h3>Store Categories</h3>
+                <h3>Categories</h3>
                 <ul>
-                    <li><a href="?product=buy-me-coffee">Buy Me Coffee</a></li>
-                    <li><a href="?product=notion-template">Notion Templates</a></li>
-                    <li><a href="?product=watson-store">Watson Store</a></li>
+                    <li><a href="?project=chandome-app">Chandome App</a></li>
+                    <li><a href="?project=clippy-app">Clippy App</a></li>
+                    <li><a href="?project=residam-app">Residam App</a></li>
                 </ul>
             </div>
         </div>
     </div>
-
     <!-- Navigation -->
     <nav class="sidebar">
         <div class="nav-border">
@@ -72,7 +55,7 @@
                     </div>
                 </a>
                 <!-- Work -->
-                <a href="./work-detail.html" class="nav-item" data-shortcut="2" data-label="Work">
+                <a href="./work.html?project=chandome-app" class="nav-item active" data-shortcut="2" data-label="Work">
                     <div class="icon">
                         <svg viewBox="0 0 24 24">
                             <path
@@ -86,7 +69,7 @@
                     </div>
                 </a>
                 <!-- Blog -->
-                <a href="./blog-detail.html" class="nav-item" data-shortcut="3" data-label="Blog">
+                <a href="./blog.html?post=ai-in-design" class="nav-item" data-shortcut="3" data-label="Blog">
                     <div class="icon">
                         <svg viewBox="0 0 24 24">
                             <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
@@ -99,7 +82,7 @@
                     </div>
                 </a>
                 <!-- Store -->
-                <a href="./store-detail.html" class="nav-item active" data-shortcut="4" data-label="Store">
+                <a href="./store.html?product=buy-me-coffee" class="nav-item" data-shortcut="4" data-label="Store">
                     <div class="icon">
                         <svg viewBox="0 0 24 24">
                             <circle cx="9" cy="21" r="1"></circle>
@@ -113,7 +96,7 @@
                     </div>
                 </a>
                 <!-- About -->
-                <a href="./about-detail.html" class="nav-item" data-shortcut="5" data-label="About">
+                <a href="./about.html" class="nav-item" data-shortcut="5" data-label="About">
                     <div class="icon">
                         <svg viewBox="0 0 24 24">
                             <circle cx="12" cy="12" r="10"></circle>
@@ -127,7 +110,7 @@
                     </div>
                 </a>
                 <!-- Contact -->
-                <a href="./contact-detail.html" class="nav-item" data-shortcut="6" data-label="Contact">
+                <a href="./contact.html" class="nav-item" data-shortcut="6" data-label="Contact">
                     <div class="icon">
                         <svg viewBox="0 0 24 24">
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
@@ -170,7 +153,7 @@
             </a>
 
             <!-- Work -->
-            <a href="./work-detail.html" class="nav-item" data-shortcut="2">
+            <a href="./work.html?project=chandome-app" class="nav-item active" data-shortcut="2">
                 <div class="icon">
                     <svg viewBox="0 0 24 24">
                         <path
@@ -181,7 +164,7 @@
             </a>
 
             <!-- Blog -->
-            <a href="./blog-detail.html" class="nav-item" data-shortcut="3">
+            <a href="./blog.html?post=ai-in-design" class="nav-item" data-shortcut="3">
                 <div class="icon">
                     <svg viewBox="0 0 24 24">
                         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
@@ -191,7 +174,7 @@
             </a>
 
             <!-- Store -->
-            <a href="./store-detail.html" class="nav-item active" data-shortcut="4">
+            <a href="./store.html?product=buy-me-coffee" class="nav-item" data-shortcut="4">
                 <div class="icon">
                     <svg viewBox="0 0 24 24">
                         <circle cx="9" cy="21" r="1"></circle>
@@ -203,20 +186,18 @@
 
 
             <!-- About -->
-            <a href="./about-detail.html" class="nav-item" data-shortcut="6">
+            <a href="./about.html" class="nav-item" data-shortcut="6">
                 <div class="icon">
                     <svg viewBox="0 0 24 24">
                         <path
                             d="M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0Zm-3.549 7a7 7 0 0 0-6.368 4.09c-.69 1.507.711 2.91 2.368 2.91h8c1.657 0 3.058-1.403 2.369-2.91A7 7 0 0 0 12.451 14Z"
-                            fill="transparent" stroke-width="1.5"
-                            stroke="var(--token-2535aa72-16d6-4e0a-ba94-ce402615779e, rgb(160, 160, 160)) /* {&quot;name&quot;:&quot;Icon/Default&quot;} */"
-                            stroke-miterlimit="10" />
+                            fill="transparent" stroke-width="1.5" stroke-miterlimit="10" />
                     </svg>
                 </div>
             </a>
 
             <!-- Contact -->
-            <a href="./contact-detail.html" class="nav-item" data-shortcut="7">
+            <a href="./contact.html" class="nav-item" data-shortcut="7">
                 <div class="icon">
                     <svg viewBox="0 0 24 24">
                         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
@@ -236,115 +217,86 @@
             </a>
         </div>
     </nav>
-    <div class="store-section-nav">
+    <div class="work-section-nav">
         <div class="section-header">
-            <h2>Store</h2>
+            <h2>Work</h2>
         </div>
 
         <div class="section-content">
             <div class="now-viewing">
                 <span class="label">Now viewing</span>
                 <div class="current-item">
-                    <div class="item-icon">
-                        <img src="" alt="Product Icon" id="currentProductIcon">
-                    </div>
-                    <div class="item-content">
-                        <h3 id="currentProductTitle"></h3>
-                        <p id="currentProductDesc"></p>
-                    </div>
+                    <h3>Chandome Mobile App</h3>
+                    <p>Callender app for ios platform</p>
                 </div>
             </div>
 
-            <div class="store-categories">
-                <span class="label">Categories</span>
-                <div class="category-items">
-                    <a href="?product=buy-me-coffee" class="store-item">
-                        <div class="item-icon">
-                            <img src="./images/buy.svg" alt="Buy Me Coffee Icon">
-                        </div>
-                        <div class="item-content">
-                            <h3>Buy Me Coffee</h3>
-                            <p>Support my work</p>
-                        </div>
+            <div class="up-next">
+                <span class="label">Up next</span>
+                <div class="next-items">
+                    <a href="work.html?project=chandome-app" class="next-item">
+                        <h3>Chandome Mobile App</h3>
+                        <p>Callender app for ios platform</p>
                     </a>
-                    <a href="?product=notion-template" class="store-item">
-                        <div class="item-icon">
-                            <img src="./images/notion.svg" alt="Notion Icon">
-                        </div>
-                        <div class="item-content">
-                            <h3>Notion Templates</h3>
-                            <p>Productivity tools</p>
-                        </div>
-                    </a>
-                    <a href="?product=watson-store" class="store-item">
-                        <div class="item-icon">
-                            <img src="./images/store.svg" alt="Store Icon">
-                        </div>
-                        <div class="item-content">
-                            <h3>Watson Store</h3>
-                            <p>E-commerce template</p>
-                        </div>
+                    <a href="work.html?project=residam-app" class="next-item">
+                        <h3>Residam Company App</h3>
+                        <p>company app mini detail</p>
                     </a>
                 </div>
             </div>
         </div>
     </div>
+    </nav>
 
-    <main class="store-detail">
-        <div class="store-header">
-            <div class="header-content">
-                <div class="header-tags">
-                    <span class="tag"></span>
-                    <span class="tag"></span>
-                </div>
-                <h1 class="store-title"></h1>
-
-                <div class="store-info-grid">
-                    <div class="detail-row">
-                        <div class="detail-label">Cost</div>
-                        <div class="detail-value"></div>
-                    </div>
-
-                    <div class="detail-row">
-                        <div class="detail-label">Type</div>
-                        <div class="detail-value">Template</div>
-                    </div>
-
-                    <div class="detail-row">
-                        <div class="detail-label">Deliverable</div>
-                        <div class="detail-value">Framer File</div>
-                    </div>
-                </div>
-
-                <div class="action-buttons">
-                    <button class="btn-primary">Buy for $49</button>
-                    <button class="btn-secondary">See preview</button>
-                </div>
+    <!-- Main Content -->
+    <main class="work-detail">
+        <!-- Hero Section -->
+        <div class="project-hero">
+            <div class="phone-container">
+                <img src="./images/3QeTdwx0BxlioY8BxgHHdH2wZRw.avif" alt="Alpha App Interface" class="hero-image">
             </div>
         </div>
 
-        <div class="store-preview">
-            <img src="./images/Chandome.avif" alt="Store Item Preview" class="preview-image">
+        <!-- Project Title -->
+        <div class="project-header">
+            <h1 class="project-title">Chandome Mobile App</h1>
         </div>
 
-        <div class="store-content">
-            <p>Introducing Ultra, a meticulously crafted portfolio template designed for Framer, featuring a minimalist
-                sleek visual language.</p>
+        <!-- Project Info -->
+        <div class="project-info-grid">
+            <div class="detail-row">
+                <div class="detail-label">Client</div>
+                <div class="detail-value">App Store</div>
+            </div>
 
-            <p>It features keyboard shortcuts for fluid page navigation and offers a dynamic web-app inspired way to
-                view CMS content. Ultra is designed to be customizable enough to be tailored to any content, and adjusts
-                effortlessly to different screen sizes, so it looks good on any device, reaching a wider audience.</p>
+            <div class="detail-row">
+                <div class="detail-label">Timeline</div>
+                <div class="detail-value">Jan 23 – Jul 22</div>
+            </div>
 
-            <h2>Features</h2>
-            <ul class="feature-list">
-                <li>Keyboard shortcuts for fluid wayfinding</li>
-                <li>Dynamic web-app inspired way of viewing CMS content</li>
-                <li>Built-in text and color styles</li>
-                <li>3 CMS collections for work, blog & store</li>
-                <li>Responsive for all devices</li>
-                <li>Site-wide search</li>
-                <li>Available in light and dark mode</li>
-            </ul>
+            <div class="detail-row">
+                <div class="detail-label">Role</div>
+                <div class="detail-value">Product Designer & User Researcher</div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Outcome</div>
+                <div class="detail-value">The redesigned Alpha App proved to be highly impactful, particularly on mobile
+                    devices, as users exhibited increased shopping activity. Mobile users experienced a remarkable 50%
+                    surge in shopping behavior, with a substantial 45% increase in mobile conversions.</div>
+            </div>
+        </div>
+
+        <div class="project-description">
+            <p>Alpha.com approached me as a product designer to redesign their e-commerce website and translate it
+                into a fully mobile experience. The primary goals of this case study were to discuss my approach to
+                the redesign, the design decisions made, and the outcomes achieved in successfully translating
+                Alpha.com's e-commerce web experience into a fully mobile experience.</p>
+
+            <p>The key goals for the redesign project were to create a seamless and intuitive mobile shopping
+                experience, optimize the design for mobile devices, and increase mobile conversions and user
+                engagement. Extensive research and user testing were conducted to ensure the new design met these
+                objectives.</p>
         </div>
     </main>
 
@@ -384,7 +336,7 @@
     </footer>
 
     <script type="module" src="js/main.js"></script>
-    <script src="js/store-detail.js"></script>
+    <script src="js/work.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             console.log('DOM loaded');

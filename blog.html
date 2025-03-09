@@ -2,26 +2,21 @@
 <html lang="en">
 
 <head>
-    <!-- Basic Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ashkan Watson - Project Details: New Mobile App for Alpha">
+    <meta name="description" content="Blog - Ashkan Watson">
     <meta name="author" content="Ashkan Watson">
 
-    <!-- Title -->
-    <title>New Mobile App for Alpha - Ashkan Watson</title>
+    <title>Blog - Ashkan Watson</title>
 
-    <!-- Stylesheets -->
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/work-detail.css">
-
-    <!-- Favicon -->
+    <link rel="stylesheet" href="css/blog.css">
     <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
-    <!-- Add this right after the body tag -->
+    <!-- Categories Menu -->
     <div class="categories-menu">
         <button class="hamburger-btn">
             <svg viewBox="0 0 24 24" width="24" height="24">
@@ -30,15 +25,16 @@
         </button>
         <div class="categories-dropdown">
             <div class="categories-content">
-                <h3>Categories</h3>
+                <h3>Blog Categories</h3>
                 <ul>
-                    <li><a href="?project=chandome-app">Mobile Apps</a></li>
-                    <li><a href="?project=clippy-app">Web Design</a></li>
-                    <li><a href="?project=residam-app">Branding</a></li>
+                    <li><a href="?post=web-development-future">Design Thinking</a></li>
+                    <li><a href="?post=design-systems-2024">UX Research</a></li>
+                    <li><a href="?post=ai-in-design">UI Design</a></li>
                 </ul>
             </div>
         </div>
     </div>
+
     <!-- Navigation -->
     <nav class="sidebar">
         <div class="nav-border">
@@ -58,7 +54,7 @@
                     </div>
                 </a>
                 <!-- Work -->
-                <a href="./work-detail.html" class="nav-item active" data-shortcut="2" data-label="Work">
+                <a href="./work.html?project=chandome-app" class="nav-item" data-shortcut="2" data-label="Work">
                     <div class="icon">
                         <svg viewBox="0 0 24 24">
                             <path
@@ -72,7 +68,7 @@
                     </div>
                 </a>
                 <!-- Blog -->
-                <a href="./blog-detail.html" class="nav-item" data-shortcut="3" data-label="Blog">
+                <a href="./blog.html?post=ai-in-design" class="nav-item active" data-shortcut="3" data-label="Blog">
                     <div class="icon">
                         <svg viewBox="0 0 24 24">
                             <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
@@ -85,7 +81,7 @@
                     </div>
                 </a>
                 <!-- Store -->
-                <a href="./store-detail.html" class="nav-item" data-shortcut="4" data-label="Store">
+                <a href="./store.html?product=buy-me-coffee" class="nav-item" data-shortcut="4" data-label="Store">
                     <div class="icon">
                         <svg viewBox="0 0 24 24">
                             <circle cx="9" cy="21" r="1"></circle>
@@ -99,7 +95,7 @@
                     </div>
                 </a>
                 <!-- About -->
-                <a href="./about-detail.html" class="nav-item" data-shortcut="5" data-label="About">
+                <a href="./about.html" class="nav-item" data-shortcut="5" data-label="About">
                     <div class="icon">
                         <svg viewBox="0 0 24 24">
                             <circle cx="12" cy="12" r="10"></circle>
@@ -113,7 +109,7 @@
                     </div>
                 </a>
                 <!-- Contact -->
-                <a href="./contact-detail.html" class="nav-item" data-shortcut="6" data-label="Contact">
+                <a href="./contact.html" class="nav-item" data-shortcut="6" data-label="Contact">
                     <div class="icon">
                         <svg viewBox="0 0 24 24">
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
@@ -156,7 +152,7 @@
             </a>
 
             <!-- Work -->
-            <a href="./work-detail.html" class="nav-item active" data-shortcut="2">
+            <a href="./work.html?project=chandome-app" class="nav-item" data-shortcut="2">
                 <div class="icon">
                     <svg viewBox="0 0 24 24">
                         <path
@@ -167,7 +163,7 @@
             </a>
 
             <!-- Blog -->
-            <a href="./blog-detail.html" class="nav-item" data-shortcut="3">
+            <a href="./blog.html?post=ai-in-design" class="nav-item active" data-shortcut="3">
                 <div class="icon">
                     <svg viewBox="0 0 24 24">
                         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
@@ -177,7 +173,7 @@
             </a>
 
             <!-- Store -->
-            <a href="./store-detail.html" class="nav-item" data-shortcut="4">
+            <a href="./store.html?product=buy-me-coffee" class="nav-item" data-shortcut="4">
                 <div class="icon">
                     <svg viewBox="0 0 24 24">
                         <circle cx="9" cy="21" r="1"></circle>
@@ -189,20 +185,18 @@
 
 
             <!-- About -->
-            <a href="./about-detail.html" class="nav-item" data-shortcut="6">
+            <a href="./about.html" class="nav-item" data-shortcut="5">
                 <div class="icon">
                     <svg viewBox="0 0 24 24">
                         <path
                             d="M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0Zm-3.549 7a7 7 0 0 0-6.368 4.09c-.69 1.507.711 2.91 2.368 2.91h8c1.657 0 3.058-1.403 2.369-2.91A7 7 0 0 0 12.451 14Z"
-                            fill="transparent" stroke-width="1.5"
-                            stroke="var(--token-2535aa72-16d6-4e0a-ba94-ce402615779e, rgb(160, 160, 160)) /* {&quot;name&quot;:&quot;Icon/Default&quot;} */"
-                            stroke-miterlimit="10" />
+                            fill="transparent" stroke-width="1.5" stroke-miterlimit="10" />
                     </svg>
                 </div>
             </a>
 
             <!-- Contact -->
-            <a href="./contact-detail.html" class="nav-item" data-shortcut="7">
+            <a href="./contact.html" class="nav-item" data-shortcut="6">
                 <div class="icon">
                     <svg viewBox="0 0 24 24">
                         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
@@ -212,7 +206,7 @@
             </a>
 
             <!-- Search -->
-            <a href="#" class="nav-item" data-search="true">
+            <a id="search-trigger" class="nav-item search-trigger" data-search="true">
                 <div class="icon">
                     <svg viewBox="0 0 24 24">
                         <circle cx="11" cy="11" r="8"></circle>
@@ -222,86 +216,65 @@
             </a>
         </div>
     </nav>
-    <div class="work-section-nav">
+
+    <div class="blog-section-nav">
         <div class="section-header">
-            <h2>Work</h2>
+            <h2>Blog</h2>
         </div>
 
         <div class="section-content">
-            <div class="now-viewing">
-                <span class="label">Now viewing</span>
+            <div class="now-reading">
+                <span class="label">Now reading</span>
                 <div class="current-item">
-                    <h3>Chandome Mobile App</h3>
-                    <p>Callender app for ios platform</p>
+                    <h3>The Future of Web Development</h3>
+                    <p>Exploring upcoming trends</p>
                 </div>
             </div>
 
-            <div class="up-next">
-                <span class="label">Up next</span>
+            <div class="more-posts">
+                <span class="label">More posts</span>
                 <div class="next-items">
-                    <a href="work-detail.html?project=chandome-app" class="next-item">
-                        <h3>Chandome Mobile App</h3>
-                        <p>Callender app for ios platform</p>
+                    <a href="blog.html?post=web-development-future" class="post-item">
+                        <h3>The Future of Web Development</h3>
+                        <p>Exploring upcoming trends</p>
                     </a>
-                    <a href="#" class="next-item">
-                        <h3>Residam Company App</h3>
-                        <p>company app mini detail</p>
+                    <a href="blog.html?post=ai-in-design" class="post-item">
+                        <h3>Design Systems in 2024</h3>
+                        <p>How design systems are evolving</p>
                     </a>
                 </div>
             </div>
         </div>
     </div>
-    </nav>
 
-    <!-- Main Content -->
-    <main class="work-detail">
-        <!-- Hero Section -->
-        <div class="project-hero">
-            <div class="phone-container">
-                <img src="./images/3QeTdwx0BxlioY8BxgHHdH2wZRw.avif" alt="Alpha App Interface" class="hero-image">
+    <main class="blog-detail">
+        <div class="blog-hero">
+            <img src="./images/sGmLoTEDFrr6GfXOUkeTmNSOQfM.avif" alt="Blog Post Hero Image" class="hero-image">
+        </div>
+
+        <div class="blog-header">
+            <h1 class="blog-title">The Future of Web Development</h1>
+        </div>
+
+        <div class="blog-info-grid">
+            <div class="detail-row">
+                <div class="detail-label">Published</div>
+                <div class="detail-value">Jan 15, 2024</div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Category</div>
+                <div class="detail-value">Web Development</div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Reading Time</div>
+                <div class="detail-value">5 min read</div>
             </div>
         </div>
 
-        <!-- Project Title -->
-        <div class="project-header">
-            <h1 class="project-title">Chandome Mobile App</h1>
-        </div>
-
-        <!-- Project Info -->
-        <div class="project-info-grid">
-            <div class="detail-row">
-                <div class="detail-label">Client</div>
-                <div class="detail-value">App Store</div>
-            </div>
-
-            <div class="detail-row">
-                <div class="detail-label">Timeline</div>
-                <div class="detail-value">Jan 22 – Jul 22</div>
-            </div>
-
-            <div class="detail-row">
-                <div class="detail-label">Role</div>
-                <div class="detail-value">Product Designer & User Researcher</div>
-            </div>
-
-            <div class="detail-row">
-                <div class="detail-label">Outcome</div>
-                <div class="detail-value">The redesigned Alpha App proved to be highly impactful, particularly on mobile
-                    devices, as users exhibited increased shopping activity. Mobile users experienced a remarkable 50%
-                    surge in shopping behavior, with a substantial 45% increase in mobile conversions.</div>
-            </div>
-        </div>
-
-        <div class="project-description">
-            <p>Alpha.com approached me as a product designer to redesign their e-commerce website and translate it
-                into a fully mobile experience. The primary goals of this case study were to discuss my approach to
-                the redesign, the design decisions made, and the outcomes achieved in successfully translating
-                Alpha.com's e-commerce web experience into a fully mobile experience.</p>
-
-            <p>The key goals for the redesign project were to create a seamless and intuitive mobile shopping
-                experience, optimize the design for mobile devices, and increase mobile conversions and user
-                engagement. Extensive research and user testing were conducted to ensure the new design met these
-                objectives.</p>
+        <div class="blog-content">
+            <p>Your blog content goes here...</p>
         </div>
     </main>
 
@@ -341,7 +314,7 @@
     </footer>
 
     <script type="module" src="js/main.js"></script>
-    <script src="js/work-detail.js"></script>
+    <script src="js/blog.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             console.log('DOM loaded');

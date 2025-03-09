@@ -4,33 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Blog Post Title - Ashkan Watson">
+    <meta name="description" content="Contact - Ashkan Watson">
     <meta name="author" content="Ashkan Watson">
 
-    <title>Blog Post Title - Ashkan Watson</title>
+    <title>Contact - Ashkan Watson</title>
 
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/blog-detail.css">
+    <link rel="stylesheet" href="css/contact.css">
     <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
-    <!-- Categories Menu -->
-    <div class="categories-menu">
-        <button class="hamburger-btn">
-            <svg viewBox="0 0 24 24" width="24" height="24">
-                <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-            </svg>
-        </button>
-        <div class="categories-dropdown">
-            <div class="categories-content">
-                <h3>Blog Categories</h3>
-                <ul>
-                    <li><a href="?post=web-development-future">Design Thinking</a></li>
-                    <li><a href="?post=design-systems-2024">UX Research</a></li>
-                    <li><a href="?post=ai-in-design">UI Design</a></li>
-                </ul>
+    <!-- Add this right after the opening <body> tag -->
+    <div class="search-overlay">
+        <div class="search-container">
+            <div class="search-header">
+                <div class="search-input-wrapper">
+                    <svg viewBox="0 0 24 24" width="16" height="16">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" class="search-input" placeholder="Search...">
+                </div>
+                <div class="search-shortcut">/</div>
+            </div>
+            <div class="search-results">
+                <!-- Results will be populated dynamically -->
             </div>
         </div>
     </div>
@@ -54,7 +54,7 @@
                     </div>
                 </a>
                 <!-- Work -->
-                <a href="./work-detail.html" class="nav-item" data-shortcut="2" data-label="Work">
+                <a href="./work.html?project=chandome-app" class="nav-item" data-shortcut="2" data-label="Work">
                     <div class="icon">
                         <svg viewBox="0 0 24 24">
                             <path
@@ -68,7 +68,7 @@
                     </div>
                 </a>
                 <!-- Blog -->
-                <a href="./blog-detail.html" class="nav-item active" data-shortcut="3" data-label="Blog">
+                <a href="./blog.html?post=ai-in-design" class="nav-item" data-shortcut="3" data-label="Blog">
                     <div class="icon">
                         <svg viewBox="0 0 24 24">
                             <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
@@ -81,7 +81,7 @@
                     </div>
                 </a>
                 <!-- Store -->
-                <a href="./store-detail.html" class="nav-item" data-shortcut="4" data-label="Store">
+                <a href="./store.html?product=buy-me-coffee" class="nav-item" data-shortcut="4" data-label="Store">
                     <div class="icon">
                         <svg viewBox="0 0 24 24">
                             <circle cx="9" cy="21" r="1"></circle>
@@ -95,7 +95,7 @@
                     </div>
                 </a>
                 <!-- About -->
-                <a href="./about-detail.html" class="nav-item" data-shortcut="5" data-label="About">
+                <a href="./about.html" class="nav-item" data-shortcut="5" data-label="About">
                     <div class="icon">
                         <svg viewBox="0 0 24 24">
                             <circle cx="12" cy="12" r="10"></circle>
@@ -109,7 +109,7 @@
                     </div>
                 </a>
                 <!-- Contact -->
-                <a href="./contact-detail.html" class="nav-item" data-shortcut="6" data-label="Contact">
+                <a href="./contact.html" class="nav-item active" data-shortcut="6" data-label="Contact">
                     <div class="icon">
                         <svg viewBox="0 0 24 24">
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
@@ -152,7 +152,7 @@
             </a>
 
             <!-- Work -->
-            <a href="./work-detail.html" class="nav-item" data-shortcut="2">
+            <a href="./work.html?project=chandome-app" class="nav-item" data-shortcut="2">
                 <div class="icon">
                     <svg viewBox="0 0 24 24">
                         <path
@@ -163,7 +163,7 @@
             </a>
 
             <!-- Blog -->
-            <a href="./blog-detail.html" class="nav-item active" data-shortcut="3">
+            <a href="./blog.html?post=ai-in-design" class="nav-item" data-shortcut="3">
                 <div class="icon">
                     <svg viewBox="0 0 24 24">
                         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
@@ -173,7 +173,7 @@
             </a>
 
             <!-- Store -->
-            <a href="./store-detail.html" class="nav-item" data-shortcut="4">
+            <a href="./store.html?product=buy-me-coffee" class="nav-item" data-shortcut="4">
                 <div class="icon">
                     <svg viewBox="0 0 24 24">
                         <circle cx="9" cy="21" r="1"></circle>
@@ -185,20 +185,18 @@
 
 
             <!-- About -->
-            <a href="./about-detail.html" class="nav-item" data-shortcut="6">
+            <a href="./about.html" class="nav-item" data-shortcut="6">
                 <div class="icon">
                     <svg viewBox="0 0 24 24">
                         <path
                             d="M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0Zm-3.549 7a7 7 0 0 0-6.368 4.09c-.69 1.507.711 2.91 2.368 2.91h8c1.657 0 3.058-1.403 2.369-2.91A7 7 0 0 0 12.451 14Z"
-                            fill="transparent" stroke-width="1.5"
-                            stroke="var(--token-2535aa72-16d6-4e0a-ba94-ce402615779e, rgb(160, 160, 160)) /* {&quot;name&quot;:&quot;Icon/Default&quot;} */"
-                            stroke-miterlimit="10" />
+                            fill="transparent" stroke-width="1.5" stroke-miterlimit="10" />
                     </svg>
                 </div>
             </a>
 
             <!-- Contact -->
-            <a href="./contact-detail.html" class="nav-item" data-shortcut="7">
+            <a href="./contact.html" class="nav-item active" data-shortcut="7">
                 <div class="icon">
                     <svg viewBox="0 0 24 24">
                         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
@@ -218,66 +216,74 @@
             </a>
         </div>
     </nav>
-    <div class="blog-section-nav">
-        <div class="section-header">
-            <h2>Blog</h2>
-        </div>
-
-        <div class="section-content">
-            <div class="now-reading">
-                <span class="label">Now reading</span>
-                <div class="current-item">
-                    <h3>The Future of Web Development</h3>
-                    <p>Exploring upcoming trends</p>
+    <main class="contact-detail">
+        <div class="contact-header">
+            <h1 class="section-title">Contact</h1>
+            <h2 class="section-subtitle">Let's talk about working together</h2>
+            <div class="opportunities">
+                <div class="green-dot">
+                    <div class="signal-wave-container">
+                        <div class="signal-wave"></div>
+                    </div>
+                    <div class="signal-dot"></div>
                 </div>
-            </div>
-
-            <div class="more-posts">
-                <span class="label">More posts</span>
-                <div class="next-items">
-                    <a href="blog-detail.html?post=web-development-future" class="post-item">
-                        <h3>The Future of Web Development</h3>
-                        <p>Exploring upcoming trends</p>
-                    </a>
-                    <a href="#" class="post-item">
-                        <h3>Design Systems in 2024</h3>
-                        <p>How design systems are evolving</p>
-                    </a>
+                <div class="opportunity-title">
+                    <p>Available for new opportunities</p>
                 </div>
             </div>
         </div>
-    </div>
 
-    <main class="blog-detail">
-        <div class="blog-hero">
-            <img src="./images/sGmLoTEDFrr6GfXOUkeTmNSOQfM.avif" alt="Blog Post Hero Image" class="hero-image">
-        </div>
-
-        <div class="blog-header">
-            <h1 class="blog-title">The Future of Web Development</h1>
-        </div>
-
-        <div class="blog-info-grid">
-            <div class="detail-row">
-                <div class="detail-label">Published</div>
-                <div class="detail-value">Jan 15, 2024</div>
-            </div>
-
-            <div class="detail-row">
-                <div class="detail-label">Category</div>
-                <div class="detail-value">Web Development</div>
-            </div>
-
-            <div class="detail-row">
-                <div class="detail-label">Reading Time</div>
-                <div class="detail-value">5 min read</div>
+        <div class="contact-actions">
+            <div class="action-buttons">
+                <button class="btn btn-dark">
+                    Book call
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor""
+                            xmlns=" http://www.w3.org/2000/svg">
+                        <path
+                            d="M19,4H17V3a1,1,0,0,0-2,0V4H9V3A1,1,0,0,0,7,3V4H5A3,3,0,0,0,2,7V19a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V7A3,3,0,0,0,19,4Zm1,15a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V12H20Zm0-9H4V7A1,1,0,0,1,5,6H7V7A1,1,0,0,0,9,7V6h6V7a1,1,0,0,0,2,0V6h2a1,1,0,0,1,1,1Z" />
+                    </svg>
+                </button>
+                <button class="btn btn-dark" data-email="ashkanwatson@gmail.com">
+                    <span>Copy email</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M20 2H10c-1.103 0-2 .897-2 2v4H4c-1.103 0-2 .897-2 2v10c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2v-4h4c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2zM4 20V10h10l.002 10H4zm16-6h-4v-4c0-1.103-.897-2-2-2h-4V4h10v10z" />
+                    </svg>
+                </button>
             </div>
         </div>
 
-        <div class="blog-content">
-            <p>Your blog content goes here...</p>
+        <div class="divider">or</div>
+
+        <form class="contact-form">
+            <div class="form-row">
+                <input type="text" class="form-input" placeholder="Your name">
+                <input type="email" class="form-input" placeholder="Your email">
+            </div>
+            <textarea class="form-input message" placeholder="Your message"></textarea>
+            <button type="submit" class="btn btn-submit">Send</button>
+        </form>
+
+        <div class="response-time">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+            </svg>
+            Around 3-5 hours to respond
         </div>
     </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Portfolio by @AshkanWatson</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <span class="separator">·</span>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
 
     <!-- Search Overlay -->
     <div class="search-overlay" id="searchOverlay">
@@ -302,27 +308,44 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>© 2025 Ashkan by @AshkanWatson</p>
-            <div class="footer-links">
-                <a href="#">Privacy Policy</a>
-                <span class="separator">·</span>
-                <a href="#">Terms of Service</a>
-            </div>
-        </div>
-    </footer>
-
     <script type="module" src="js/main.js"></script>
-    <script src="js/blog-detail.js"></script>
+    <script src="js/contact.js"></script>
     <script>
+        // Copy email functionality
         document.addEventListener('DOMContentLoaded', () => {
-            console.log('DOM loaded');
+            const copyEmailBtn = document.querySelector('[data-email]');
+
+            if (copyEmailBtn) {
+                copyEmailBtn.addEventListener('click', async function () {
+                    const email = this.getAttribute('data-email');
+
+                    try {
+                        await navigator.clipboard.writeText(email);
+
+                        // Visual feedback
+                        const originalText = this.querySelector('span').textContent;
+                        this.querySelector('span').textContent = 'Email copied!';
+                        this.classList.add('copied');
+
+                        // Reset button after 2 seconds
+                        setTimeout(() => {
+                            this.querySelector('span').textContent = originalText;
+                            this.classList.remove('copied');
+                        }, 2000);
+
+                    } catch (err) {
+                        console.error('Failed to copy email:', err);
+                    }
+                });
+            }
+        });
+        // Immediately invoke setup code
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM loaded'); // Debug log
 
             // Navigation setup
             const navItems = document.querySelectorAll('a.nav-item[data-shortcut], div.nav-item[data-shortcut]');
-            console.log('Found nav items:', navItems.length);
+            console.log('Found nav items:', navItems.length); // Debug log
 
             // Load search index
             let searchIndex = null;
@@ -343,7 +366,7 @@
 
             // Keyboard navigation
             document.addEventListener('keydown', (e) => {
-                console.log('Key pressed:', e.key);
+                console.log('Key pressed:', e.key); // Debug log
 
                 // Ignore if typing in input
                 if (e.target.matches('input, textarea')) return;
@@ -353,7 +376,7 @@
                     const navItem = document.querySelector(`.nav-item[data-shortcut="${e.key}"]`);
                     if (navItem) {
                         e.preventDefault();
-                        console.log('Clicking nav item:', navItem);
+                        console.log('Clicking nav item:', navItem); // Debug log
                         if (navItem.href) {
                             window.location.href = navItem.href;
                         } else {

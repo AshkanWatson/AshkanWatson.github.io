@@ -28,8 +28,8 @@
 
 /* Selection Style */
 ::selection {
-    background: var(--color-accent);
-    color: var(--color-text);
+    background: rgba(255, 255, 255, 0.5);
+    color: #000000;
 }
 
 /* Focus States */
