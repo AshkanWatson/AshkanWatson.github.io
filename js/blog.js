@@ -29,30 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const allPosts = [
         {
-            id: 'git-commands',
-            title: 'Essential Git Commands',
-            description: 'The Essential Git Commands Every Developer Needs to Know',
-            author: 'Ashkan Watson',
-            date: 'March 25, 2025',
-            category: 'Git',
-            readTime: '10 min read',
-            heroImage: './images/git.svg',
-            blogcontent: [
-                'Git is one of the most powerful tools in modern software development. Whether you\'re working solo on a project or collaborating with a team, understanding Git is essential for version control and collaboration. If you\'re new to Git or just need a refresher, this post will cover some of the most essential Git commands every developer should know to efficiently manage their codebase.',
-                '1. Git Init: Initialize a New Git Repository',
-                'If you\'re starting a new project and want to keep track of changes, you\'ll first need to initialize a Git repository in your project folder. This is where Git begins tracking your files.',
-                'git init',
-                'This command turns your project directory into a Git repository. After running it, you’ll be able to start tracking changes, making commits, and pushing updates to remote repositories like GitHub.',
-                '2. Git Clone: Clone an Existing Repository',
-                'When you want to work on an existing project or contribute to an open-source project, you\'ll need to clone a repository.',
-                'git clone <repository_url>',
-                'For example:',
-                'git clone https://github.com/username/repository.git',
-                'This command copies all the files and the entire version history of the repository to your local machine, so you can start working on it.',
-
-            ]
-        },
-        {
             id: 'personal-finance-tracker',
             title: 'Personal Finance Tracker App',
             description: 'Building a Personal Finance Tracker App Using Flutter',
@@ -110,6 +86,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Developers will shift from writing every line of code manually to curating, debugging, and optimizing AI-generated code.',
                 'New roles may emerge, such as AI-powered software architects and AI ethics engineers, as companies look to leverage AI responsibly.',
                 'In short, developers who adapt and learn to work alongside AI will be more productive and valuable in the industry.'
+            ]
+        },
+        {
+            id: 'git-commands',
+            title: 'Essential Git Commands',
+            description: 'The Essential Git Commands Every Developer Needs to Know',
+            author: 'Ashkan Watson',
+            date: 'March 25, 2025',
+            category: 'Git',
+            readTime: '10 min read',
+            heroImage: './images/git.svg',
+            blogDescription: [
+                'Git is one of the most powerful tools in modern software development. Whether you\'re working solo on a project or collaborating with a team, understanding Git is essential for version control and collaboration. If you\'re new to Git or just need a refresher, this post will cover some of the most essential Git commands every developer should know to efficiently manage their codebase.',
+                '1. Git Init: Initialize a New Git Repository',
+                'If you\'re starting a new project and want to keep track of changes, you\'ll first need to initialize a Git repository in your project folder. This is where Git begins tracking your files.',
+                'git init',
+                'This command turns your project directory into a Git repository. After running it, you’ll be able to start tracking changes, making commits, and pushing updates to remote repositories like GitHub.',
+                '2. Git Clone: Clone an Existing Repository',
+                'When you want to work on an existing project or contribute to an open-source project, you\'ll need to clone a repository.',
+                'git clone <repository_url>',
+                'For example:',
+                'git clone https://github.com/username/repository.git',
+                'This command copies all the files and the entire version history of the repository to your local machine, so you can start working on it.',
+
             ]
         }
     ];
