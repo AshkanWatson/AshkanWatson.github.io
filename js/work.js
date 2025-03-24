@@ -38,9 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Chandome App',
             description: 'Calendar app for iOS platform',
             client: 'App Store',
-            timeline: 'Jan 23 – Jul 22',
-            role: 'Product Designer & User Researcher',
-            outcome: 'The redesigned Alpha App proved to be highly impactful, particularly on mobile devices, as users exhibited increased shopping activity. Mobile users experienced a remarkable 50% surge in shopping behavior, with a substantial 45% increase in mobile conversions.',
+            timeline: 'March 25 – Now',
+            role: 'Software Developer',
+            outcome: 'Null',
             heroImage: './images/Chandome.avif',
             projectDescription: [
                 'Chandome? Is a Persian calendar app.The idea came from the day that i switched my phone from an android to iOS where i found out that there no solar date widget for lock-screen on iPhone that is well designed & non of them was the app that i was looking for!',
@@ -53,27 +53,32 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Residam App',
             description: 'Enterprise management platform',
             client: 'Residam Corp',
-            timeline: 'Nov 23 – Feb 24',
-            role: 'Full Stack Developer',
-            outcome: 'Successfully implemented enterprise solution with 40% increase in productivity',
+            timeline: 'March 25 – Now',
+            role: 'Software Developer',
+            outcome: 'Null',
             heroImage: './images/residam-preview.jpg',
             projectDescription: [
-                'Developed a comprehensive enterprise management platform that streamlines operations and improves efficiency.',
-                'Implemented modern technologies and best practices to create a scalable and maintainable solution.'
+                'Residam! Is an app that i’m currently working on it.',
+                'The concept of is for the companies check-in & check-out.Which is a user-friendly app designed to be much easier for both manager and employees.',
+                'The idea came from where i actually worked and some problems that we had with the checkin machine.',
+                'I will inform you more on “Residam!” Features in as soon as possible as long as it’s still in progress!'
             ]
         },
         {
             id: 'clippy-app',
             title: 'Clippy App',
-            description: 'Web clipboard manager',
+            description: 'Mac clipboard',
             client: 'Internal Project',
-            timeline: 'Dec 23 – Jan 24',
-            role: 'Frontend Developer',
-            outcome: 'Created an intuitive clipboard manager with cross-platform compatibility',
+            timeline: 'March 25 – Now',
+            role: 'Software Developer',
+            outcome: 'Null',
             heroImage: './images/clippy-preview.jpg',
             projectDescription: [
-                'Designed and developed a web-based clipboard manager that works seamlessly across different devices.',
-                'Focused on user experience and performance while maintaining security and privacy.'
+                'As you can tell about “clippy”’s name it’s a clipboard app.',
+                'The idea came from when i switched from windows to macOS. Usually i used (Win Key + V) shortcut on my windows laptop which on my mac it wasn’t an option!',
+                'I searched app store for this feature but unfortunately couldn’t find what i was looking for and mostly the UI of apps where too old & not what i needed. Also privacy is an important factor for me and some of those apps privacy was really questionable!',
+                'Then i had the idea & decided to develop my own app “Clippy” with more features, modern UI and also safe!',
+                'I’m looking forward to develop “Clippy” for iPhone too in next updates.'
             ]
         }
     ];
