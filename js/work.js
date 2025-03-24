@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             timeline: 'March 25 – Now',
             role: 'Software Developer',
             outcome: 'Null',
-            heroImage: './images/residam-preview.jpg',
+            heroImage: './images/Residam.avif',
             projectDescription: [
                 'Residam! Is an app that i’m currently working on it.',
                 'The concept of is for the companies check-in & check-out.Which is a user-friendly app designed to be much easier for both manager and employees.',
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
             timeline: 'March 25 – Now',
             role: 'Software Developer',
             outcome: 'Null',
-            heroImage: './images/clippy-preview.jpg',
+            heroImage: './images/Clippy.avif',
             projectDescription: [
                 'As you can tell about “clippy”’s name it’s a clipboard app.',
                 'The idea came from when i switched from windows to macOS. Usually i used (Win Key + V) shortcut on my windows laptop which on my mac it wasn’t an option!',
