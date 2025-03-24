@@ -1,7 +1,7 @@
 /* Blog Detail Page Styles */
 .blog-detail {
     padding-top: 60px;
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
     color: #fff;
     display: flex;
@@ -16,7 +16,7 @@
 
 /* Hero Section */
 .blog-hero {
-    width: 100%;
+    width: 45px;
     margin-bottom: 40px;
     border-radius: 12px;
     overflow: hidden;
@@ -44,6 +44,8 @@
     flex-direction: column;
     gap: 24px;
     margin-bottom: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 32px;
 }
 
 .detail-row {
@@ -393,4 +395,26 @@
     .footer {
         padding-left: inherit;
     }
+}
+
+pre {
+    background: #272727;
+    color: #fff;
+    padding: 16px;
+    border-radius: 12px;
+    overflow: auto;
+    margin-bottom: 24px;
+}
+
+.list-item {
+    margin-bottom: 10px;
+}
+
+.inline-code {
+    background-color: #272727;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.9em;
+    color: #fff;
 }
