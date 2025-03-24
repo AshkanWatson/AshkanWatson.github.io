@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
         const startOffset = window.innerHeight * 0.2;
 
-        let progress = (scrollPosition - startOffset) / (maxScroll * 0.3);
+        let progress = (scrollPosition - startOffset) / (maxScroll * 0.8);
         progress = Math.max(0, Math.min(1, progress));
 
         currentItem.style.setProperty('--scroll-progress', progress);

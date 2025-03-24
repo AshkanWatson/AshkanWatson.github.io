@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const startOffset = window.innerHeight * 0.2;
 
         // Calculate progress (0 to 1)
-        let progress = (scrollPosition - startOffset) / (maxScroll * 0.3);
+        let progress = (scrollPosition - startOffset) / (maxScroll * 0.6);
         progress = Math.max(0, Math.min(1, progress));
 
         // Update CSS custom property
