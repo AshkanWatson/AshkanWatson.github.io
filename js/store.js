@@ -36,10 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Buy Me Coffee',
             description: 'Support my work',
             icon: './images/buy.svg',
-            price: '$29',
+            price: '$5',
             type: 'Donation',
             deliverable: 'Donation Page',
             previewImage: './images/coffee-preview.jpg',
+            buyLink: 'https://www.buymeacoffee.com/ashkanyadollahi',
+            previewLink: 'https://buymeacoffee.com/ashkanyadollahi',
             content: {
                 description: 'Support my work and help me create more useful content and tools for the community.',
                 features: [
@@ -51,22 +53,23 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         },
         {
-            id: 'notion-template',
-            title: 'Notion Template',
-            description: 'Productivity tools',
-            icon: './images/notion.svg',
-            price: '$39',
-            type: 'Template',
-            deliverable: 'Notion Files',
-            previewImage: './images/notion-preview.jpg',
+            id: 'github-sponsor',
+            title: 'GitHub Sponsor',
+            description: 'Support my work',
+            icon: './images/github.svg',
+            price: '$9.99',
+            type: 'Donation',
+            deliverable: 'Donation Page',
+            previewImage: './images/github-preview.jpg',
+            buyLink: 'https://github.com/sponsors/ashkanwatson',
+            previewLink: 'https://github.com/sponsors',
             content: {
-                description: 'A comprehensive Notion template pack designed to boost your productivity and organize your workflow.',
+                description: 'Support my work and help me create more useful content and tools for the community.',
                 features: [
-                    'Project management dashboard',
-                    'Task tracking system',
-                    'Content calendar',
-                    'Goal tracking templates',
-                    'Resource library organization'
+                    'Direct support for ongoing projects',
+                    'Access to supporter-only updates',
+                    'Name in credits of future projects',
+                    'Personal thank you message'
                 ]
             }
         },
@@ -75,10 +78,12 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Watson Store',
             description: 'E-commerce template',
             icon: './images/store.svg',
-            price: '$49',
-            type: 'Template',
-            deliverable: 'Framer File',
+            price: '$4.99',
+            type: 'Store',
+            deliverable: 'Personal Store',
             previewImage: './images/store-preview.jpg',
+            buyLink: 'https://gumroad.com/ashkanwatson/watson-store',
+            previewLink: './preview/store-preview.html',
             content: {
                 description: 'A modern, fully responsive e-commerce template built with Framer, perfect for digital products and services.',
                 features: [
@@ -115,8 +120,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Update main content
             document.querySelector('.store-title').textContent = currentProduct.title;
-            document.querySelector('.detail-row .detail-value').textContent = currentProduct.price;
-            document.querySelector('.btn-primary').textContent = `Buy for ${currentProduct.price}`;
+            
+            // Update all product details
+            const detailValues = document.querySelectorAll('.store-info-grid .detail-row .detail-value');
+            if (detailValues.length >= 3) {
+                // Update price (first detail value)
+                detailValues[0].textContent = currentProduct.price;
+                
+                // Update type (second detail value)
+                detailValues[1].textContent = currentProduct.type;
+                
+                // Update deliverable (third detail value)
+                detailValues[2].textContent = currentProduct.deliverable;
+            }
+            
+            // Update action buttons with links
+            const actionButtons = document.querySelector('.action-buttons');
+            
+            // Clear existing buttons
+            actionButtons.innerHTML = `
+                <a href="${currentProduct.buyLink}" class="btn-primary" target="_blank" rel="noopener noreferrer">Buy for ${currentProduct.price}</a>
+                <a href="${currentProduct.previewLink}" class="btn-secondary" target="_blank" rel="noopener noreferrer">See preview</a>
+            `;
 
             // Update preview image
             const previewImage = document.querySelector('.preview-image');

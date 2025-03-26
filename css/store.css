@@ -257,6 +257,8 @@
     font-size: 15px;
     font-weight: 500;
     transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .btn-primary {
