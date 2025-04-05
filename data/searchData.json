@@ -1,173 +1,189 @@
 {
-    "/home": {
-        "version": 1,
-        "title": "Home",
-        "description": "Welcome to my portfolio homepage",
-        "keywords": "",
-        "h1": [
-            "Home"
-        ],
-        "h2": [],
-        "h3": [],
-        "h4": [],
-        "h5": [],
-        "h6": [],
-        "p": [
-            "Home",
-            "1",
-            "Work",
-            "2",
-            "Writing",
-            "3",
-            "Stack",
-            "5"
-        ],
-        "codeblock": [],
-        "url": "./index.html"
-    },
-    "items": [
+    "pages": [
         {
             "title": "Home",
             "url": "./index.html",
-            "description": "Welcome to my portfolio homepage",
-            "tags": [
-                "home",
-                "main",
-                "welcome",
-                "portfolio"
-            ],
-            "type": "page"
+            "description": "Ashkan Watson | Software Engineer & Developer – Explore his portfolio, including projects like 'Chandome?' and blog articles on web design trends.",
+            "keywords": "ashkan portfolio, ashkan watson, ashkan yadollahi, ashkanwatson, ashkan project, ashkan software engineer, Chandome App, Chandome, Clippy, Clippy App, Residam, Residam App, ashkan blog",
+            "tags": ["home", "main", "welcome", "portfolio", "software engineer", "developer"],
+            "type": "page",
+            "headings": {
+                "h1": [],
+                "h2": ["About", "Work", "Writing"],
+                "h3": []
+            }
         },
         {
             "title": "Work",
-            "url": "./work-detail.html",
-            "description": "Explore my projects and work experience",
-            "tags": [
-                "work",
-                "projects",
-                "portfolio",
-                "experience"
-            ],
-            "type": "page"
+            "url": "./work.html",
+            "description": "Explore Ashkan Watson's projects and work experience, including Chandome App, Clippy App, and Residam App.",
+            "keywords": "ashkan watson work, portfolio projects, chandome app, clippy app, residam app, software projects, mobile app development, web development",
+            "tags": ["work", "projects", "portfolio", "experience", "chandome", "clippy", "residam"],
+            "type": "page",
+            "headings": {
+                "h1": ["Chandome App"],
+                "h2": ["Work"],
+                "h3": []
+            }
         },
         {
             "title": "Blog",
-            "url": "./blog-detail.html",
-            "description": "Read my latest articles and thoughts",
-            "tags": [
-                "blog",
-                "articles",
-                "writing",
-                "thoughts"
-            ],
-            "type": "page"
-        },
-        {
-            "title": "Store",
-            "url": "./store-detail.html",
-            "description": "Browse my digital products and templates",
-            "tags": [
-                "store",
-                "products",
-                "templates",
-                "digital"
-            ],
-            "type": "page"
+            "url": "./blog.html",
+            "description": "Read Ashkan Watson's latest articles and thoughts on software development, including topics like AI in Software Development, Git Commands, and Personal Finance Tracker App.",
+            "keywords": "ashkan watson blog, software development articles, AI in software development, git commands, personal finance tracker, flutter development",
+            "tags": ["blog", "articles", "writing", "thoughts", "software development", "AI", "git", "flutter"],
+            "type": "page",
+            "headings": {
+                "h1": ["AI in Software Development"],
+                "h2": ["Blog"],
+                "h3": ["Essential Git Commands", "Personal Finance Tracker App"]
+            }
         },
         {
             "title": "About",
-            "url": "./about-detail.html",
-            "description": "Learn more about me and my background",
-            "tags": [
-                "about",
-                "bio",
-                "background",
-                "profile"
-            ],
-            "type": "page"
+            "url": "./about.html",
+            "description": "Learn more about Ashkan Watson, his background, experience, and education in software engineering and design.",
+            "keywords": "ashkan watson about, software engineer background, design experience, education, professional history",
+            "tags": ["about", "bio", "background", "profile", "experience", "education"],
+            "type": "page",
+            "headings": {
+                "h1": ["About"],
+                "h2": ["A few things you should know", "Experience", "Education"],
+                "h3": ["Head of Design at Alpha", "Lead Designer at Delta", "Senior Designer at Gamma", "Junior Designer at Beta", "Continued education in design and technology", "Bachelor's Degree in Design"]
+            }
         },
         {
             "title": "Contact",
-            "url": "./contact-detail.html",
-            "description": "Get in touch with me",
-            "tags": [
-                "contact",
-                "email",
-                "message",
-                "connect"
-            ],
-            "type": "page"
+            "url": "./contact.html",
+            "description": "Get in touch with Ashkan Watson to discuss potential collaborations, projects, or just to say hello.",
+            "keywords": "ashkan watson contact, email ashkan, contact form, get in touch, collaboration, project inquiry",
+            "tags": ["contact", "email", "message", "connect", "collaboration"],
+            "type": "page",
+            "headings": {
+                "h1": ["Contact"],
+                "h2": ["Let's talk about working together"],
+                "h3": []
+            }
         },
         {
-            "title": "Building Ultra",
-            "url": "./work-detail.html#ultra",
-            "description": "A case study of the Ultra project",
-            "tags": [
-                "project",
-                "case study",
-                "development",
-                "ultra"
-            ],
-            "type": "project"
+            "title": "Store",
+            "url": "./store.html",
+            "description": "Browse Ashkan Watson's digital products and templates, including Notion templates and other digital resources.",
+            "keywords": "ashkan watson store, digital products, notion templates, buy me coffee, watson store, digital resources",
+            "tags": ["store", "products", "templates", "digital", "notion", "resources"],
+            "type": "page",
+            "headings": {
+                "h1": [],
+                "h2": ["Store"],
+                "h3": []
+            }
+        }
+    ],
+    "projects": [
+        {
+            "title": "Chandome App",
+            "url": "./work.html?project=chandome-app",
+            "description": "Calendar app for iOS platform with intuitive interface and powerful scheduling features.",
+            "keywords": "chandome app, calendar app, ios app, mobile app development, scheduling app, ashkan watson project",
+            "tags": ["project", "mobile app", "ios", "calendar", "chandome"],
+            "type": "project",
+            "content": "Alpha.com approached me as a product designer to redesign their e-commerce website and translate it into a fully mobile experience. The primary goals were to create a seamless and intuitive mobile shopping experience, optimize the design for mobile devices, and increase mobile conversions and user engagement."
         },
         {
-            "title": "Clippy",
-            "url": "./work-detail.html#clippy",
-            "description": "AI-powered clipboard manager",
-            "tags": [
-                "project",
-                "AI",
-                "tool",
-                "productivity"
-            ],
-            "type": "project"
+            "title": "Clippy App",
+            "url": "./work.html?project=clippy-app",
+            "description": "AI-powered clipboard manager that enhances productivity and streamlines workflow.",
+            "keywords": "clippy app, clipboard manager, ai tool, productivity app, workflow enhancement, ashkan watson project",
+            "tags": ["project", "AI", "tool", "productivity", "clipboard"],
+            "type": "project",
+            "content": "Clippy is an AI-powered clipboard manager designed to enhance productivity and streamline workflow by intelligently managing clipboard content."
         },
         {
-            "title": "Residam!",
-            "url": "./work-detail.html#residam",
-            "description": "Real estate platform development",
-            "tags": [
-                "project",
-                "real estate",
-                "platform",
-                "web"
-            ],
-            "type": "project"
+            "title": "Residam App",
+            "url": "./work.html?project=residam-app",
+            "description": "Real estate platform development for Residam company with comprehensive property management features.",
+            "keywords": "residam app, real estate platform, property management, company app, ashkan watson project",
+            "tags": ["project", "real estate", "platform", "web", "company"],
+            "type": "project",
+            "content": "Residam is a comprehensive real estate platform with property management features designed to streamline the real estate experience."
+        }
+    ],
+    "blog_posts": [
+        {
+            "title": "AI in Software Development",
+            "url": "./blog.html?post=ai-in-softwaredevelopment",
+            "description": "The Rise of AI in Software Development: How It's Changing the Industry",
+            "keywords": "AI in software development, artificial intelligence, software industry, development trends, coding assistance, machine learning",
+            "tags": ["blog", "AI", "software development", "technology", "industry trends"],
+            "type": "blog",
+            "author": "Ashkan Watson",
+            "date": "March 23, 2025",
+            "category": "AI & Software Development",
+            "readTime": "15 Min Read"
         },
+        {
+            "title": "Essential Git Commands",
+            "url": "./blog.html?post=git-commands",
+            "description": "The Essential Git Commands Every Developer Needs to Know",
+            "keywords": "git commands, version control, developer tools, software development, git basics, repository management",
+            "tags": ["blog", "git", "version control", "development", "commands", "tutorial"],
+            "type": "blog",
+            "author": "Ashkan Watson",
+            "date": "February 15, 2025",
+            "category": "Development Tools",
+            "readTime": "10 Min Read"
+        },
+        {
+            "title": "Personal Finance Tracker App",
+            "url": "./blog.html?post=personal-finance-tracker",
+            "description": "Building a Personal Finance Tracker App Using Flutter",
+            "keywords": "flutter app, personal finance, finance tracker, mobile development, cross-platform, dart programming",
+            "tags": ["blog", "flutter", "finance", "mobile app", "development", "tutorial"],
+            "type": "blog",
+            "author": "Ashkan Watson",
+            "date": "January 5, 2025",
+            "category": "Mobile Development",
+            "readTime": "12 Min Read"
+        }
+    ],
+    "store_items": [
         {
             "title": "Buy Me Coffee",
-            "url": "#",
-            "description": "Support my work by buying me a coffee",
-            "tags": [
-                "support",
-                "donation",
-                "coffee"
-            ],
-            "type": "store"
+            "url": "./store.html?product=buy-me-coffee",
+            "description": "Support my work by buying me a coffee. Your support helps me create more content and tools.",
+            "keywords": "buy me coffee, support, donation, ashkan watson, creator support",
+            "tags": ["support", "donation", "coffee", "creator"],
+            "type": "store",
+            "price": "$5"
         },
         {
-            "title": "Notion Template",
-            "url": "#",
-            "description": "Professional Notion templates for productivity",
-            "tags": [
-                "notion",
-                "template",
-                "productivity",
-                "organization"
-            ],
-            "type": "store"
+            "title": "Notion Templates",
+            "url": "./store.html?product=notion-template",
+            "description": "Professional Notion templates for productivity, project management, and personal organization.",
+            "keywords": "notion templates, productivity tools, project management, organization, digital workspace, ashkan watson templates",
+            "tags": ["notion", "template", "productivity", "organization", "digital tools"],
+            "type": "store",
+            "price": "$15"
         },
         {
             "title": "Watson Store",
-            "url": "#",
-            "description": "Browse all my digital products",
-            "tags": [
-                "store",
-                "products",
-                "digital",
-                "templates"
-            ],
-            "type": "store"
+            "url": "./store.html?product=watson-store",
+            "description": "Browse all my digital products including templates, tools, and resources for developers and designers.",
+            "keywords": "watson store, digital products, developer tools, design resources, templates, ashkan watson",
+            "tags": ["store", "products", "digital", "templates", "resources", "tools"],
+            "type": "store",
+            "price": "Various"
+        }
+    ],
+    "contact_info": [
+        {
+            "title": "Email Contact",
+            "url": "mailto:ashkanwatson@gmail.com",
+            "description": "Contact Ashkan Watson via email at ashkanwatson@gmail.com",
+            "keywords": "email, contact, ashkan watson email, get in touch, message, contact me, ashkanwatson@gmail.com",
+            "tags": ["contact", "email", "message", "get in touch"],
+            "type": "contact",
+            "email": "ashkanwatson@gmail.com"
         }
     ]
 }

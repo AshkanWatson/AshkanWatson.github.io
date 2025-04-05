@@ -30,6 +30,7 @@
     display: flex;
     align-items: center;
     gap: 12px;
+    padding-right: 48px;
 }
 
 .search-icon {
@@ -109,6 +110,18 @@
     text-align: center;
 }
 
+/* Search Result Styling */
+.search-result-email {
+    font-size: 14px;
+    color: #4dabf7;
+    background: rgba(77, 171, 247, 0.1);
+    border-radius: 4px;
+    padding: 4px 8px;
+    display: inline-block;
+    margin-top: 6px;
+    font-family: monospace;
+}
+
 /* Search Trigger Styling */
 .nav-item[data-search="true"] {
     cursor: pointer;
@@ -117,4 +130,29 @@
 /* Ensure search overlay is properly layered */
 .search-overlay {
     z-index: 9999;
+}
+
+/* Close Button Styling */
+.close-button {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: transparent;
+    border: none;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.7);
+    transition: color 0.2s ease;
+}
+
+.close-button:hover {
+    color: #fff;
+}
+
+.close-button svg {
+    stroke: currentColor;
 }

@@ -1,7 +1,43 @@
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM loaded');
     const currentItem = document.querySelector('.current-item');
     let ticking = false;
     let lastScrollY = window.scrollY;
+    
+    // Navigation setup
+    const navItems = document.querySelectorAll('a.nav-item[data-shortcut], div.nav-item[data-shortcut]');
+    console.log('Found nav items:', navItems.length);
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        console.log('Key pressed:', e.key);
+
+        // Ignore if typing in input
+        if (e.target.matches('input, textarea')) return;
+
+        // Handle number keys 1-7
+        if (/^[1-7]$/.test(e.key)) {
+            const navItem = document.querySelector(`.nav-item[data-shortcut="${e.key}"]`);
+            if (navItem) {
+                e.preventDefault();
+                console.log('Clicking nav item:', navItem);
+                if (navItem.href) {
+                    window.location.href = navItem.href;
+                } else {
+                    navItem.click();
+                }
+            }
+        }
+
+        // Handle search shortcut
+        if (e.key === '/') {
+            e.preventDefault();
+            const searchTrigger = document.querySelector('[data-search="true"]');
+            if (searchTrigger) {
+                searchTrigger.click();
+            }
+        }
+    });
 
     const updateScrollProgress = () => {
         const scrollPosition = lastScrollY;
@@ -42,9 +78,10 @@ document.addEventListener('DOMContentLoaded', () => {
             role: 'Software Developer',
             outcome: 'Null',
             heroImage: './images/Chandome.avif',
+            projectLink: 'https://apps.apple.com/us/app/chandome/id123456789',
             projectDescription: [
                 'Chandome? Is a Persian calendar app.The idea came from the day that i switched my phone from an android to iOS where i found out that there no solar date widget for lock-screen on iPhone that is well designed & non of them was the app that i was looking for!',
-                'After that i decided to develop my own solar calendar app and widget for iOS “Chandome?” Which means “What day is it?” In Persian with much minimalistic design that i’d rather to use.',
+                'After that i decided to develop my own solar calendar app and widget for iOS "Chandome?" Which means "What day is it?" In Persian with much minimalistic design that i\'d rather to use.',
                 'The goal for this app is to have more features than just a calendar like date converter and also be developed on macOS.'
             ]
         },
@@ -57,11 +94,12 @@ document.addEventListener('DOMContentLoaded', () => {
             role: 'Software Developer',
             outcome: 'Null',
             heroImage: './images/Residam.avif',
+            projectLink: 'https://residam.com/app',
             projectDescription: [
-                'Residam! Is an app that i’m currently working on it.',
+                'Residam! Is an app that i\'m currently working on it.',
                 'The concept of is for the companies check-in & check-out.Which is a user-friendly app designed to be much easier for both manager and employees.',
                 'The idea came from where i actually worked and some problems that we had with the checkin machine.',
-                'I will inform you more on “Residam!” Features in as soon as possible as long as it’s still in progress!'
+                'I will inform you more on "Residam!" Features in as soon as possible as long as it\'s still in progress!'
             ]
         },
         {
@@ -73,12 +111,13 @@ document.addEventListener('DOMContentLoaded', () => {
             role: 'Software Developer',
             outcome: 'Null',
             heroImage: './images/Clippy.avif',
+            projectLink: 'https://github.com/ashkanwatson/clippy',
             projectDescription: [
-                'As you can tell about “clippy”’s name it’s a clipboard app.',
-                'The idea came from when i switched from windows to macOS. Usually i used (Win Key + V) shortcut on my windows laptop which on my mac it wasn’t an option!',
-                'I searched app store for this feature but unfortunately couldn’t find what i was looking for and mostly the UI of apps where too old & not what i needed. Also privacy is an important factor for me and some of those apps privacy was really questionable!',
-                'Then i had the idea & decided to develop my own app “Clippy” with more features, modern UI and also safe!',
-                'I’m looking forward to develop “Clippy” for iPhone too in next updates.'
+                'As you can tell about "clippy"\'s name it\'s a clipboard app.',
+                'The idea came from when i switched from windows to macOS. Usually i used (Win Key + V) shortcut on my windows laptop which on my mac it wasn\'t an option!',
+                'I searched app store for this feature but unfortunately couldn\'t find what i was looking for and mostly the UI of apps where too old & not what i needed. Also privacy is an important factor for me and some of those apps privacy was really questionable!',
+                'Then i had the idea & decided to develop my own app "Clippy" with more features, modern UI and also safe!',
+                'I\'m looking forward to develop "Clippy" for iPhone too in next updates.'
             ]
         }
     ];
@@ -135,6 +174,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="detail-label">Outcome</div>
                     <div class="detail-value">${currentProject.outcome}</div>
                 </div>
+            `;
+
+            // Add action buttons with project link
+            const projectInfoContainer = document.querySelector('.project-info-grid');
+            
+            // Create action buttons container if it doesn't exist
+            let actionButtons = document.querySelector('.action-buttons');
+            if (!actionButtons) {
+                actionButtons = document.createElement('div');
+                actionButtons.className = 'action-buttons';
+                projectInfoContainer.insertAdjacentElement('afterend', actionButtons);
+            }
+            
+            // Update action buttons
+            actionButtons.innerHTML = `
+                <a href="${currentProject.projectLink}" class="btn-secondary" target="_blank" rel="noopener noreferrer">See Project</a>
             `;
 
             // Update project description

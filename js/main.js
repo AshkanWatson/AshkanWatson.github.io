@@ -11,159 +11,192 @@ import { SearchSystem } from './search.js';
 import { AnimationSystem } from './animations.js';
 
 // Main application functionality
-const App = {
-    // Cache DOM elements
-    elements: {
-        searchBtn: null,
-        navItems: null,
-        forms: null
-    },
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM loaded');
 
-    // Initialize the application
-    init() {
-        this.cacheElements();
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => this.setup());
-        } else {
-            this.setup();
+    // Navigation setup
+    const navItems = document.querySelectorAll('a.nav-item[data-shortcut], div.nav-item[data-shortcut]');
+    console.log('Found nav items:', navItems.length);
+
+    // Load search index
+    let searchIndex = null;
+
+    async function loadSearchIndex() {
+        try {
+            const response = await fetch('./data/searchData.json');
+            const data = await response.json();
+            searchIndex = data.items;
+            console.log('Search index loaded:', searchIndex.length, 'items');
+        } catch (error) {
+            console.error('Error loading search index:', error);
         }
-    },
+    }
 
-    // Cache frequently used elements
-    cacheElements() {
-        this.elements.searchBtn = document.querySelector('.search-btn');
-        this.elements.navItems = document.querySelectorAll('.nav-item');
-        this.elements.forms = document.querySelectorAll('form');
-    },
+    // Load search index when page loads
+    loadSearchIndex();
 
-    // Setup event listeners and initialize features
-    setup() {
-        this.setupEventListeners();
-        this.setupKeyboardShortcuts();
-        this.setupIntersectionObserver();
-        this.initializeAnimations();
-    },
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        console.log('Key pressed:', e.key);
 
-    // Set up event listeners with delegation
-    setupEventListeners() {
-        // Event delegation for better performance
-        document.addEventListener('click', (e) => {
-            const { target } = e;
+        // Ignore if typing in input
+        if (e.target.matches('input, textarea')) return;
 
-            // Handle search button
-            if (target.matches('.search-btn')) {
-                this.handleSearch();
-            }
-
-            // Handle navigation items
-            if (target.matches('.nav-item')) {
-                this.handleNavigation(target);
-            }
-        });
-
-        // Handle form submissions
-        this.elements.forms?.forEach(form => {
-            form.addEventListener('submit', (e) => this.handleFormSubmit(e));
-        });
-    },
-
-    // Set up keyboard shortcuts
-    setupKeyboardShortcuts() {
-        const debouncedKeyHandler = utils.debounce((e) => {
-            const { KEYBOARD_SHORTCUTS } = CONSTANTS;
-
-            // Search shortcut
-            if (e.key === KEYBOARD_SHORTCUTS.SEARCH) {
+        // Handle number keys 1-7
+        if (/^[1-7]$/.test(e.key)) {
+            const navItem = document.querySelector(`.nav-item[data-shortcut="${e.key}"]`);
+            if (navItem) {
                 e.preventDefault();
-                this.handleSearch();
-            }
-
-            // Navigation shortcuts
-            if (KEYBOARD_SHORTCUTS.NAVIGATION.includes(e.key)) {
-                const index = parseInt(e.key) - 1;
-                this.elements.navItems[index]?.click();
-            }
-        }, 150);
-
-        document.addEventListener('keydown', debouncedKeyHandler);
-    },
-
-    // Set up intersection observer for lazy loading
-    setupIntersectionObserver() {
-        const options = {
-            root: null,
-            rootMargin: '50px',
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    if (entry.target.dataset.src) {
-                        entry.target.src = entry.target.dataset.src;
-                        entry.target.removeAttribute('data-src');
-                    }
-                    observer.unobserve(entry.target);
+                console.log('Clicking nav item:', navItem);
+                if (navItem.href) {
+                    window.location.href = navItem.href;
+                } else {
+                    navItem.click();
                 }
-            });
-        }, options);
-
-        // Observe images with data-src attribute
-        document.querySelectorAll('img[data-src]').forEach(img => {
-            observer.observe(img);
-        });
-    },
-
-    // Initialize animations
-    initializeAnimations() {
-        const animatedElements = document.querySelectorAll('[data-animate]');
-
-        animatedElements.forEach(element => {
-            const animationType = element.dataset.animate;
-            if (animations[animationType]) {
-                element.style.transition = `all ${animations.transition.duration}s ${animations.transition.ease}`;
-                element.addEventListener('mouseenter', () => {
-                    Object.assign(element.style, animations[animationType]);
-                });
-                element.addEventListener('mouseleave', () => {
-                    Object.assign(element.style, { transform: 'none' });
-                });
             }
+        }
+
+        // Handle search shortcut
+        if (e.key === '/') {
+            e.preventDefault();
+            const searchTrigger = document.querySelector('[data-search="true"]');
+            if (searchTrigger) {
+                searchTrigger.click();
+            }
+        }
+    });
+
+    // Search functionality
+    const searchTriggers = document.querySelectorAll('[data-search="true"]');
+    const searchOverlay = document.getElementById('searchOverlay');
+    const searchInput = document.querySelector('.search-input');
+    const searchButton = document.querySelector('.search-button');
+    const searchResults = document.querySelector('.search-results');
+
+    function performSearch(query) {
+        if (!searchIndex || !query.trim()) {
+            return [];
+        }
+
+        query = query.toLowerCase();
+        return searchIndex.filter(item => {
+            const titleMatch = item.title.toLowerCase().includes(query);
+            const descriptionMatch = item.description.toLowerCase().includes(query);
+            const tagMatch = item.tags.some(tag =>
+                tag.toLowerCase().includes(query)
+            );
+            return titleMatch || descriptionMatch || tagMatch;
         });
-    },
+    }
 
-    // Event Handlers
-    handleSearch: utils.debounce(function () {
-        console.log('Search triggered');
-        // Implement search functionality
-    }, 300),
-
-    handleNavigation(target) {
-        // Remove active class from all nav items
-        this.elements.navItems?.forEach(item => item.classList.remove('active'));
-        // Add active class to clicked item
-        target.classList.add('active');
-    },
-
-    handleFormSubmit(e) {
-        e.preventDefault();
-        const form = e.target;
-        const formData = new FormData(form);
-
-        // Validate form data
-        const email = formData.get('email');
-        if (email && !utils.validateEmail(email)) {
-            console.error('Invalid email');
+    function displayResults(results) {
+        if (!results.length) {
+            searchResults.innerHTML = '<div class="no-results">No results found</div>';
             return;
         }
 
-        // Process form submission
-        console.log('Form submitted', Object.fromEntries(formData));
+        searchResults.innerHTML = results.map(result => `
+            <a href="${result.url}" class="search-result">
+                <span class="search-result-title">${result.title}</span>
+                <span class="search-result-content">${result.description}</span>
+                <span class="search-result-url">${result.url}</span>
+            </a>
+        `).join('');
     }
-};
 
-// Initialize the application
-App.init();
+    function handleSearch() {
+        const query = searchInput.value;
+        console.log('Searching for:', query);
+        console.log('Search index:', searchIndex);
+
+        if (!query.trim()) {
+            searchResults.innerHTML = '<div class="no-results">Please enter a search term</div>';
+            return;
+        }
+
+        const results = performSearch(query);
+        console.log('Search results:', results);
+        displayResults(results);
+    }
+
+    if (searchTriggers && searchOverlay && searchInput) {
+        console.log('Search elements found');
+
+        // Add click event listener to all search triggers
+        searchTriggers.forEach(trigger => {
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                searchOverlay.classList.add('active');
+                searchInput.focus();
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Hide search
+        searchOverlay.addEventListener('click', (e) => {
+            if (e.target === searchOverlay) {
+                searchOverlay.classList.remove('active');
+                searchInput.value = '';
+                searchResults.innerHTML = '';
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Handle search button click
+        searchButton?.addEventListener('click', () => {
+            handleSearch();
+        });
+
+        // Handle enter key in search input
+        searchInput?.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                handleSearch();
+            }
+        });
+
+        // Handle escape key to close search
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
+                searchOverlay.classList.remove('active');
+                searchInput.value = '';
+                searchResults.innerHTML = '';
+                document.body.style.overflow = '';
+            }
+        });
+    }
+});
+
+// Animation System
+class AnimationSystem {
+    constructor() {
+        this.setupAppearAnimations();
+    }
+
+    setupAppearAnimations() {
+        const animatedElements = document.querySelectorAll('[data-animate]');
+        
+        animatedElements.forEach(element => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const delay = entry.target.dataset.delay || 0;
+                        setTimeout(() => {
+                            entry.target.classList.add('animated');
+                        }, delay);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            observer.observe(element);
+        });
+    }
+}
+
+// Initialize Animation System when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    const animationSystem = new AnimationSystem();
+});
 
 // Form Handling
 document.getElementById('contact-form').addEventListener('submit', function (e) {
@@ -232,20 +265,6 @@ const animateOnScroll = () => {
 
 window.addEventListener('scroll', animateOnScroll);
 
-export default App;
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize all modules
-    initForm();
-    initLazyLoading();
-
-    // Add scroll animations
-    const projectCards = document.querySelectorAll('.project-card');
-    projectCards.forEach(card => {
-        slideIn(card);
-    });
-});
-
 // Copy email functionality
 document.addEventListener('DOMContentLoaded', () => {
     const copyEmailBtn = document.querySelector('.copy-email');
@@ -309,20 +328,17 @@ class Navigation {
 
     setupKeyboardShortcuts() {
         document.addEventListener('keydown', (e) => {
-            // Debug log
             console.log('Key pressed:', e.key);
 
-            // Ignore if user is typing in an input
-            if (e.target.matches('input, textarea')) {
-                return;
-            }
+            // Ignore if typing in input
+            if (e.target.matches('input, textarea')) return;
 
             // Handle number keys 1-7
             if (/^[1-7]$/.test(e.key)) {
-                const navItem = Array.from(this.navItems).find(item => item.dataset.shortcut === e.key);
+                const navItem = document.querySelector(`.nav-item[data-shortcut="${e.key}"]`);
                 if (navItem) {
                     e.preventDefault();
-                    console.log('Navigating to:', navItem.href || 'trigger item');
+                    console.log('Clicking nav item:', navItem);
                     if (navItem.href) {
                         window.location.href = navItem.href;
                     } else {
@@ -331,7 +347,7 @@ class Navigation {
                 }
             }
 
-            // Handle forward slash for search
+            // Handle search shortcut
             if (e.key === '/') {
                 e.preventDefault();
                 const searchTrigger = document.querySelector('[data-search="true"]');
@@ -460,37 +476,6 @@ class SearchSystem {
                 <span class="search-result-url">${result.url}</span>
             </a>
         `).join('');
-    }
-}
-
-// Animation System
-class AnimationSystem {
-    constructor() {
-        this.setupAppearAnimations();
-    }
-
-    setupAppearAnimations() {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                        observer.unobserve(entry.target);
-                    }
-                });
-            },
-            {
-                threshold: 0.1,
-                rootMargin: '50px'
-            }
-        );
-
-        $$('[data-appear]').forEach(element => {
-            element.style.opacity = '0';
-            element.style.transform = 'translateY(20px)';
-            observer.observe(element);
-        });
     }
 }
 
