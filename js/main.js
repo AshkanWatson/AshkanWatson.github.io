@@ -166,33 +166,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Animation System
-class AnimationSystem {
-    constructor() {
-        this.setupAppearAnimations();
-    }
-
-    setupAppearAnimations() {
-        const animatedElements = document.querySelectorAll('[data-animate]');
-        
-        animatedElements.forEach(element => {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const delay = entry.target.dataset.delay || 0;
-                        setTimeout(() => {
-                            entry.target.classList.add('animated');
-                        }, delay);
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            observer.observe(element);
-        });
-    }
-}
-
 // Initialize Animation System when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     const animationSystem = new AnimationSystem();
@@ -663,3 +636,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Export for use in other modules if needed
 export { Navigation, SearchSystem }; 
+
+
+
+class AnimationSystem {
+    constructor() {
+        this.setupAppearAnimations();
+    }
+
+    setupAppearAnimations() {
+        const animatedElements = document.querySelectorAll('[data-animate]');
+        
+        animatedElements.forEach(element => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const delay = entry.target.dataset.delay || 0;
+                        setTimeout(() => {
+                            entry.target.classList.add('animated');
+                        }, delay);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            observer.observe(element);
+        });
+    }
+}
