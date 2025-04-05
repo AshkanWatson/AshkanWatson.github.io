@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
             buyLink: 'https://gumroad.com/ashkanwatson/watson-store',
             previewLink: './preview/store-preview.html',
             content: {
-                description: 'A modern, fully responsive e-commerce template built with Framer, perfect for digital products and services.',
+                description: 'Here is Description Test',
                 features: [
                     'Responsive design system',
                     'Product showcase layouts',
