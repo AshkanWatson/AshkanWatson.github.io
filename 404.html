@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Basic Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Page not found - Ashkan Watson Portfolio">
+    <meta name="author" content="Ashkan Watson">
+    
+    <!-- Title -->
+    <title>404 - Page Not Found | Ashkan Watson</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="https://ashkanwatson.github.io/images/favicon.ico">
+    <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="https://ashkanwatson.github.io/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://ashkanwatson.github.io/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://ashkanwatson.github.io/images/favicon-16x16.png">
+    <link rel="manifest" href="https://ashkanwatson.github.io/site.webmanifest">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/main.css">
+    <meta name="theme-color" content="#191919">
+    
+    <style>
+        .error-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        .error-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+            font-weight: 300;
+            display: flex;
+            align-items: center;
+        }
+        
+        .left-arm, .right-arm, .face {
+            display: inline-block;
+        }
+        
+        .left-arm {
+            animation: shrug 6s ease-in-out infinite;
+        }
+        
+        .right-arm {
+            animation: shrug 6s ease-in-out infinite;
+        }
+        
+        @keyframes shrug {
+            0%, 75%, 100% {
+                transform: translateY(0);
+            }
+            83% {
+                transform: translateY(-10px);
+            }
+            91% {
+                transform: translateY(0);
+            }
+        }
+        
+        .error-title {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--color-text-secondary);
+            font-weight: 400;
+        }
+        
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: none;
+            border: 1px solid var(--color-border);
+            color: var(--color-text);
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+        }
+        
+        .back-home:hover {
+            background-color: var(--color-hover);
+        }
+        
+        .shortcut-hint {
+            display: flex;
+            align-items: center;
+            margin-top: 1.5rem;
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .key {
+            display: inline-block;
+            background-color: var(--color-hover);
+            border-radius: 4px;
+            padding: 2px 8px;
+            margin-left: 8px;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="error-page">
+        <div class="error-emoji">
+            <span class="left-arm">¯\_</span>
+            <span class="face">(ツ)</span>
+            <span class="right-arm">_/¯</span>
+        </div>
+        <h1 class="error-title">Page not found</h1>
+        <a href="/" class="back-home">
+            Back home →
+        </a>
+        <div class="shortcut-hint">
+            or press <span class="key">1</span>
+        </div>
+    </main>
+
+    <script>
+        // Add keyboard shortcut functionality
+        document.addEventListener('keydown', function(event) {
+            // If the user presses '1', navigate to home
+            if (event.key === '1') {
+                window.location.href = '/';
+            }
+        });
+        // Redirect from www to non-www (or vice versa)
+        if (window.location.hostname === "www.ashkanwatson.github.io") {
+            window.location.href = window.location.href.replace("www.", "");
+        }
+    </script>
+</body>
+
+</html>
