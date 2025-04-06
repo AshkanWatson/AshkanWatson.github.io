@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const nextItemsContainer = document.querySelector('.up-next .next-items');
             const otherProjects = allProjects.filter(p => p.id !== currentId);
             nextItemsContainer.innerHTML = otherProjects.map(project => `
-                <a href="work.html?project=${project.id}" class="next-item">
+                <a href="?project=${project.id}" class="next-item">
                     <h3>${project.title}</h3>
                     <p>${project.description}</p>
                 </a>

@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const morePostsContainer = document.querySelector('.more-posts .next-items');
             const otherPosts = allPosts.filter(p => p.id !== currentId);
             morePostsContainer.innerHTML = otherPosts.map(post => `
-                <a href="blog.html?post=${post.id}" class="post-item">
+                <a href="?post=${post.id}" class="post-item">
                     <h3>${post.title}</h3>
                     <p>${post.description}</p>
                 </a>
