@@ -34,7 +34,17 @@
 .hero .signal-wave-container,
 .hero .signal-dot,
 .hero .social-links,
-.hero .contact-buttons {
+.hero .contact-buttons,
+.hero .contact-button,
+.hero .copy-email,
+.section.about .section-header,
+.section.about .about-content,
+.section.work .section-header,
+.section.work .work-list,
+.section.store .section-header,
+.section.store .store-list,
+.section.writing .section-header,
+.section.writing .writing-list {
     animation: fadeIn 0.8s ease-out forwards;
     opacity: 0;
 }
