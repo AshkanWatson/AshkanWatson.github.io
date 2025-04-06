@@ -4,15 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Blog - Ashkan Watson">
+    <meta name="description" content="Store - Ashkan Watson">
     <meta name="author" content="Ashkan Watson">
 
-    <title>Blog - Ashkan Watson</title>
+    <title>Store - Ashkan Watson</title>
 
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/blog.css">
-    <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/store.css">
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+    <style>
+        .item-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(25, 25, 25, 0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .item-icon img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+    </style>
 </head>
 
 <body>
@@ -25,11 +43,11 @@
         </button>
         <div class="categories-dropdown">
             <div class="categories-content">
-                <h3>Blog Categories</h3>
+                <h3>Store Categories</h3>
                 <ul>
-                    <li><a href="?post=git-commands">Git Commands</a></li>
-                    <li><a href="?post=personal-finance-tracker">Finance Tracker</a></li>
-                    <li><a href="?post=ai-in-softwaredevelopment">AI In Development</a></li>
+                    <li><a href="?product=buy-me-coffee">Buy Me Coffee</a></li>
+                    <li><a href="?product=github-sponsor">GitHub Sponsor</a></li>
+                    <li><a href="?product=watson-store">Watson Store</a></li>
                 </ul>
             </div>
         </div>
@@ -41,10 +59,11 @@
             <div class="nav-inline"></div>
             <div class="nav-items">
                 <!-- Home -->
-                <a href="./index.html" class="nav-item" data-shortcut="1" data-label="Home">
+                <a href="/" class="nav-item" data-shortcut="1" data-label="Home">
                     <div class="icon">
                         <svg viewBox="0 0 24 24">
-                            <path d="M 3 10.963 C 3 10.024 3 9.554 3.129 9.128 C 3.244 8.751 3.432 8.4 3.682 8.095 C 3.965 7.751 4.356 7.49 5.137 6.969 L 9.337 4.169 C 10.3 3.528 10.781 3.207 11.301 3.083 C 11.761 2.972 12.239 2.972 12.699 3.083 C 13.219 3.207 13.7 3.528 14.663 4.169 L 18.863 6.969 C 19.644 7.49 20.035 7.751 20.318 8.095 C 20.568 8.4 20.756 8.751 20.87 9.128 C 21 9.554 21 10.024 21 10.963 L 21 15.595 C 21 17.275 21 18.115 20.673 18.756 C 20.385 19.321 19.927 19.78 19.362 20.067 C 18.72 20.395 17.88 20.395 16.2 20.395 L 7.8 20.395 C 6.12 20.395 5.28 20.395 4.638 20.067 C 4.074 19.78 3.615 19.321 3.327 18.756 C 3 18.115 3 17.275 3 15.595 Z">
+                            <path
+                                d="M 3 10.963 C 3 10.024 3 9.554 3.129 9.128 C 3.244 8.751 3.432 8.4 3.682 8.095 C 3.965 7.751 4.356 7.49 5.137 6.969 L 9.337 4.169 C 10.3 3.528 10.781 3.207 11.301 3.083 C 11.761 2.972 12.239 2.972 12.699 3.083 C 13.219 3.207 13.7 3.528 14.663 4.169 L 18.863 6.969 C 19.644 7.49 20.035 7.751 20.318 8.095 C 20.568 8.4 20.756 8.751 20.87 9.128 C 21 9.554 21 10.024 21 10.963 L 21 15.595 C 21 17.275 21 18.115 20.673 18.756 C 20.385 19.321 19.927 19.78 19.362 20.067 C 18.72 20.395 17.88 20.395 16.2 20.395 L 7.8 20.395 C 6.12 20.395 5.28 20.395 4.638 20.067 C 4.074 19.78 3.615 19.321 3.327 18.756 C 3 18.115 3 17.275 3 15.595 Z">
                             </path>
                         </svg>
                     </div>
@@ -54,10 +73,12 @@
                     </div>
                 </a>
                 <!-- Work -->
-                <a href="./work.html?project=chandome-app" class="nav-item" data-shortcut="2" data-label="Work">
+                <a href="/work?project=chandome-app" class="nav-item" data-shortcut="2" data-label="Work">
                     <div class="icon">
                         <svg viewBox="0 0 24 24">
-                            <path d="M18 3c-.796 0-1.559.316-2.121.879A3 3 0 0 0 15 6v12c0 .796.316 1.559.879 2.121a2.996 2.996 0 0 0 4.242 0 2.996 2.996 0 0 0 0-4.242A3 3 0 0 0 18 15H6c-.796 0-1.559.316-2.121.879a2.996 2.996 0 0 0 0 4.242 2.996 2.996 0 0 0 4.242 0A3 3 0 0 0 9 18V6c0-.796-.316-1.559-.879-2.121a2.996 2.996 0 0 0-4.242 0 2.996 2.996 0 0 0 0 4.242A3 3 0 0 0 6 9h12c.796 0 1.559-.316 2.121-.879a2.996 2.996 0 0 0 0-4.242A3 3 0 0 0 18 3Z" fill="transparent" stroke-width="1.5" stroke=""/>
+                            <path
+                                d="M18 3c-.796 0-1.559.316-2.121.879A3 3 0 0 0 15 6v12c0 .796.316 1.559.879 2.121a2.996 2.996 0 0 0 4.242 0 2.996 2.996 0 0 0 0-4.242A3 3 0 0 0 18 15H6c-.796 0-1.559.316-2.121.879a2.996 2.996 0 0 0 0 4.242 2.996 2.996 0 0 0 4.242 0A3 3 0 0 0 9 18V6c0-.796-.316-1.559-.879-2.121a2.996 2.996 0 0 0-4.242 0 2.996 2.996 0 0 0 0 4.242A3 3 0 0 0 6 9h12c.796 0 1.559-.316 2.121-.879a2.996 2.996 0 0 0 0-4.242A3 3 0 0 0 18 3Z"
+                                fill="transparent" stroke-width="1.5" stroke="" />
                         </svg>
                     </div>
                     <div class="tooltip">
@@ -66,10 +87,12 @@
                     </div>
                 </a>
                 <!-- Blog -->
-                <a href="./blog.html?post=ai-in-softwaredevelopment" class="nav-item active" data-shortcut="3" data-label="Blog">
+                <a href="/blog?post=ai-in-softwaredevelopment" class="nav-item" data-shortcut="3" data-label="Blog">
                     <div class="icon">
                         <svg viewBox="0 0 24 24">
-                            <path d="M 2 22 L 22 22 M 6.765 16.887 L 3.776 17.425 C 3.097 17.547 2.5 16.96 2.612 16.278 L 3.113 13.235 L 12.945 3.432 C 13.081 3.295 13.242 3.186 13.42 3.112 C 13.598 3.038 13.789 3 13.982 3 C 14.175 3 14.366 3.038 14.544 3.112 C 14.722 3.186 14.883 3.295 15.019 3.432 L 16.568 4.981 C 16.705 5.117 16.813 5.278 16.888 5.456 C 16.962 5.634 17 5.825 17 6.018 C 17 6.211 16.962 6.402 16.888 6.58 C 16.813 6.758 16.705 6.919 16.568 7.055 Z"</path>
+                            <path
+                                d="M 2 22 L 22 22 M 6.765 16.887 L 3.776 17.425 C 3.097 17.547 2.5 16.96 2.612 16.278 L 3.113 13.235 L 12.945 3.432 C 13.081 3.295 13.242 3.186 13.42 3.112 C 13.598 3.038 13.789 3 13.982 3 C 14.175 3 14.366 3.038 14.544 3.112 C 14.722 3.186 14.883 3.295 15.019 3.432 L 16.568 4.981 C 16.705 5.117 16.813 5.278 16.888 5.456 C 16.962 5.634 17 5.825 17 6.018 C 17 6.211 16.962 6.402 16.888 6.58 C 16.813 6.758 16.705 6.919 16.568 7.055 Z"
+                                </path>
                         </svg>
                     </div>
                     <div class="tooltip">
@@ -78,7 +101,7 @@
                     </div>
                 </a>
                 <!-- Store -->
-                <a href="./store.html?product=buy-me-coffee" class="nav-item" data-shortcut="4" data-label="Store">
+                <a href="/store?product=buy-me-coffee" class="nav-item active" data-shortcut="4" data-label="Store">
                     <div class="icon">
                         <svg viewBox="0 0 24 24">
                             <circle cx="9" cy="21" r="1"></circle>
@@ -92,7 +115,7 @@
                     </div>
                 </a>
                 <!-- About -->
-                <a href="./about.html" class="nav-item" data-shortcut="5" data-label="About">
+                <a href="/about" class="nav-item" data-shortcut="5" data-label="About">
                     <div class="icon">
                         <svg viewBox="0 0 24 24">
                             <circle cx="12" cy="12" r="10"></circle>
@@ -106,7 +129,7 @@
                     </div>
                 </a>
                 <!-- Contact -->
-                <a href="./contact.html" class="nav-item" data-shortcut="6" data-label="Contact">
+                <a href="/contact" class="nav-item" data-shortcut="6" data-label="Contact">
                     <div class="icon">
                         <svg viewBox="0 0 24 24">
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
@@ -139,35 +162,40 @@
     <nav class="mobile-nav">
         <div class="nav-items">
             <!-- Home -->
-            <a href="./index.html" class="nav-item" data-shortcut="1">
+            <a href="/" class="nav-item" data-shortcut="1">
                 <div class="icon">
                     <svg viewBox="0 0 24 24">
-                        <path d="M 3 10.963 C 3 10.024 3 9.554 3.129 9.128 C 3.244 8.751 3.432 8.4 3.682 8.095 C 3.965 7.751 4.356 7.49 5.137 6.969 L 9.337 4.169 C 10.3 3.528 10.781 3.207 11.301 3.083 C 11.761 2.972 12.239 2.972 12.699 3.083 C 13.219 3.207 13.7 3.528 14.663 4.169 L 18.863 6.969 C 19.644 7.49 20.035 7.751 20.318 8.095 C 20.568 8.4 20.756 8.751 20.87 9.128 C 21 9.554 21 10.024 21 10.963 L 21 15.595 C 21 17.275 21 18.115 20.673 18.756 C 20.385 19.321 19.927 19.78 19.362 20.067 C 18.72 20.395 17.88 20.395 16.2 20.395 L 7.8 20.395 C 6.12 20.395 5.28 20.395 4.638 20.067 C 4.074 19.78 3.615 19.321 3.327 18.756 C 3 18.115 3 17.275 3 15.595 Z">
+                        <path
+                            d="M 3 10.963 C 3 10.024 3 9.554 3.129 9.128 C 3.244 8.751 3.432 8.4 3.682 8.095 C 3.965 7.751 4.356 7.49 5.137 6.969 L 9.337 4.169 C 10.3 3.528 10.781 3.207 11.301 3.083 C 11.761 2.972 12.239 2.972 12.699 3.083 C 13.219 3.207 13.7 3.528 14.663 4.169 L 18.863 6.969 C 19.644 7.49 20.035 7.751 20.318 8.095 C 20.568 8.4 20.756 8.751 20.87 9.128 C 21 9.554 21 10.024 21 10.963 L 21 15.595 C 21 17.275 21 18.115 20.673 18.756 C 20.385 19.321 19.927 19.78 19.362 20.067 C 18.72 20.395 17.88 20.395 16.2 20.395 L 7.8 20.395 C 6.12 20.395 5.28 20.395 4.638 20.067 C 4.074 19.78 3.615 19.321 3.327 18.756 C 3 18.115 3 17.275 3 15.595 Z">
                         </path>
                     </svg>
                 </div>
             </a>
 
             <!-- Work -->
-            <a href="./work.html?project=chandome-app" class="nav-item" data-shortcut="2">
+            <a href="/work?project=chandome-app" class="nav-item" data-shortcut="2">
                 <div class="icon">
                     <svg viewBox="0 0 24 24">
-                        <path d="M18 3c-.796 0-1.559.316-2.121.879A3 3 0 0 0 15 6v12c0 .796.316 1.559.879 2.121a2.996 2.996 0 0 0 4.242 0 2.996 2.996 0 0 0 0-4.242A3 3 0 0 0 18 15H6c-.796 0-1.559.316-2.121.879a2.996 2.996 0 0 0 0 4.242 2.996 2.996 0 0 0 4.242 0A3 3 0 0 0 9 18V6c0-.796-.316-1.559-.879-2.121a2.996 2.996 0 0 0-4.242 0 2.996 2.996 0 0 0 0 4.242A3 3 0 0 0 6 9h12c.796 0 1.559-.316 2.121-.879a2.996 2.996 0 0 0 0-4.242A3 3 0 0 0 18 3Z" fill="transparent" stroke-width="1.5" stroke=""/>
+                        <path
+                            d="M18 3c-.796 0-1.559.316-2.121.879A3 3 0 0 0 15 6v12c0 .796.316 1.559.879 2.121a2.996 2.996 0 0 0 4.242 0 2.996 2.996 0 0 0 0-4.242A3 3 0 0 0 18 15H6c-.796 0-1.559.316-2.121.879a2.996 2.996 0 0 0 0 4.242 2.996 2.996 0 0 0 4.242 0A3 3 0 0 0 9 18V6c0-.796-.316-1.559-.879-2.121a2.996 2.996 0 0 0-4.242 0 2.996 2.996 0 0 0 0 4.242A3 3 0 0 0 6 9h12c.796 0 1.559-.316 2.121-.879a2.996 2.996 0 0 0 0-4.242A3 3 0 0 0 18 3Z"
+                            fill="transparent" stroke-width="1.5" stroke="" />
                     </svg>
                 </div>
             </a>
 
             <!-- Blog -->
-            <a href="./blog.html?post=ai-in-softwaredevelopment" class="nav-item active" data-shortcut="3">
+            <a href="/blog?post=ai-in-softwaredevelopment" class="nav-item" data-shortcut="3">
                 <div class="icon">
                     <svg viewBox="0 0 24 24">
-                        <path d="M 2 22 L 22 22 M 6.765 16.887 L 3.776 17.425 C 3.097 17.547 2.5 16.96 2.612 16.278 L 3.113 13.235 L 12.945 3.432 C 13.081 3.295 13.242 3.186 13.42 3.112 C 13.598 3.038 13.789 3 13.982 3 C 14.175 3 14.366 3.038 14.544 3.112 C 14.722 3.186 14.883 3.295 15.019 3.432 L 16.568 4.981 C 16.705 5.117 16.813 5.278 16.888 5.456 C 16.962 5.634 17 5.825 17 6.018 C 17 6.211 16.962 6.402 16.888 6.58 C 16.813 6.758 16.705 6.919 16.568 7.055 Z"</path>
+                        <path
+                            d="M 2 22 L 22 22 M 6.765 16.887 L 3.776 17.425 C 3.097 17.547 2.5 16.96 2.612 16.278 L 3.113 13.235 L 12.945 3.432 C 13.081 3.295 13.242 3.186 13.42 3.112 C 13.598 3.038 13.789 3 13.982 3 C 14.175 3 14.366 3.038 14.544 3.112 C 14.722 3.186 14.883 3.295 15.019 3.432 L 16.568 4.981 C 16.705 5.117 16.813 5.278 16.888 5.456 C 16.962 5.634 17 5.825 17 6.018 C 17 6.211 16.962 6.402 16.888 6.58 C 16.813 6.758 16.705 6.919 16.568 7.055 Z"
+                            </path>
                     </svg>
                 </div>
             </a>
 
             <!-- Store -->
-            <a href="./store.html?product=buy-me-coffee" class="nav-item" data-shortcut="4">
+            <a href="/store?product=buy-me-coffee" class="nav-item active" data-shortcut="4">
                 <div class="icon">
                     <svg viewBox="0 0 24 24">
                         <circle cx="9" cy="21" r="1"></circle>
@@ -179,7 +207,7 @@
 
 
             <!-- About -->
-            <a href="./about.html" class="nav-item" data-shortcut="5">
+            <a href="/about" class="nav-item" data-shortcut="6">
                 <div class="icon">
                     <svg viewBox="0 0 24 24">
                         <path
@@ -190,7 +218,7 @@
             </a>
 
             <!-- Contact -->
-            <a href="./contact.html" class="nav-item" data-shortcut="6">
+            <a href="/contact" class="nav-item" data-shortcut="7">
                 <div class="icon">
                     <svg viewBox="0 0 24 24">
                         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
@@ -200,7 +228,7 @@
             </a>
 
             <!-- Search -->
-            <a id="search-trigger" class="nav-item search-trigger" data-search="true">
+            <a href="#" class="nav-item" data-search="true">
                 <div class="icon">
                     <svg viewBox="0 0 24 24">
                         <circle cx="11" cy="11" r="8"></circle>
@@ -210,69 +238,115 @@
             </a>
         </div>
     </nav>
-
-    <div class="blog-section-nav">
+    <div class="store-section-nav">
         <div class="section-header">
-            <h2>Blog</h2>
+            <h2>Store</h2>
         </div>
 
         <div class="section-content">
-            <div class="now-reading">
-                <span class="label">Now reading</span>
+            <div class="now-viewing">
+                <span class="label">Now viewing</span>
                 <div class="current-item">
-                    <h3>AI in Software Development</h3>
-                    <p>The Rise of AI in Software Development</p>
+                    <div class="item-icon">
+                        <img src="" alt="Product Icon" id="currentProductIcon">
+                    </div>
+                    <div class="item-content">
+                        <h3 id="currentProductTitle"></h3>
+                        <p id="currentProductDesc"></p>
+                    </div>
                 </div>
             </div>
 
-            <div class="more-posts">
-                <span class="label">More posts</span>
-                <div class="next-items">
-                    <a href="blog.html?post=git-commands" class="post-item">
-                        <h3>Essential Git Commands</h3>
-                        <p>The Essential Git Commands Every Developer Needs to Know</p>
+            <div class="store-categories">
+                <span class="label">Categories</span>
+                <div class="category-items">
+                    <a href="?product=buy-me-coffee" class="store-item">
+                        <div class="item-icon">
+                            <img src="../images/buy.svg" alt="Buy Me Coffee Icon">
+                        </div>
+                        <div class="item-content">
+                            <h3>Buy Me Coffee</h3>
+                            <p>Support my work</p>
+                        </div>
                     </a>
-                    <a href="blog.html?post=personal-finance-tracker" class="post-item">
-                        <h3>Personal Finance Tracker App</h3>
-                        <p>Building a Personal Finance Tracker App Using Flutter</p>
+                    <a href="?product=github-sponsor" class="store-item">
+                        <div class="item-icon">
+                            <img src="../images/github.svg" alt="GitHub Icon">
+                        </div>
+                        <div class="item-content">
+                            <h3>Notion Templates</h3>
+                            <p>Productivity tools</p>
+                        </div>
+                    </a>
+                    <a href="?product=watson-store" class="store-item">
+                        <div class="item-icon">
+                            <img src="../images/store.svg" alt="Store Icon">
+                        </div>
+                        <div class="item-content">
+                            <h3>Watson Store</h3>
+                            <p>E-commerce template</p>
+                        </div>
                     </a>
                 </div>
             </div>
         </div>
     </div>
 
-    <main class="blog-detail">
-        <div class="blog-hero">
-            <img src="./images/AI.svg" alt="Blog Post Hero Image" class="hero-image">
+    <main class="store-detail">
+        <div class="store-header">
+            <div class="header-content">
+                <div class="header-tags">
+                    <span class="tag"></span>
+                    <span class="tag"></span>
+                </div>
+                <h1 class="store-title"></h1>
+
+                <div class="store-info-grid">
+                    <div class="detail-row">
+                        <div class="detail-label">Cost</div>
+                        <div class="detail-value"></div>
+                    </div>
+
+                    <div class="detail-row">
+                        <div class="detail-label">Type</div>
+                        <div class="detail-value">Template</div>
+                    </div>
+
+                    <div class="detail-row">
+                        <div class="detail-label">Deliverable</div>
+                        <div class="detail-value">Framer File</div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn-primary">Buy for $49</button>
+                    <button class="btn-secondary">See preview</button>
+                </div>
+            </div>
         </div>
 
-        <div class="blog-header">
-            <h1 class="blog-title">AI in Software Development</h1>
+        <div class="store-preview">
+            <img src="../images/Chandome.avif" alt="Store Item Preview" class="preview-image">
         </div>
 
-        <div class="blog-info-grid">
-            <div class="detail-row">
-                <div class="detail-label">Author</div>
-                <div class="detail-value">Ashkan Watson</div>
-            </div>
-            <div class="detail-row">
-                <div class="detail-label">Date</div>
-                <div class="detail-value">March 23, 2025</div>
-            </div>
+        <div class="store-content">
+            <p>Introducing Ultra, a meticulously crafted portfolio template designed for Framer, featuring a minimalist
+                sleek visual language.</p>
 
-            <div class="detail-row">
-                <div class="detail-label">Category</div>
-                <div class="detail-value">AI & Software Devlopment</div>
-            </div>
+            <p>It features keyboard shortcuts for fluid page navigation and offers a dynamic web-app inspired way to
+                view CMS content. Ultra is designed to be customizable enough to be tailored to any content, and adjusts
+                effortlessly to different screen sizes, so it looks good on any device, reaching a wider audience.</p>
 
-            <div class="detail-row">
-                <div class="detail-label">Read Time</div>
-                <div class="detail-value">15 Min Read</div>
-            </div>
-        </div>
-
-        <div class="blog-content">
-            <p>The Rise of AI in Software Development: How It’s Changing the Industry</p>
+            <h2>Features</h2>
+            <ul class="feature-list">
+                <li>Keyboard shortcuts for fluid wayfinding</li>
+                <li>Dynamic web-app inspired way of viewing CMS content</li>
+                <li>Built-in text and color styles</li>
+                <li>3 CMS collections for work, blog & store</li>
+                <li>Responsive for all devices</li>
+                <li>Site-wide search</li>
+                <li>Available in light and dark mode</li>
+            </ul>
         </div>
     </main>
 
@@ -284,18 +358,10 @@
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
-                <input type="text" placeholder="Search..." class="search-input">
-                <button type="button" class="search-button">
-                    <span>Search</span>
-                    <svg viewBox="0 0 24 24" width="16" height="16">
-                        <path d="M13 5l7 7-7 7M5 5l7 7-7 7" stroke="currentColor" fill="none" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                </button>
+                <input type="text" class="search-input" placeholder="Search...">
+                <button class="search-button">Search</button>
             </div>
-            <div class="search-results">
-                <!-- Search results will appear here -->
-            </div>
+            <div class="search-results"></div>
         </div>
     </div>
 
@@ -310,10 +376,9 @@
             </div>
         </div>
     </footer>
-
-    <script type="module" src="js/main.js"></script>
-    <script src="js/blog.js"></script>
-    <script>
+    <script src="../js/main.js"></script>
+    <script src="../js/store.js"></script>
+    <script type="module">
         document.addEventListener('DOMContentLoaded', () => {
             console.log('DOM loaded');
 
@@ -326,7 +391,7 @@
 
             async function loadSearchIndex() {
                 try {
-                    const response = await fetch('./data/searchData.json');
+                    const response = await fetch('../data/searchData.json');
                     const data = await response.json();
                     searchIndex = data.items;
                     console.log('Search index loaded:', searchIndex.length, 'items');

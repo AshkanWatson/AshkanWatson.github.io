@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
             date: 'March 24, 2025',
             category: 'Flutter',
             readTime: '20 Min Read',
-            heroImage: './images/flutter.svg',
+            heroImage: '../images/flutter.svg',
             blogDescription: [
                 'How to Build a Personal Finance Tracker App Using Flutter',
                 'Personal finance management is something everyone needs, but not everyone wants to track. That\'s where having a personal finance tracker app comes in handy. It helps you keep an eye on your spending, saving, and investing goals.',
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
             date: 'March 23, 2025',
             category: 'AI & Software Devlopment',
             readTime: '15 Min Read',
-            heroImage: './images/AI.svg',
+            heroImage: '../images/AI.svg',
             blogDescription: [
                 'The Rise of AI in Software Development: How It’s Changing the Industry',
                 'Artificial Intelligence (AI) is transforming almost every industry, and software development is no exception. From AI-powered coding assistants to automated testing and deployment, developers are now leveraging AI to write better code, speed up workflows, and reduce errors. But what does this mean for the future of software development? Will AI replace developers, or will it simply make our lives easier?',
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
             date: 'March 25, 2025',
             category: 'Git',
             readTime: '10 min read',
-            heroImage: './images/git.svg',
+            heroImage: '../images/git.svg',
             blogDescription: [
                 'Git is one of the most powerful tools in modern software development. Whether you\'re working solo on a project or collaborating with a team, understanding Git is essential for version control and collaboration. If you\'re new to Git or just need a refresher, this post will cover some of the most essential Git commands every developer should know to efficiently manage their codebase.',
                 '#1. Git Init: Initialize a New Git Repository',

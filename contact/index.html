@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact - Ashkan Watson">
+    <meta name="author" content="Ashkan Watson">
+
+    <title>Contact - Ashkan Watson</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/contact.css">
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <!-- Add this right after the opening <body> tag -->
+    <div class="search-overlay">
+        <div class="search-container">
+            <div class="search-header">
+                <div class="search-input-wrapper">
+                    <svg viewBox="0 0 24 24" width="16" height="16">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" class="search-input" placeholder="Search...">
+                </div>
+                <div class="search-shortcut">/</div>
+            </div>
+            <div class="search-results">
+                <!-- Results will be populated dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="sidebar">
+        <div class="nav-border">
+            <div class="nav-inline"></div>
+            <div class="nav-items">
+                <!-- Home -->
+                <a href="/" class="nav-item" data-shortcut="1" data-label="Home">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M 3 10.963 C 3 10.024 3 9.554 3.129 9.128 C 3.244 8.751 3.432 8.4 3.682 8.095 C 3.965 7.751 4.356 7.49 5.137 6.969 L 9.337 4.169 C 10.3 3.528 10.781 3.207 11.301 3.083 C 11.761 2.972 12.239 2.972 12.699 3.083 C 13.219 3.207 13.7 3.528 14.663 4.169 L 18.863 6.969 C 19.644 7.49 20.035 7.751 20.318 8.095 C 20.568 8.4 20.756 8.751 20.87 9.128 C 21 9.554 21 10.024 21 10.963 L 21 15.595 C 21 17.275 21 18.115 20.673 18.756 C 20.385 19.321 19.927 19.78 19.362 20.067 C 18.72 20.395 17.88 20.395 16.2 20.395 L 7.8 20.395 C 6.12 20.395 5.28 20.395 4.638 20.067 C 4.074 19.78 3.615 19.321 3.327 18.756 C 3 18.115 3 17.275 3 15.595 Z">
+                            </path>
+                        </svg>
+                    </div>
+                    <div class="tooltip">
+                        <span>Home</span>
+                        <div class="shortcut">1</div>
+                    </div>
+                </a>
+                <!-- Work -->
+                <a href="/work?project=chandome-app" class="nav-item" data-shortcut="2" data-label="Work">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M18 3c-.796 0-1.559.316-2.121.879A3 3 0 0 0 15 6v12c0 .796.316 1.559.879 2.121a2.996 2.996 0 0 0 4.242 0 2.996 2.996 0 0 0 0-4.242A3 3 0 0 0 18 15H6c-.796 0-1.559.316-2.121.879a2.996 2.996 0 0 0 0 4.242 2.996 2.996 0 0 0 4.242 0A3 3 0 0 0 9 18V6c0-.796-.316-1.559-.879-2.121a2.996 2.996 0 0 0-4.242 0 2.996 2.996 0 0 0 0 4.242A3 3 0 0 0 6 9h12c.796 0 1.559-.316 2.121-.879a2.996 2.996 0 0 0 0-4.242A3 3 0 0 0 18 3Z"
+                                fill="transparent" stroke-width="1.5" stroke="" />
+                        </svg>
+                    </div>
+                    <div class="tooltip">
+                        <span>Work</span>
+                        <div class="shortcut">2</div>
+                    </div>
+                </a>
+                <!-- Blog -->
+                <a href="/blog?post=ai-in-softwaredevelopment" class="nav-item" data-shortcut="3" data-label="Blog">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M 2 22 L 22 22 M 6.765 16.887 L 3.776 17.425 C 3.097 17.547 2.5 16.96 2.612 16.278 L 3.113 13.235 L 12.945 3.432 C 13.081 3.295 13.242 3.186 13.42 3.112 C 13.598 3.038 13.789 3 13.982 3 C 14.175 3 14.366 3.038 14.544 3.112 C 14.722 3.186 14.883 3.295 15.019 3.432 L 16.568 4.981 C 16.705 5.117 16.813 5.278 16.888 5.456 C 16.962 5.634 17 5.825 17 6.018 C 17 6.211 16.962 6.402 16.888 6.58 C 16.813 6.758 16.705 6.919 16.568 7.055 Z"
+                                </path>
+                        </svg>
+                    </div>
+                    <div class="tooltip">
+                        <span>Blog</span>
+                        <div class="shortcut">3</div>
+                    </div>
+                </a>
+                <!-- Store -->
+                <a href="/store?product=buy-me-coffee" class="nav-item" data-shortcut="4" data-label="Store">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                    </div>
+                    <div class="tooltip">
+                        <span>Store</span>
+                        <div class="shortcut">4</div>
+                    </div>
+                </a>
+                <!-- About -->
+                <a href="/about" class="nav-item" data-shortcut="5" data-label="About">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg>
+                    </div>
+                    <div class="tooltip">
+                        <span>About</span>
+                        <div class="shortcut">5</div>
+                    </div>
+                </a>
+                <!-- Contact -->
+                <a href="/contact" class="nav-item active" data-shortcut="6" data-label="Contact">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </div>
+                    <div class="tooltip">
+                        <span>Contact</span>
+                        <div class="shortcut">6</div>
+                    </div>
+                </a>
+                <!-- Search -->
+                <div id="search-trigger" class="nav-item search-trigger" data-shortcut="/" data-search="true">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </div>
+                    <div class="tooltip">
+                        <span>Search</span>
+                        <div class="shortcut">/</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav">
+        <div class="nav-items">
+            <!-- Home -->
+            <a href="/" class="nav-item" data-shortcut="1">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M 3 10.963 C 3 10.024 3 9.554 3.129 9.128 C 3.244 8.751 3.432 8.4 3.682 8.095 C 3.965 7.751 4.356 7.49 5.137 6.969 L 9.337 4.169 C 10.3 3.528 10.781 3.207 11.301 3.083 C 11.761 2.972 12.239 2.972 12.699 3.083 C 13.219 3.207 13.7 3.528 14.663 4.169 L 18.863 6.969 C 19.644 7.49 20.035 7.751 20.318 8.095 C 20.568 8.4 20.756 8.751 20.87 9.128 C 21 9.554 21 10.024 21 10.963 L 21 15.595 C 21 17.275 21 18.115 20.673 18.756 C 20.385 19.321 19.927 19.78 19.362 20.067 C 18.72 20.395 17.88 20.395 16.2 20.395 L 7.8 20.395 C 6.12 20.395 5.28 20.395 4.638 20.067 C 4.074 19.78 3.615 19.321 3.327 18.756 C 3 18.115 3 17.275 3 15.595 Z">
+                        </path>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Work -->
+            <a href="/work?project=chandome-app" class="nav-item" data-shortcut="2">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M18 3c-.796 0-1.559.316-2.121.879A3 3 0 0 0 15 6v12c0 .796.316 1.559.879 2.121a2.996 2.996 0 0 0 4.242 0 2.996 2.996 0 0 0 0-4.242A3 3 0 0 0 18 15H6c-.796 0-1.559.316-2.121.879a2.996 2.996 0 0 0 0 4.242 2.996 2.996 0 0 0 4.242 0A3 3 0 0 0 9 18V6c0-.796-.316-1.559-.879-2.121a2.996 2.996 0 0 0-4.242 0 2.996 2.996 0 0 0 0 4.242A3 3 0 0 0 6 9h12c.796 0 1.559-.316 2.121-.879a2.996 2.996 0 0 0 0-4.242A3 3 0 0 0 18 3Z"
+                            fill="transparent" stroke-width="1.5" stroke="" />
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Blog -->
+            <a href="/blog?post=ai-in-softwaredevelopment" class="nav-item" data-shortcut="3">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M 2 22 L 22 22 M 6.765 16.887 L 3.776 17.425 C 3.097 17.547 2.5 16.96 2.612 16.278 L 3.113 13.235 L 12.945 3.432 C 13.081 3.295 13.242 3.186 13.42 3.112 C 13.598 3.038 13.789 3 13.982 3 C 14.175 3 14.366 3.038 14.544 3.112 C 14.722 3.186 14.883 3.295 15.019 3.432 L 16.568 4.981 C 16.705 5.117 16.813 5.278 16.888 5.456 C 16.962 5.634 17 5.825 17 6.018 C 17 6.211 16.962 6.402 16.888 6.58 C 16.813 6.758 16.705 6.919 16.568 7.055 Z"
+                            </path>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Store -->
+            <a href="/store?product=buy-me-coffee" class="nav-item" data-shortcut="4">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                </div>
+            </a>
+
+
+            <!-- About -->
+            <a href="/about" class="nav-item" data-shortcut="6">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0Zm-3.549 7a7 7 0 0 0-6.368 4.09c-.69 1.507.711 2.91 2.368 2.91h8c1.657 0 3.058-1.403 2.369-2.91A7 7 0 0 0 12.451 14Z"
+                            fill="transparent" stroke-width="1.5" stroke-miterlimit="10" />
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Contact -->
+            <a href="/contact" class="nav-item active" data-shortcut="7">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Search -->
+            <a href="#" class="nav-item" data-search="true">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </div>
+            </a>
+        </div>
+    </nav>
+    <main class="contact-detail">
+        <div class="contact-header">
+            <h1 class="section-title">Contact</h1>
+            <h2 class="section-subtitle">Let's talk about working together</h2>
+            <div class="opportunities">
+                <div class="green-dot">
+                    <div class="signal-wave-container">
+                        <div class="signal-wave"></div>
+                    </div>
+                    <div class="signal-dot"></div>
+                </div>
+                <div class="opportunity-title">
+                    <p>Available for new opportunities</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-actions">
+            <div class="action-buttons">
+                <button class="btn btn-dark" onclick="window.open('https://cal.com/ashkanwatson/', '_blank')">
+                    Book call
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor""
+                            xmlns=" http://www.w3.org/2000/svg">
+                        <path
+                            d="M19,4H17V3a1,1,0,0,0-2,0V4H9V3A1,1,0,0,0,7,3V4H5A3,3,0,0,0,2,7V19a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V7A3,3,0,0,0,19,4Zm1,15a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V12H20Zm0-9H4V7A1,1,0,0,1,5,6H7V7A1,1,0,0,0,9,7V6h6V7a1,1,0,0,0,2,0V6h2a1,1,0,0,1,1,1Z" />
+                    </svg>
+                </button>
+                <button class="btn btn-dark" data-email="ashkanwatson@gmail.com">
+                    <span>Copy email</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M20 2H10c-1.103 0-2 .897-2 2v4H4c-1.103 0-2 .897-2 2v10c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2v-4h4c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2zM4 20V10h10l.002 10H4zm16-6h-4v-4c0-1.103-.897-2-2-2h-4V4h10v10z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="divider">or</div>
+
+        <form class="contact-form">
+            <div class="form-row">
+                <input type="text" class="form-input" placeholder="Your name">
+                <input type="email" class="form-input" placeholder="Your email">
+            </div>
+            <textarea class="form-input message" placeholder="Your message"></textarea>
+            <button type="submit" class="btn btn-submit">Send</button>
+        </form>
+
+        <div class="response-time">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+            </svg>
+            Around 3-5 hours to respond
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Portfolio by @AshkanWatson</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <span class="separator">·</span>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-container">
+            <div class="search-box">
+                <svg class="search-icon" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" placeholder="Search..." class="search-input">
+                <button type="button" class="search-button">
+                    <span>Search</span>
+                    <svg viewBox="0 0 24 24" width="16" height="16">
+                        <path d="M13 5l7 7-7 7M5 5l7 7-7 7" stroke="currentColor" fill="none" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+            </div>
+            <div class="search-results">
+                <!-- Search results will appear here -->
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="../js/main.js"></script>
+    <script src="../js/contact.js"></script>
+    <script>
+        // Copy email functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const copyEmailBtn = document.querySelector('[data-email]');
+
+            if (copyEmailBtn) {
+                copyEmailBtn.addEventListener('click', async function () {
+                    const email = this.getAttribute('data-email');
+
+                    try {
+                        await navigator.clipboard.writeText(email);
+
+                        // Visual feedback
+                        const originalText = this.querySelector('span').textContent;
+                        this.querySelector('span').textContent = 'Email copied!';
+                        this.classList.add('copied');
+
+                        // Reset button after 2 seconds
+                        setTimeout(() => {
+                            this.querySelector('span').textContent = originalText;
+                            this.classList.remove('copied');
+                        }, 2000);
+
+                    } catch (err) {
+                        console.error('Failed to copy email:', err);
+                    }
+                });
+            }
+        });
+        // Immediately invoke setup code
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM loaded'); // Debug log
+
+            // Navigation setup
+            const navItems = document.querySelectorAll('a.nav-item[data-shortcut], div.nav-item[data-shortcut]');
+            console.log('Found nav items:', navItems.length); // Debug log
+
+            // Load search index
+            let searchIndex = null;
+
+            async function loadSearchIndex() {
+                try {
+                    const response = await fetch('../data/searchData.json');
+                    const data = await response.json();
+                    searchIndex = data.items;
+                    console.log('Search index loaded:', searchIndex.length, 'items');
+                } catch (error) {
+                    console.error('Error loading search index:', error);
+                }
+            }
+
+            // Load search index when page loads
+            loadSearchIndex();
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                console.log('Key pressed:', e.key); // Debug log
+
+                // Ignore if typing in input
+                if (e.target.matches('input, textarea')) return;
+
+                // Handle number keys 1-7
+                if (/^[1-7]$/.test(e.key)) {
+                    const navItem = document.querySelector(`.nav-item[data-shortcut="${e.key}"]`);
+                    if (navItem) {
+                        e.preventDefault();
+                        console.log('Clicking nav item:', navItem); // Debug log
+                        if (navItem.href) {
+                            window.location.href = navItem.href;
+                        } else {
+                            navItem.click();
+                        }
+                    }
+                }
+
+                // Handle search shortcut
+                if (e.key === '/') {
+                    e.preventDefault();
+                    const searchTrigger = document.querySelector('[data-search="true"]');
+                    if (searchTrigger) {
+                        searchTrigger.click();
+                    }
+                }
+            });
+
+            // Search functionality
+            const searchTriggers = document.querySelectorAll('[data-search="true"]');
+            const searchOverlay = document.getElementById('searchOverlay');
+            const searchInput = document.querySelector('.search-input');
+            const searchButton = document.querySelector('.search-button');
+            const searchResults = document.querySelector('.search-results');
+
+            function performSearch(query) {
+                if (!searchIndex || !query.trim()) {
+                    return [];
+                }
+
+                query = query.toLowerCase();
+                return searchIndex.filter(item => {
+                    const titleMatch = item.title.toLowerCase().includes(query);
+                    const descriptionMatch = item.description.toLowerCase().includes(query);
+                    const tagMatch = item.tags.some(tag =>
+                        tag.toLowerCase().includes(query)
+                    );
+                    return titleMatch || descriptionMatch || tagMatch;
+                });
+            }
+
+            function displayResults(results) {
+                if (!results.length) {
+                    searchResults.innerHTML = '<div class="no-results">No results found</div>';
+                    return;
+                }
+
+                searchResults.innerHTML = results.map(result => `
+                    <a href="${result.url}" class="search-result">
+                        <span class="search-result-title">${result.title}</span>
+                        <span class="search-result-content">${result.description}</span>
+                        <span class="search-result-url">${result.url}</span>
+                    </a>
+                `).join('');
+            }
+
+            function handleSearch() {
+                const query = searchInput.value;
+                console.log('Searching for:', query);
+                console.log('Search index:', searchIndex);
+
+                if (!query.trim()) {
+                    searchResults.innerHTML = '<div class="no-results">Please enter a search term</div>';
+                    return;
+                }
+
+                const results = performSearch(query);
+                console.log('Search results:', results);
+                displayResults(results);
+            }
+
+            if (searchTriggers && searchOverlay && searchInput) {
+                console.log('Search elements found');
+
+                // Add click event listener to all search triggers
+                searchTriggers.forEach(trigger => {
+                    trigger.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        searchOverlay.classList.add('active');
+                        searchInput.focus();
+                        document.body.style.overflow = 'hidden';
+                    });
+                });
+
+                // Hide search
+                searchOverlay.addEventListener('click', (e) => {
+                    if (e.target === searchOverlay) {
+                        searchOverlay.classList.remove('active');
+                        searchInput.value = '';
+                        searchResults.innerHTML = '';
+                        document.body.style.overflow = '';
+                    }
+                });
+
+                // Handle search button click
+                searchButton?.addEventListener('click', () => {
+                    handleSearch();
+                });
+
+                // Handle enter key in search input
+                searchInput?.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        handleSearch();
+                    }
+                });
+
+                // Handle escape key to close search
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
+                        searchOverlay.classList.remove('active');
+                        searchInput.value = '';
+                        searchResults.innerHTML = '';
+                        document.body.style.overflow = '';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

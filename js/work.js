@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
             timeline: 'March 25 – Now',
             role: 'Software Developer',
             outcome: 'Null',
-            heroImage: './images/Chandome.avif',
+            heroImage: '../images/Chandome.avif',
             projectLink: 'https://apps.apple.com/us/app/chandome/id123456789',
             projectDescription: [
                 'Chandome? Is a Persian calendar app.The idea came from the day that i switched my phone from an android to iOS where i found out that there no solar date widget for lock-screen on iPhone that is well designed & non of them was the app that i was looking for!',
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
             timeline: 'March 25 – Now',
             role: 'Software Developer',
             outcome: 'Null',
-            heroImage: './images/Residam.avif',
+            heroImage: '../images/Residam.avif',
             projectLink: 'https://residam.com/app',
             projectDescription: [
                 'Residam! Is an app that i\'m currently working on it.',
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
             timeline: 'March 25 – Now',
             role: 'Software Developer',
             outcome: 'Null',
-            heroImage: './images/Clippy.avif',
+            heroImage: '../images/Clippy.avif',
             projectLink: 'https://github.com/ashkanwatson/clippy',
             projectDescription: [
                 'As you can tell about "clippy"\'s name it\'s a clipboard app.',
