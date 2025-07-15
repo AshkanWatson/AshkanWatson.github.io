@@ -1,3 +1,12 @@
+/* Font Face Declarations */
+@font-face {
+  font-family: 'B Nazanin';
+  src: url('https://cdn.fontcdn.ir/Font/Persian/Nazanin/Nazanin.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Base styles */
 :root {
   --bg-dark: #121212;
@@ -309,6 +318,12 @@ footer {
   font-family: 'Space Mono', monospace;
 }
 
+/* Language toggle styles */
+#language-btn.active {
+  background-color: var(--highlight);
+  color: black;
+}
+
 /* Commit history styles */
 .commit {
   padding: 0.75rem;
@@ -473,11 +488,61 @@ footer {
   }
 
   .social-links .icon-link {
-    padding: 0.35rem;
+    padding: 0.5rem;
   }
 
   .social-links svg {
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
   }
+}
+
+/* RTL Support for Persian language */
+html[dir="rtl"] .header .flex-center {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .nav-links {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .social-links {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .flex-between {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .highlight-marker {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+html[dir="rtl"] .modal-header {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .commit-header {
+  flex-direction: row-reverse;
+}
+
+/* Font adjustments for Persian */
+html[dir="rtl"] body {
+  font-family: "B Nazanin", "Tahoma", "Arial", sans-serif;
+}
+
+html[dir="rtl"] #start-game {
+  font-family: "B Nazanin", "Tahoma", "Arial", sans-serif;
+}
+
+/* Add B Nazanin font for all text elements in Persian mode */
+html[dir="rtl"] h1,
+html[dir="rtl"] h2,
+html[dir="rtl"] h3,
+html[dir="rtl"] p,
+html[dir="rtl"] button,
+html[dir="rtl"] a,
+html[dir="rtl"] span {
+  font-family: "B Nazanin", "Tahoma", "Arial", sans-serif;
 }

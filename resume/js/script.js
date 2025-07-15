@@ -3,6 +3,8 @@ const header = document.getElementById('header');
 const mainContent = document.getElementById('main-content');
 const commitsBtn = document.getElementById('commits-btn');
 const snakeBtn = document.getElementById('snake-btn');
+const languageBtn = document.getElementById('language-btn');
+const languageText = document.getElementById('language-text');
 const commitsModal = document.getElementById('commits-modal');
 const snakeModal = document.getElementById('snake-modal');
 const commitsContainer = document.getElementById('commits-container');
@@ -13,6 +15,71 @@ const closeBtns = document.querySelectorAll('.close-btn');
 // State
 let isScrolled = false;
 let snakeGame = null;
+let currentLanguage = 'en';
+
+// Translations
+const translations = {
+    en: {
+        title: 'Ashkan Watson - Resume',
+        about: 'About Me',
+        aboutText: 'Hi, my name\'s Ashkan and I\'m a Flutter Developer. I have worked at EEFA Post Production Studio gaining teamwork skills as an IT Expert, Network System Administrator, Flutter Developer and Linux Kernel.',
+        skillsText: 'I am most skilled in:',
+        projects: 'Projects',
+        experience: 'Experience',
+        education: 'Education',
+        commits: '[C] commits',
+        snake: '[S] snake',
+        blog: '[B] blog',
+        language: '[L] language',
+        website: '[W] website',
+        changeLanguage: 'Change Language',
+        jobTitle: 'Network System Administrator, Flutter Developer, Linux Kernel',
+        jobDescription1: 'EEFA Studio Solving 21st century problems by diging holes and making game changing products like the *not a flamethrower*',
+        jobDescription2: 'Every company needs its networks properly administered and The VFX company is no exception. Digging holes is hard and I play my part making sure the whole company stays connected. I enjoy driving the company to try new technologies.',
+        education1: 'Electronic Diploma',
+        // Project section
+        projectTitle: 'Chandome?! Project',
+        projectLink: 'github.com/Chandome',
+        projectDesc1: 'This is probably one of the greatest apps ever created, if you don\'t agree you\'re probably wrong.',
+        projectDesc2: 'I started this project as a way if learning Flutter and it has since grown into a fully fledged app. I have learned many skills through this and been I\'m very proud of having this in my portfolio. If you don\'t have a project as awesome as this I would advise you make one.',
+        // Experience section
+        companyName: 'The EEFA Studio',
+        dateRange: 'November 2022 - Present',
+        // Education section
+        schoolName: 'Payam',
+        educationDate: '2017 - 2020',
+    },
+    fa: {
+        title: 'اشکان واتسون - رزومه',
+        about: 'درباره من',
+        aboutText: 'سلام، اسم من اشکان هست و من یک توسعه‌دهنده فلاتر هستم. من در استودیو پست پروداکشن EEFA کار کرده‌ام و مهارت‌های کار تیمی را به عنوان متخصص IT، مدیر سیستم شبکه، توسعه‌دهنده فلاتر و کرنل لینوکس کسب کرده‌ام.',
+        skillsText: 'من بیشترین مهارت را در این زمینه‌ها دارم:',
+        projects: 'پروژه‌ها',
+        experience: 'تجربیات',
+        education: 'تحصیلات',
+        commits: '[C] کامیت‌ها',
+        snake: '[S] بازی مار',
+        blog: '[B] وبلاگ',
+        language: '[L] زبان',
+        website: '[W] وب‌سایت',
+        changeLanguage: 'تغییر زبان',
+        jobTitle: 'مدیر سیستم شبکه، توسعه‌دهنده فلاتر، کرنل لینوکس',
+        jobDescription1: 'استودیو EEFA حل مشکلات قرن 21 با حفر چاله‌ها و ساخت محصولات تغییردهنده بازی مانند *شعله‌افکن نیست*',
+        jobDescription2: 'هر شرکتی نیاز به مدیریت صحیح شبکه دارد و شرکت VFX نیز از این قاعده مستثنی نیست. حفر چاله‌ها سخت است و من نقش خود را در اطمینان از اتصال کل شرکت ایفا می‌کنم. من از هدایت شرکت به سمت فناوری‌های جدید لذت می‌برم.',
+        education1: 'دیپلم الکترونیک',
+        // Project section
+        projectTitle: 'پروژه چندومه؟!',
+        projectLink: 'github.com/Chandome',
+        projectDesc1: 'این احتمالاً یکی از بهترین برنامه‌هایی است که تا به حال ساخته شده است، اگر موافق نیستید احتمالاً اشتباه می‌کنید.',
+        projectDesc2: 'من این پروژه را به عنوان راهی برای یادگیری فلاتر شروع کردم و از آن زمان به یک برنامه کامل تبدیل شده است. من مهارت‌های زیادی از طریق این پروژه یاد گرفته‌ام و بسیار افتخار می‌کنم که این پروژه در نمونه کارهای من است. اگر شما پروژه‌ای به این عالی ندارید، توصیه می‌کنم یکی بسازید.',
+        // Experience section
+        companyName: 'استودیو EEFA',
+        dateRange: 'نوامبر 2022 - تاکنون',
+        // Education section
+        schoolName: 'پیام',
+        educationDate: '2017 - 2020',
+    }
+};
 
 // Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
@@ -24,6 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'c') {
             toggleModal(commitsModal);
             snakeModal.style.display = 'none';
+            languageModal.style.display = 'none';
             if (commitsModal.style.display === 'block') {
                 loadCommits();
             }
@@ -31,6 +99,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 's') {
             toggleModal(snakeModal);
             commitsModal.style.display = 'none';
+            languageModal.style.display = 'none';
+        }
+        if (e.key === 'l') {
+            toggleLanguage();
         }
         if (e.key === 'b') {
             // Handle blog navigation
@@ -43,6 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Escape') {
             commitsModal.style.display = 'none';
             snakeModal.style.display = 'none';
+            languageModal.style.display = 'none';
             if (snakeGame) {
                 snakeGame.pause();
             }
@@ -84,6 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
     commitsBtn.addEventListener('click', () => {
         toggleModal(commitsModal);
         snakeModal.style.display = 'none';
+        languageModal.style.display = 'none';
         if (commitsModal.style.display === 'block') {
             loadCommits();
         }
@@ -92,6 +166,11 @@ document.addEventListener('DOMContentLoaded', () => {
     snakeBtn.addEventListener('click', () => {
         toggleModal(snakeModal);
         commitsModal.style.display = 'none';
+        languageModal.style.display = 'none';
+    });
+    
+    languageBtn.addEventListener('click', () => {
+        toggleLanguage();
     });
 
     startGameBtn.addEventListener('click', () => {
@@ -113,6 +192,83 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+    
+    // Language toggle function
+    function toggleLanguage() {
+        if (currentLanguage === 'en') {
+            currentLanguage = 'fa';
+            languageBtn.style.backgroundColor = '#3eb489';
+            languageBtn.style.color = 'black';
+        } else {
+            currentLanguage = 'en';
+            languageBtn.style.backgroundColor = '';
+            languageBtn.style.color = '';
+        }
+        updateLanguage();
+    }
+    
+    // Function to update page content based on selected language
+    function updateLanguage() {
+        const t = translations[currentLanguage];
+        
+        // Update document title
+        document.title = t.title;
+        
+        // Update navigation buttons
+        commitsBtn.innerHTML = t.commits;
+        snakeBtn.innerHTML = t.snake;
+        document.querySelector('a[data-shortcut="b"]').innerHTML = t.blog;
+        languageText.textContent = currentLanguage === 'en' ? 'language' : 'زبان';
+        
+        // Update section titles
+        document.querySelectorAll('.section-title').forEach((el, index) => {
+            if (index === 0) el.textContent = t.about;
+            if (index === 1) el.textContent = t.projects;
+            if (index === 2) el.textContent = t.experience;
+            if (index === 3) el.textContent = t.education;
+        });
+        
+        // Update about section
+        document.querySelectorAll('.text-gray-300.mb-4')[0].textContent = t.aboutText;
+        document.querySelectorAll('.text-gray-300')[1].innerHTML = `${t.skillsText} <span class="highlight">Python</span> and <span class="highlight">Dart</span>`;
+        
+        // Update job title and descriptions
+        document.querySelectorAll('.text-gray-400.mb-4')[2].textContent = t.jobTitle;
+        document.querySelectorAll('.text-gray-300.mb-4')[2].textContent = t.jobDescription1;
+        document.querySelectorAll('.text-gray-300')[6].textContent = t.jobDescription2;
+        
+        // Update education
+        document.querySelectorAll('.text-gray-400.mb-4')[3].textContent = t.education1;
+        
+        // Update project section
+        document.querySelectorAll('.text-lg.mb-2.flex-center, .text-lg.flex-center')[0].innerHTML = `<span class="highlight-marker">*</span> ${t.projectTitle}`;
+        document.querySelectorAll('.highlight-link')[0].textContent = t.projectLink;
+        document.querySelectorAll('.text-gray-300.mb-4')[1].textContent = t.projectDesc1;
+        document.querySelectorAll('.text-gray-300')[3].textContent = t.projectDesc2;
+        
+        // Update experience section - company name and date
+        document.querySelectorAll('.text-lg.flex-center')[1].innerHTML = `<span class="highlight-marker">*</span> ${t.companyName}`;
+        document.querySelectorAll('.text-gray-400.text-sm')[0].textContent = t.dateRange;
+        
+        // Update education section - school name and details
+        document.querySelectorAll('.text-lg.flex-center')[2].innerHTML = `<span class="highlight-marker">*</span> ${t.schoolName}`;
+        document.querySelectorAll('.text-gray-400.text-sm')[1].textContent = t.educationDate;
+        document.querySelectorAll('.text-gray-300.mb-4')[3].textContent = t.educationDesc1;
+        document.querySelectorAll('.text-gray-300.mb-4')[4].textContent = t.educationDesc2;
+        document.querySelectorAll('.text-gray-300')[7].textContent = t.educationDesc3;
+        
+        // Update footer
+        document.querySelector('.text-sm.hover-highlight').textContent = t.website;
+        
+        // Set text direction based on language
+        if (currentLanguage === 'fa') {
+            document.documentElement.setAttribute('dir', 'rtl');
+            document.body.classList.add('rtl');
+        } else {
+            document.documentElement.setAttribute('dir', 'ltr');
+            document.body.classList.remove('rtl');
+        }
+    }
 });
 
 // Helper Functions
