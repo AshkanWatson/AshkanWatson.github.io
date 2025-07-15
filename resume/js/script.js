@@ -20,7 +20,7 @@ let currentLanguage = 'en';
 // Translations
 const translations = {
     en: {
-        title: 'Ashkan Watson - Resume',
+        title: 'Ashkan Yadollahi - Resume',
         name: 'Ashkan Yadollahi',
         mainTitle: 'Flutter Developer',
         about: 'About Me',
@@ -52,7 +52,7 @@ const translations = {
         educationDate: '2017 - 2020',
     },
     fa: {
-        title: 'اشکان واتسون - رزومه',
+        title: 'رزومه - اشکان یداللهی',
         name: 'اشکان یداللهی',
         mainTitle: 'توسعه‌دهنده فلاتر',
         about: 'درباره من',
