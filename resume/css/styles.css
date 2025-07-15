@@ -497,52 +497,31 @@ footer {
   }
 }
 
-/* RTL Support for Persian language */
-html[dir="rtl"] .header .flex-center {
+/* RTL Support for Persian language (main content only) */
+.main-content.rtl .flex-between {
   flex-direction: row-reverse;
 }
-
-html[dir="rtl"] .nav-links {
-  flex-direction: row-reverse;
-}
-
-html[dir="rtl"] .social-links {
-  flex-direction: row-reverse;
-}
-
-html[dir="rtl"] .flex-between {
-  flex-direction: row-reverse;
-}
-
-html[dir="rtl"] .highlight-marker {
+.main-content.rtl .highlight-marker {
   margin-right: 0;
   margin-left: 0.5rem;
 }
-
-html[dir="rtl"] .modal-header {
+.main-content.rtl .modal-header {
   flex-direction: row-reverse;
 }
-
-html[dir="rtl"] .commit-header {
+.main-content.rtl .commit-header {
   flex-direction: row-reverse;
 }
-
-/* Font adjustments for Persian */
-html[dir="rtl"] body {
+.main-content.rtl {
+  direction: rtl;
+  text-align: right;
+}
+.main-content[dir="rtl"] {
+  direction: rtl;
+}
+/* Font adjustments for Persian (main content only) */
+.main-content.rtl, .main-content.rtl h1, .main-content.rtl h2, .main-content.rtl h3, .main-content.rtl p, .main-content.rtl button, .main-content.rtl a, .main-content.rtl span {
   font-family: "B Nazanin", "Tahoma", "Arial", sans-serif;
 }
-
-html[dir="rtl"] #start-game {
-  font-family: "B Nazanin", "Tahoma", "Arial", sans-serif;
-}
-
-/* Add B Nazanin font for all text elements in Persian mode */
-html[dir="rtl"] h1,
-html[dir="rtl"] h2,
-html[dir="rtl"] h3,
-html[dir="rtl"] p,
-html[dir="rtl"] button,
-html[dir="rtl"] a,
-html[dir="rtl"] span {
+.main-content.rtl #start-game {
   font-family: "B Nazanin", "Tahoma", "Arial", sans-serif;
 }

@@ -30,13 +30,14 @@
     <!-- Header -->
     <header id="header" class="header">
         <div class="flex-center">
-            <div class="logo"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+            <a href="/" class="logo" aria-label="Home">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                     fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     class="lucide lucide-terminal h-4 w-4 text-black">
                     <polyline points="4 17 10 11 4 5"></polyline>
                     <line x1="12" x2="20" y1="19" y2="19"></line>
                 </svg>
-            </div>
+            </a>
             <nav class="nav-links">
                 <button id="commits-btn" class="nav-btn" data-shortcut="c">
                     [C] commits
@@ -106,19 +107,17 @@
     <!-- Main content -->
     <main id="main-content" class="main-content">
         <section class="mb-16 pt-8">
-            <h1 class="text-3xl mb-4">Ashkan</h1>
-            <p class="text-gray-400 max-w-2xl">
-                Flutter Developer
-            </p>
+            <h1 class="text-3xl mb-4" id="main-name">Ashkan Yadollahi</h1>
+            <p class="text-gray-400 max-w-2xl" id="main-title">Flutter Developer</p>
         </section>
 
         <section class="mb-16">
             <h2 class="section-title">About Me</h2>
-            <p class="text-gray-300 mb-4">
+            <p class="text-gray-300 mb-4" id="about-text">
                 Hi, my name's Ashkan and I'm a Flutter Developer. I have worked at EEFA Post Production Studio gaining
                 teamwork skills as an IT Expert, Network System Administrator, Flutter Developer and Linux Kernel.
             </p>
-            <p class="text-gray-300">
+            <p class="text-gray-300" id="skills-text">
                 I am most skilled in: <span class="highlight">Python</span> and <span class="highlight">Dart</span>
             </p>
         </section>
@@ -127,17 +126,17 @@
             <h2 class="section-title">Projects</h2>
 
             <div class="mb-8">
-                <h3 class="text-lg mb-2 flex-center">
+                <h3 class="text-lg mb-2 flex-center" id="project-title">
                     <span class="highlight-marker">*</span>
                     Chandome?! Project
                 </h3>
                 <p class="text-gray-400 mb-2">
-                    <a href="https://github.com/Chandome" class="highlight-link">github.com/Chandome</a>
+                    <a href="https://github.com/Chandome" class="highlight-link" id="project-link">github.com/Chandome</a>
                 </p>
-                <p class="text-gray-300 mb-4">
+                <p class="text-gray-300 mb-4" id="project-desc1">
                     This is probably one of the greatest apps ever created, if you don't agree you're probably wrong.
                 </p>
-                <p class="text-gray-300">
+                <p class="text-gray-300" id="project-desc2">
                     I started this project as a way if learning Flutter and it has since grown into a fully fledged app.
                     I have learned many skills through this and been I'm very proud of having this in my portfolio. If
                     you don't have a project as awesome as this I would advise you make one.
@@ -150,19 +149,19 @@
 
             <div class="mb-8">
                 <div class="flex-between mb-2">
-                    <h3 class="text-lg flex-center">
+                    <h3 class="text-lg flex-center align-side" id="company-name">
                         <span class="highlight-marker">*</span>
                         The EEFA Studio
                     </h3>
-                    <span class="text-gray-400 text-sm">November 2022 - Present</span>
+                    <span class="text-gray-400 text-sm date-side" id="job-date">November 2022 - Present</span>
                 </div>
-                <p class="text-gray-400 mb-4">Network System Administrator, Flutter Developer, Linux Kernel</p>
-                <p class="text-gray-300 mb-4">
+                <p class="text-gray-400 mb-4" id="job-title">Network System Administrator, Flutter Developer, Linux Kernel</p>
+                <p class="text-gray-300 mb-4" id="job-desc1">
                     EEFA Studio
                     Solving 21st century problems by diging holes and making game changing products like the *not a
                     flamethrower*
                 </p>
-                <p class="text-gray-300">
+                <p class="text-gray-300" id="job-desc2">
                     Every company needs its networks properly administered and The VFX company is no exception. Digging
                     holes is hard and I play my part making sure the whole company stays connected. I enjoy driving the
                     company to try new technologies.
@@ -175,18 +174,18 @@
 
             <div class="mb-8">
                 <div class="flex-between mb-2">
-                    <h3 class="text-lg flex-center">
+                    <h3 class="text-lg flex-center align-side" id="school-name">
                         <span class="highlight-marker">*</span>
                         Payam
                     </h3>
-                    <span class="text-gray-400 text-sm">2017 - 2020</span>
+                    <span class="text-gray-400 text-sm date-side" id="education-date">2017 - 2020</span>
                 </div>
-                <p class="text-gray-400 mb-4">Electronic Diploma</p>
+                <p class="text-gray-400 mb-4" id="education1">Electronic Diploma</p>
             </div>
         </section>
 
         <footer class="pb-16 flex gap-8">
-            <a href="https://ashkanwatson.github.io/" class="text-sm hover-highlight">
+            <a href="https://ashkanwatson.github.io/" class="text-sm hover-highlight" id="footer-website">
                 [w] website
             </a>
         </footer>

@@ -21,6 +21,8 @@ let currentLanguage = 'en';
 const translations = {
     en: {
         title: 'Ashkan Watson - Resume',
+        name: 'Ashkan Yadollahi',
+        mainTitle: 'Flutter Developer',
         about: 'About Me',
         aboutText: 'Hi, my name\'s Ashkan and I\'m a Flutter Developer. I have worked at EEFA Post Production Studio gaining teamwork skills as an IT Expert, Network System Administrator, Flutter Developer and Linux Kernel.',
         skillsText: 'I am most skilled in:',
@@ -51,6 +53,8 @@ const translations = {
     },
     fa: {
         title: 'اشکان واتسون - رزومه',
+        name: 'اشکان یداللهی',
+        mainTitle: 'توسعه‌دهنده فلاتر',
         about: 'درباره من',
         aboutText: 'سلام، اسم من اشکان هست و من یک توسعه‌دهنده فلاتر هستم. من در استودیو پست پروداکشن EEFA کار کرده‌ام و مهارت‌های کار تیمی را به عنوان متخصص IT، مدیر سیستم شبکه، توسعه‌دهنده فلاتر و کرنل لینوکس کسب کرده‌ام.',
         skillsText: 'من بیشترین مهارت را در این زمینه‌ها دارم:',
@@ -64,7 +68,7 @@ const translations = {
         website: '[W] وب‌سایت',
         changeLanguage: 'تغییر زبان',
         jobTitle: 'مدیر سیستم شبکه، توسعه‌دهنده فلاتر، کرنل لینوکس',
-        jobDescription1: 'استودیو EEFA حل مشکلات قرن 21 با حفر چاله‌ها و ساخت محصولات تغییردهنده بازی مانند *شعله‌افکن نیست*',
+        jobDescription1: 'استودیو EEFA حل مشکلات قرن ۲۱ با حفر چاله‌ها و ساخت محصولات تغییردهنده بازی مانند *شعله‌افکن نیست*',
         jobDescription2: 'هر شرکتی نیاز به مدیریت صحیح شبکه دارد و شرکت VFX نیز از این قاعده مستثنی نیست. حفر چاله‌ها سخت است و من نقش خود را در اطمینان از اتصال کل شرکت ایفا می‌کنم. من از هدایت شرکت به سمت فناوری‌های جدید لذت می‌برم.',
         education1: 'دیپلم الکترونیک',
         // Project section
@@ -74,10 +78,10 @@ const translations = {
         projectDesc2: 'من این پروژه را به عنوان راهی برای یادگیری فلاتر شروع کردم و از آن زمان به یک برنامه کامل تبدیل شده است. من مهارت‌های زیادی از طریق این پروژه یاد گرفته‌ام و بسیار افتخار می‌کنم که این پروژه در نمونه کارهای من است. اگر شما پروژه‌ای به این عالی ندارید، توصیه می‌کنم یکی بسازید.',
         // Experience section
         companyName: 'استودیو EEFA',
-        dateRange: 'نوامبر 2022 - تاکنون',
+        dateRange: 'نوامبر ۲۰۲۲ - تاکنون',
         // Education section
         schoolName: 'پیام',
-        educationDate: '2017 - 2020',
+        educationDate: '۲۰۱۷ - ۲۰۲۰',
     }
 };
 
@@ -133,10 +137,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 header.classList.remove('sticky');
                 mainContent.classList.remove('header-fixed');
             }
+        } else {
+            // Always remove sticky on mobile
+            header.classList.remove('sticky');
+            mainContent.classList.remove('header-fixed');
         }
     });
 
-    // Handle mobile modal positioning
+    // Handle mobile modal positioning and header sticky fix on resize
     const adjustModalForMobile = () => {
         const isMobile = window.innerWidth <= 768;
         const modals = [commitsModal, snakeModal];
@@ -148,10 +156,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 modal.style.paddingBottom = '0';
             }
         });
+        // Remove sticky class if on mobile
+        if (isMobile) {
+            header.classList.remove('sticky');
+            mainContent.classList.remove('header-fixed');
+        }
     };
 
     window.addEventListener('resize', adjustModalForMobile);
     adjustModalForMobile();
+
+    // On DOMContentLoaded, ensure sticky is not present on mobile
+    if (window.innerWidth <= 768) {
+        header.classList.remove('sticky');
+        mainContent.classList.remove('header-fixed');
+    }
 
     // Button click events
     commitsBtn.addEventListener('click', () => {
@@ -210,16 +229,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to update page content based on selected language
     function updateLanguage() {
         const t = translations[currentLanguage];
-        
         // Update document title
         document.title = t.title;
-        
         // Update navigation buttons
         commitsBtn.innerHTML = t.commits;
         snakeBtn.innerHTML = t.snake;
         document.querySelector('a[data-shortcut="b"]').innerHTML = t.blog;
         languageText.textContent = currentLanguage === 'en' ? 'language' : 'زبان';
-        
         // Update section titles
         document.querySelectorAll('.section-title').forEach((el, index) => {
             if (index === 0) el.textContent = t.about;
@@ -227,47 +243,75 @@ document.addEventListener('DOMContentLoaded', () => {
             if (index === 2) el.textContent = t.experience;
             if (index === 3) el.textContent = t.education;
         });
-        
-        // Update about section
-        document.querySelectorAll('.text-gray-300.mb-4')[0].textContent = t.aboutText;
-        document.querySelectorAll('.text-gray-300')[1].innerHTML = `${t.skillsText} <span class="highlight">Python</span> and <span class="highlight">Dart</span>`;
-        
-        // Update job title and descriptions
-        document.querySelectorAll('.text-gray-400.mb-4')[2].textContent = t.jobTitle;
-        document.querySelectorAll('.text-gray-300.mb-4')[2].textContent = t.jobDescription1;
-        document.querySelectorAll('.text-gray-300')[6].textContent = t.jobDescription2;
-        
-        // Update education
-        document.querySelectorAll('.text-gray-400.mb-4')[3].textContent = t.education1;
-        
-        // Update project section
-        document.querySelectorAll('.text-lg.mb-2.flex-center, .text-lg.flex-center')[0].innerHTML = `<span class="highlight-marker">*</span> ${t.projectTitle}`;
-        document.querySelectorAll('.highlight-link')[0].textContent = t.projectLink;
-        document.querySelectorAll('.text-gray-300.mb-4')[1].textContent = t.projectDesc1;
-        document.querySelectorAll('.text-gray-300')[3].textContent = t.projectDesc2;
-        
-        // Update experience section - company name and date
-        document.querySelectorAll('.text-lg.flex-center')[1].innerHTML = `<span class="highlight-marker">*</span> ${t.companyName}`;
-        document.querySelectorAll('.text-gray-400.text-sm')[0].textContent = t.dateRange;
-        
-        // Update education section - school name and details
-        document.querySelectorAll('.text-lg.flex-center')[2].innerHTML = `<span class="highlight-marker">*</span> ${t.schoolName}`;
-        document.querySelectorAll('.text-gray-400.text-sm')[1].textContent = t.educationDate;
-        document.querySelectorAll('.text-gray-300.mb-4')[3].textContent = t.educationDesc1;
-        document.querySelectorAll('.text-gray-300.mb-4')[4].textContent = t.educationDesc2;
-        document.querySelectorAll('.text-gray-300')[7].textContent = t.educationDesc3;
-        
-        // Update footer
-        document.querySelector('.text-sm.hover-highlight').textContent = t.website;
-        
-        // Set text direction based on language
-        if (currentLanguage === 'fa') {
-            document.documentElement.setAttribute('dir', 'rtl');
-            document.body.classList.add('rtl');
+        // Update main name
+        const mainName = document.getElementById('main-name');
+        if (mainName) mainName.textContent = t.name;
+        // Update main title (Flutter Developer)
+        const mainTitle = document.getElementById('main-title');
+        if (mainTitle) mainTitle.textContent = t.mainTitle;
+        // About section
+        const aboutText = document.getElementById('about-text');
+        if (aboutText) aboutText.textContent = t.aboutText;
+        const skillsText = document.getElementById('skills-text');
+        if (skillsText) skillsText.innerHTML = `${t.skillsText} <span class="highlight">Python</span> and <span class="highlight">Dart</span>`;
+        // Project section
+        const projectTitle = document.getElementById('project-title');
+        if (projectTitle) projectTitle.innerHTML = `<span class="highlight-marker">*</span> ${t.projectTitle}`;
+        const projectLink = document.getElementById('project-link');
+        if (projectLink) projectLink.textContent = t.projectLink;
+        const projectDesc1 = document.getElementById('project-desc1');
+        if (projectDesc1) projectDesc1.textContent = t.projectDesc1;
+        const projectDesc2 = document.getElementById('project-desc2');
+        if (projectDesc2) projectDesc2.textContent = t.projectDesc2;
+        // Experience section
+        const companyName = document.getElementById('company-name');
+        if (companyName) companyName.innerHTML = `<span class="highlight-marker">*</span> ${t.companyName}`;
+        const jobDate = document.getElementById('job-date');
+        if (jobDate) jobDate.textContent = t.dateRange;
+        const jobTitle = document.getElementById('job-title');
+        if (jobTitle) jobTitle.textContent = t.jobTitle;
+        const jobDesc1 = document.getElementById('job-desc1');
+        if (jobDesc1) jobDesc1.textContent = t.jobDescription1;
+        const jobDesc2 = document.getElementById('job-desc2');
+        if (jobDesc2) jobDesc2.textContent = t.jobDescription2;
+        // Education section
+        const schoolName = document.getElementById('school-name');
+        if (schoolName) schoolName.innerHTML = `<span class="highlight-marker">*</span> ${t.schoolName}`;
+        const educationDate = document.getElementById('education-date');
+        if (educationDate) educationDate.textContent = t.educationDate;
+        const education1 = document.getElementById('education1');
+        if (education1) education1.textContent = t.education1;
+        // Footer
+        const footerWebsite = document.getElementById('footer-website');
+        if (footerWebsite) footerWebsite.textContent = t.website;
+        // Set text direction based on language (only for main-content)
+        const mainContent = document.getElementById('main-content');
+        if (currentLanguage == 'fa') {
+            mainContent.classList.add('rtl');
+            mainContent.setAttribute('dir', 'rtl');
         } else {
-            document.documentElement.setAttribute('dir', 'ltr');
-            document.body.classList.remove('rtl');
+            mainContent.classList.remove('rtl');
+            mainContent.setAttribute('dir', 'ltr');
         }
+        // Align .align-side elements right in FA, left in EN
+        document.querySelectorAll('.align-side').forEach(el => {
+            el.style.textAlign = (currentLanguage === 'fa') ? 'right' : 'left';
+            el.style.justifyContent = 'flex-start';
+        });
+        // Align .date-side elements: left in FA, right in EN
+        document.querySelectorAll('.date-side').forEach(el => {
+            if (currentLanguage === 'fa') {
+                el.style.order = '-1';
+                el.style.marginRight = 'auto';
+                el.style.marginLeft = '0';
+                el.style.textAlign = 'left';
+            } else {
+                el.style.order = '';
+                el.style.marginRight = '';
+                el.style.marginLeft = '';
+                el.style.textAlign = '';
+            }
+        });
     }
 });
 
