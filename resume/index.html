@@ -30,66 +30,70 @@
     <!-- Header -->
     <header id="header" class="header">
         <div class="flex-center">
-            <div class="logo"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+            <a href="/" class="logo" aria-label="Home">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                     fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     class="lucide lucide-terminal h-4 w-4 text-black">
                     <polyline points="4 17 10 11 4 5"></polyline>
                     <line x1="12" x2="20" y1="19" y2="19"></line>
                 </svg>
-            </div>
+            </a>
             <nav class="nav-links">
                 <button id="commits-btn" class="nav-btn" data-shortcut="c">
-                    [c] commits
+                    [C] commits
                 </button>
                 <button id="snake-btn" class="nav-btn" data-shortcut="s">
-                    [s] snake
+                    [S] snake
                 </button>
                 <a href="https://ashkanwatson.github.io/blog/?post=ai-in-softwaredevelopment" class="nav-btn"
                     data-shortcut="b">
-                    [b] blog
+                    [B] blog
                 </a>
+                <button id="language-btn" class="nav-btn" data-shortcut="l">
+                    [L] <span id="language-text">language</span>
+                </button>
             </nav>
         </div>
         <div class="social-links">
-            <a href="https://github.com/AshkanWatson" class="icon-link">
+            <a href="https://github.com/AshkanWatson" class="icon-link" aria-label="GitHub Profile">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="lucide lucide-github">
+                    class="lucide lucide-github" aria-hidden="true">
                     <path
                         d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4">
                     </path>
                     <path d="M9 18c-4.51 2-5-2-7-2"></path>
                 </svg>
             </a>
-            <a href="https://www.linkedin.com/in/ashkanwatson/" class="icon-link">
+            <a href="https://www.linkedin.com/in/ashkanwatson/" class="icon-link" aria-label="LinkedIn Profile">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="lucide lucide-linkedin">
+                    class="lucide lucide-linkedin" aria-hidden="true">
                     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
                     <rect width="4" height="12" x="2" y="9"></rect>
                     <circle cx="4" cy="4" r="2"></circle>
                 </svg>
             </a>
-            <a href="https://twitter.com/ashkanwatson" class="icon-link">
+            <a href="https://twitter.com/ashkanwatson" class="icon-link" aria-label="Twitter/X Profile">
                 <!-- X Logo -->
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path
                         d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z"
                         fill="currentColor" />
                 </svg>
             </a>
-            <a href="https://www.instagram.com/AshkanWatson" class="icon-link">
+            <a href="https://www.instagram.com/AshkanWatson" class="icon-link" aria-label="Instagram Profile">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="lucide lucide-instagram">
+                    class="lucide lucide-instagram" aria-hidden="true">
                     <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                     <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
                 </svg>
             </a>
-            <a href="https://figma.com/@AshkanWatson" class="icon-link">
+            <a href="https://figma.com/@AshkanWatson" class="icon-link" aria-label="Figma Profile">
                 <!-- Figma Logo -->
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z" fill="currentColor" />
                     <path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z" fill="currentColor" />
                     <path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" fill="currentColor" />
@@ -103,19 +107,17 @@
     <!-- Main content -->
     <main id="main-content" class="main-content">
         <section class="mb-16 pt-8">
-            <h1 class="text-3xl mb-4">Ashkan</h1>
-            <p class="text-gray-400 max-w-2xl">
-                Software Engineer
-            </p>
+            <h1 class="text-3xl mb-4" id="main-name">Ashkan Yadollahi</h1>
+            <p class="text-gray-400 max-w-2xl" id="main-title">Flutter Developer</p>
         </section>
 
         <section class="mb-16">
             <h2 class="section-title">About Me</h2>
-            <p class="text-gray-300 mb-4">
-                Hi, my name's Ashkan and I'm a Software Engineer. I have worked at EEFA Post Production Studio gaining
-                teamwork skills as an IT Expert, Network System Administrator, Software Engineer and Linux Kernel.
+            <p class="text-gray-300 mb-4" id="about-text">
+                Hi, my name's Ashkan and I'm a Flutter Developer. I have worked at EEFA Post Production Studio gaining
+                teamwork skills as an IT Expert, Network System Administrator, Flutter Developer and Linux Kernel.
             </p>
-            <p class="text-gray-300">
+            <p class="text-gray-300" id="skills-text">
                 I am most skilled in: <span class="highlight">Python</span> and <span class="highlight">Dart</span>
             </p>
         </section>
@@ -124,17 +126,17 @@
             <h2 class="section-title">Projects</h2>
 
             <div class="mb-8">
-                <h3 class="text-lg mb-2 flex-center">
+                <h3 class="text-lg mb-2 flex-center" id="project-title">
                     <span class="highlight-marker">*</span>
                     Chandome?! Project
                 </h3>
                 <p class="text-gray-400 mb-2">
-                    <a href="https://github.com/Chandome" class="highlight-link">github.com/Chandome</a>
+                    <a href="https://github.com/Chandome" class="highlight-link" id="project-link">github.com/Chandome</a>
                 </p>
-                <p class="text-gray-300 mb-4">
+                <p class="text-gray-300 mb-4" id="project-desc1">
                     This is probably one of the greatest apps ever created, if you don't agree you're probably wrong.
                 </p>
-                <p class="text-gray-300">
+                <p class="text-gray-300" id="project-desc2">
                     I started this project as a way if learning Flutter and it has since grown into a fully fledged app.
                     I have learned many skills through this and been I'm very proud of having this in my portfolio. If
                     you don't have a project as awesome as this I would advise you make one.
@@ -147,19 +149,19 @@
 
             <div class="mb-8">
                 <div class="flex-between mb-2">
-                    <h3 class="text-lg flex-center">
+                    <h3 class="text-lg flex-center align-side" id="company-name">
                         <span class="highlight-marker">*</span>
                         The EEFA Studio
                     </h3>
-                    <span class="text-gray-400 text-sm">November 2022 - Present</span>
+                    <span class="text-gray-400 text-sm date-side" id="job-date">November 2022 - Present</span>
                 </div>
-                <p class="text-gray-400 mb-4">Network System Administrator, Software Engineer, Linux Kernel</p>
-                <p class="text-gray-300 mb-4">
+                <p class="text-gray-400 mb-4" id="job-title">Network System Administrator, Flutter Developer, Linux Kernel</p>
+                <p class="text-gray-300 mb-4" id="job-desc1">
                     EEFA Studio
                     Solving 21st century problems by diging holes and making game changing products like the *not a
                     flamethrower*
                 </p>
-                <p class="text-gray-300">
+                <p class="text-gray-300" id="job-desc2">
                     Every company needs its networks properly administered and The VFX company is no exception. Digging
                     holes is hard and I play my part making sure the whole company stays connected. I enjoy driving the
                     company to try new technologies.
@@ -172,27 +174,18 @@
 
             <div class="mb-8">
                 <div class="flex-between mb-2">
-                    <h3 class="text-lg flex-center">
+                    <h3 class="text-lg flex-center align-side" id="school-name">
                         <span class="highlight-marker">*</span>
                         Payam
                     </h3>
-                    <span class="text-gray-400 text-sm">2017 - 2020</span>
+                    <span class="text-gray-400 text-sm date-side" id="education-date">2017 - 2020</span>
                 </div>
-                <p class="text-gray-400 mb-4">Electronic Diploma</p>
-                <p class="text-gray-300 mb-4">
-
-                </p>
-                <p class="text-gray-300 mb-4">
-
-                </p>
-                <p class="text-gray-300">
-
-                </p>
+                <p class="text-gray-400 mb-4" id="education1">Electronic Diploma</p>
             </div>
         </section>
 
         <footer class="pb-16 flex gap-8">
-            <a href="https://ashkanwatson.github.io/" class="text-sm hover-highlight">
+            <a href="https://ashkanwatson.github.io/" class="text-sm hover-highlight" id="footer-website">
                 [w] website
             </a>
         </footer>
@@ -227,6 +220,8 @@
             </div>
         </div>
     </div>
+
+    <!-- Language modal removed and replaced with direct toggle button -->
 
     <script src="./js/script.js"></script>
 </body>

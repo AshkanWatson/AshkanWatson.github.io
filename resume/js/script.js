@@ -3,6 +3,8 @@ const header = document.getElementById('header');
 const mainContent = document.getElementById('main-content');
 const commitsBtn = document.getElementById('commits-btn');
 const snakeBtn = document.getElementById('snake-btn');
+const languageBtn = document.getElementById('language-btn');
+const languageText = document.getElementById('language-text');
 const commitsModal = document.getElementById('commits-modal');
 const snakeModal = document.getElementById('snake-modal');
 const commitsContainer = document.getElementById('commits-container');
@@ -13,6 +15,75 @@ const closeBtns = document.querySelectorAll('.close-btn');
 // State
 let isScrolled = false;
 let snakeGame = null;
+let currentLanguage = 'en';
+
+// Translations
+const translations = {
+    en: {
+        title: 'Ashkan Yadollahi - Resume',
+        name: 'Ashkan Yadollahi',
+        mainTitle: 'Flutter Developer',
+        about: 'About Me',
+        aboutText: 'Hi, my name\'s Ashkan and I\'m a Flutter Developer. I have worked at EEFA Post Production Studio gaining teamwork skills as an IT Expert, Network System Administrator, Flutter Developer and Linux Kernel.',
+        skillsText: 'I am most skilled in:',
+        projects: 'Projects',
+        experience: 'Experience',
+        education: 'Education',
+        commits: '[C] commits',
+        snake: '[S] snake',
+        blog: '[B] blog',
+        language: '[L] language',
+        website: '[W] website',
+        changeLanguage: 'Change Language',
+        jobTitle: 'Network System Administrator, Flutter Developer, Linux Kernel',
+        jobDescription1: 'EEFA Studio Solving 21st century problems by diging holes and making game changing products like the *not a flamethrower*',
+        jobDescription2: 'Every company needs its networks properly administered and The VFX company is no exception. Digging holes is hard and I play my part making sure the whole company stays connected. I enjoy driving the company to try new technologies.',
+        education1: 'Electronic Diploma',
+        // Project section
+        projectTitle: 'Chandome?! Project',
+        projectLink: 'github.com/Chandome',
+        projectDesc1: 'This is probably one of the greatest apps ever created, if you don\'t agree you\'re probably wrong.',
+        projectDesc2: 'I started this project as a way if learning Flutter and it has since grown into a fully fledged app. I have learned many skills through this and been I\'m very proud of having this in my portfolio. If you don\'t have a project as awesome as this I would advise you make one.',
+        // Experience section
+        companyName: 'The EEFA Studio',
+        dateRange: 'November 2022 - Present',
+        // Education section
+        schoolName: 'Payam',
+        educationDate: '2017 - 2020',
+    },
+    fa: {
+        title: 'رزومه - اشکان یداللهی',
+        name: 'اشکان یداللهی',
+        mainTitle: 'توسعه‌دهنده فلاتر',
+        about: 'درباره من',
+        aboutText: 'سلام، اسم من اشکان هست و من یک توسعه‌دهنده فلاتر هستم. من در استودیو پست پروداکشن EEFA کار کرده‌ام و مهارت‌های کار تیمی را به عنوان متخصص IT، مدیر سیستم شبکه، توسعه‌دهنده فلاتر و کرنل لینوکس کسب کرده‌ام.',
+        skillsText: 'من بیشترین مهارت را در این زمینه‌ها دارم:',
+        projects: 'پروژه‌ها',
+        experience: 'تجربیات',
+        education: 'تحصیلات',
+        commits: '[C] کامیت‌ها',
+        snake: '[S] بازی مار',
+        blog: '[B] وبلاگ',
+        language: '[L] زبان',
+        website: '[W] وب‌سایت',
+        changeLanguage: 'تغییر زبان',
+        jobTitle: 'مدیر سیستم شبکه، توسعه‌دهنده فلاتر، کرنل لینوکس',
+        jobDescription1: 'استودیو EEFA حل مشکلات قرن ۲۱ با حفر چاله‌ها و ساخت محصولات تغییردهنده بازی مانند *شعله‌افکن نیست*',
+        jobDescription2: 'هر شرکتی نیاز به مدیریت صحیح شبکه دارد و شرکت VFX نیز از این قاعده مستثنی نیست. حفر چاله‌ها سخت است و من نقش خود را در اطمینان از اتصال کل شرکت ایفا می‌کنم. من از هدایت شرکت به سمت فناوری‌های جدید لذت می‌برم.',
+        education1: 'دیپلم الکترونیک',
+        // Project section
+        projectTitle: 'پروژه چندومه؟!',
+        projectLink: 'github.com/Chandome',
+        projectDesc1: 'این احتمالاً یکی از بهترین برنامه‌هایی است که تا به حال ساخته شده است، اگر موافق نیستید احتمالاً اشتباه می‌کنید.',
+        projectDesc2: 'من این پروژه را به عنوان راهی برای یادگیری فلاتر شروع کردم و از آن زمان به یک برنامه کامل تبدیل شده است. من مهارت‌های زیادی از طریق این پروژه یاد گرفته‌ام و بسیار افتخار می‌کنم که این پروژه در نمونه کارهای من است. اگر شما پروژه‌ای به این عالی ندارید، توصیه می‌کنم یکی بسازید.',
+        // Experience section
+        companyName: 'استودیو EEFA',
+        dateRange: 'نوامبر ۲۰۲۲ - تاکنون',
+        // Education section
+        schoolName: 'پیام',
+        educationDate: '۲۰۱۷ - ۲۰۲۰',
+    }
+};
 
 // Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
@@ -24,6 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'c') {
             toggleModal(commitsModal);
             snakeModal.style.display = 'none';
+            languageModal.style.display = 'none';
             if (commitsModal.style.display === 'block') {
                 loadCommits();
             }
@@ -31,6 +103,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 's') {
             toggleModal(snakeModal);
             commitsModal.style.display = 'none';
+            languageModal.style.display = 'none';
+        }
+        if (e.key === 'l') {
+            toggleLanguage();
         }
         if (e.key === 'b') {
             // Handle blog navigation
@@ -43,6 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Escape') {
             commitsModal.style.display = 'none';
             snakeModal.style.display = 'none';
+            languageModal.style.display = 'none';
             if (snakeGame) {
                 snakeGame.pause();
             }
@@ -60,10 +137,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 header.classList.remove('sticky');
                 mainContent.classList.remove('header-fixed');
             }
+        } else {
+            // Always remove sticky on mobile
+            header.classList.remove('sticky');
+            mainContent.classList.remove('header-fixed');
         }
     });
 
-    // Handle mobile modal positioning
+    // Handle mobile modal positioning and header sticky fix on resize
     const adjustModalForMobile = () => {
         const isMobile = window.innerWidth <= 768;
         const modals = [commitsModal, snakeModal];
@@ -75,15 +156,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 modal.style.paddingBottom = '0';
             }
         });
+        // Remove sticky class if on mobile
+        if (isMobile) {
+            header.classList.remove('sticky');
+            mainContent.classList.remove('header-fixed');
+        }
     };
 
     window.addEventListener('resize', adjustModalForMobile);
     adjustModalForMobile();
 
+    // On DOMContentLoaded, ensure sticky is not present on mobile
+    if (window.innerWidth <= 768) {
+        header.classList.remove('sticky');
+        mainContent.classList.remove('header-fixed');
+    }
+
     // Button click events
     commitsBtn.addEventListener('click', () => {
         toggleModal(commitsModal);
         snakeModal.style.display = 'none';
+        languageModal.style.display = 'none';
         if (commitsModal.style.display === 'block') {
             loadCommits();
         }
@@ -92,6 +185,11 @@ document.addEventListener('DOMContentLoaded', () => {
     snakeBtn.addEventListener('click', () => {
         toggleModal(snakeModal);
         commitsModal.style.display = 'none';
+        languageModal.style.display = 'none';
+    });
+    
+    languageBtn.addEventListener('click', () => {
+        toggleLanguage();
     });
 
     startGameBtn.addEventListener('click', () => {
@@ -113,6 +211,108 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+    
+    // Language toggle function
+    function toggleLanguage() {
+        if (currentLanguage === 'en') {
+            currentLanguage = 'fa';
+            languageBtn.style.backgroundColor = '#3eb489';
+            languageBtn.style.color = 'black';
+        } else {
+            currentLanguage = 'en';
+            languageBtn.style.backgroundColor = '';
+            languageBtn.style.color = '';
+        }
+        updateLanguage();
+    }
+    
+    // Function to update page content based on selected language
+    function updateLanguage() {
+        const t = translations[currentLanguage];
+        // Update document title
+        document.title = t.title;
+        // Update navigation buttons
+        commitsBtn.innerHTML = t.commits;
+        snakeBtn.innerHTML = t.snake;
+        document.querySelector('a[data-shortcut="b"]').innerHTML = t.blog;
+        languageText.textContent = currentLanguage === 'en' ? 'language' : 'زبان';
+        // Update section titles
+        document.querySelectorAll('.section-title').forEach((el, index) => {
+            if (index === 0) el.textContent = t.about;
+            if (index === 1) el.textContent = t.projects;
+            if (index === 2) el.textContent = t.experience;
+            if (index === 3) el.textContent = t.education;
+        });
+        // Update main name
+        const mainName = document.getElementById('main-name');
+        if (mainName) mainName.textContent = t.name;
+        // Update main title (Flutter Developer)
+        const mainTitle = document.getElementById('main-title');
+        if (mainTitle) mainTitle.textContent = t.mainTitle;
+        // About section
+        const aboutText = document.getElementById('about-text');
+        if (aboutText) aboutText.textContent = t.aboutText;
+        const skillsText = document.getElementById('skills-text');
+        if (skillsText) skillsText.innerHTML = `${t.skillsText} <span class="highlight">Python</span> and <span class="highlight">Dart</span>`;
+        // Project section
+        const projectTitle = document.getElementById('project-title');
+        if (projectTitle) projectTitle.innerHTML = `<span class="highlight-marker">*</span> ${t.projectTitle}`;
+        const projectLink = document.getElementById('project-link');
+        if (projectLink) projectLink.textContent = t.projectLink;
+        const projectDesc1 = document.getElementById('project-desc1');
+        if (projectDesc1) projectDesc1.textContent = t.projectDesc1;
+        const projectDesc2 = document.getElementById('project-desc2');
+        if (projectDesc2) projectDesc2.textContent = t.projectDesc2;
+        // Experience section
+        const companyName = document.getElementById('company-name');
+        if (companyName) companyName.innerHTML = `<span class="highlight-marker">*</span> ${t.companyName}`;
+        const jobDate = document.getElementById('job-date');
+        if (jobDate) jobDate.textContent = t.dateRange;
+        const jobTitle = document.getElementById('job-title');
+        if (jobTitle) jobTitle.textContent = t.jobTitle;
+        const jobDesc1 = document.getElementById('job-desc1');
+        if (jobDesc1) jobDesc1.textContent = t.jobDescription1;
+        const jobDesc2 = document.getElementById('job-desc2');
+        if (jobDesc2) jobDesc2.textContent = t.jobDescription2;
+        // Education section
+        const schoolName = document.getElementById('school-name');
+        if (schoolName) schoolName.innerHTML = `<span class="highlight-marker">*</span> ${t.schoolName}`;
+        const educationDate = document.getElementById('education-date');
+        if (educationDate) educationDate.textContent = t.educationDate;
+        const education1 = document.getElementById('education1');
+        if (education1) education1.textContent = t.education1;
+        // Footer
+        const footerWebsite = document.getElementById('footer-website');
+        if (footerWebsite) footerWebsite.textContent = t.website;
+        // Set text direction based on language (only for main-content)
+        const mainContent = document.getElementById('main-content');
+        if (currentLanguage == 'fa') {
+            mainContent.classList.add('rtl');
+            mainContent.setAttribute('dir', 'rtl');
+        } else {
+            mainContent.classList.remove('rtl');
+            mainContent.setAttribute('dir', 'ltr');
+        }
+        // Align .align-side elements right in FA, left in EN
+        document.querySelectorAll('.align-side').forEach(el => {
+            el.style.textAlign = (currentLanguage === 'fa') ? 'right' : 'left';
+            el.style.justifyContent = 'flex-start';
+        });
+        // Align .date-side elements: left in FA, right in EN
+        document.querySelectorAll('.date-side').forEach(el => {
+            if (currentLanguage === 'fa') {
+                el.style.order = '-1';
+                el.style.marginRight = 'auto';
+                el.style.marginLeft = '0';
+                el.style.textAlign = 'left';
+            } else {
+                el.style.order = '';
+                el.style.marginRight = '';
+                el.style.marginLeft = '';
+                el.style.textAlign = '';
+            }
+        });
+    }
 });
 
 // Helper Functions
